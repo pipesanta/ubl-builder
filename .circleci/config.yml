@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@1.1.6
 jobs:
-  build-and-test:
+  test-and-publish:
     executor:
       name: node/default
     steps:
@@ -18,7 +18,7 @@ jobs:
           name: Publish to NPM
           command: npm publish
 workflows:
-    build-and-test:
+    build-test-deploy:
       jobs:
-        - build-and-test
-          context: global_pipesanta
+        - test-and-publish
+            context: PIPESANTA
