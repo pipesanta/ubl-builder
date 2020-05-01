@@ -4,7 +4,7 @@
   "description": "Tool to create xml documents with UBL 2.0 standard",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/pipesanta/ubl-builder/issues"
   },
-  "homepage": "https://github.com/pipesanta/ubl-builder#readme"
+  "homepage": "https://github.com/pipesanta/ubl-builder#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^25.5.3"
+  }
 }
