@@ -3,6 +3,7 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   build-and-test:
+    context: global_pipesanta
     executor:
       name: node/default
     steps:
@@ -11,6 +12,12 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
+      - run: 
+          name: Auth With NPM
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run:
+          name: Publish to NPM
+          command: npm publish
 workflows:
     build-and-test:
       jobs:
