@@ -1,1 +1,5 @@
-export const Greeter = (name: string) => `Hello ${name}`;
+import { CctAmountType, CctBinaryObjectType } from './ubl21/types/UnqualifiedDataTypes/essentials/cct';
+
+
+
+export { CctAmountType, CctBinaryObjectType }

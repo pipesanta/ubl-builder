@@ -1,5 +1,13 @@
-import { Greeter } from '../index';
+import { CctAmountType, CctBinaryObjectType } from '../index';
+
+const amo = new CctAmountType("12.0");
+console.log(amo.parseToJson());
+
+
+const aa = new CctBinaryObjectType("todo", { encodingCode:"juan" });
+console.log(aa);
+
 
 test('My Greeter', () => {
-  expect(Greeter('Carl')).toBe('Hello Carl');
+  expect( "Hello Carl").toBe('Hello Carl');
 });
