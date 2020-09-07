@@ -4,7 +4,7 @@ orbs:
 jobs:
   test-and-publish:
     executor:
-      name: node/default
+      name: "node/default"
     steps:
       - checkout
       - node/with-cache:
@@ -13,7 +13,7 @@ jobs:
             - run: npm test
       - run: 
           name: Auth With NPM
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKENNPM_TOKEN" > .npmrc
       - run:
           name: Publish to NPM
           command: npm publish
@@ -21,4 +21,4 @@ workflows:
     build-test-deploy:
       jobs:
         - test-and-publish
-            context: PIPESANTA
+          context: "PIPESANTA"
