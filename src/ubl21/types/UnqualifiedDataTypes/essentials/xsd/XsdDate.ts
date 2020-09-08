@@ -15,7 +15,7 @@ import XsdAnySimpleType from './XsdAnySimpleType';
  * More info http://www.datypic.com/sc/xsd/t-xsd_date.html
  */
 export default class XsdDate extends XsdAnySimpleType{
-    constructor(content: string, attributtes: any){
+    constructor(content: string, attributtes?: any){
         super(content, attributtes);
         this.validateContent();
     }

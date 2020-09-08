@@ -1,7 +1,6 @@
-import { XsdAnyURI, XsdNormalizedString } from '../xsd';
-import { IDictionary } from '../generics/IDictionary';
+import { XsdNormalizedString } from '../xsd';
 
-type AllowedAttributes = {
+export type AllowedAttributes = {
     /** The format of the binary content.*/
     format?: string,
      /** The mime type of the binary object */ 
@@ -32,7 +31,7 @@ type AllowedAttributes = {
  * 
  * MORE INFO: http://www.datypic.com/sc/ubl21/t-cct_BinaryObjectType.html
  */
-export default class CctBinaryObjectType extends XsdNormalizedString {
+export class CctBinaryObjectType extends XsdNormalizedString {
     
     /**
      * 

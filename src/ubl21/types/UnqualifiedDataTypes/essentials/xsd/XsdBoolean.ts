@@ -12,8 +12,8 @@ const VALID_VALUES = [ true, false, 1, 0, "true", "false" ];
  * Values that are capitalized (e.g. TRUE) or abbreviated (e.g. T) are not valid.
  * More info http://www.datypic.com/sc/xsd/t-xsd_boolean.html
  */
-export default class XsdBoolean extends XsdAnySimpleType{
-    constructor(content: string, attributtes: any){
+export class XsdBoolean extends XsdAnySimpleType{
+    constructor(content: string, attributtes?: any){
         super(content, attributtes);
         this.validateContent();
     }

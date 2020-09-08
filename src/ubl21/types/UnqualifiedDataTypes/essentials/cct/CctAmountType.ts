@@ -1,6 +1,6 @@
 import { XsdDecimal } from '../xsd';
 
-type AllowedAttributes = {
+export type AllowedAttributes = {
     /** The currency of the amount */
     currencyID ?: string
     /** The VersionID of the UN/ECE Rec9 code list. */ 
@@ -11,7 +11,7 @@ type AllowedAttributes = {
  * A number of monetary units specified in a currency where the unit of the currency is explicit or implied.
  * More info: http://www.datypic.com/sc/ubl21/t-cct_AmountType.html
  */
-export default class CctAmountType extends XsdDecimal {
+export class CctAmountType extends XsdDecimal {
     /**
      * @param content 
      * @param attributes 

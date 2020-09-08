@@ -1,7 +1,7 @@
 import { XsdNormalizedString } from '../xsd';
 
 
-type AllowedAttributes = {
+export type AllowedAttributes = {
     /** The identification of a list of codes */
     listID: String,
      /** An agency that maintains one or more lists of codes */ 
@@ -26,7 +26,7 @@ type AllowedAttributes = {
  * one instance of an object in an identification scheme from all other objects in
  * the same scheme together with relevant supplementary information.
  */
-export default class CctCodeType extends XsdNormalizedString {
+export class CctCodeType extends XsdNormalizedString {
     /**
      * 
      * @param {String} content 
