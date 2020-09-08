@@ -33,5 +33,5 @@ class CountryType extends GenericAggregateComponent {
 
 export {
   CountryType as Country,
-  AllowedParams as CountryAttributes
+  AllowedParams as CountryParams
 }

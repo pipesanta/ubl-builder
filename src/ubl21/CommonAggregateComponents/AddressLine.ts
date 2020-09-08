@@ -7,12 +7,12 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues>  = {
     line: { order: 1, attributeName: 'cbc:Line', min: 1, max: 1, classRef: UdtText }
 }
 
-export type AllowedParams = {
+type AllowedParams = {
     /** An address line expressed as unstructured text */
     line?: string | UdtText
 }
 
-export class AddressLine extends GenericAggregateComponent {
+class AddressLine extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
     super(content, ParamsMap, "cac:AddressLine");
   }
@@ -35,4 +35,9 @@ export class AddressLine extends GenericAggregateComponent {
       : new UdtText(value);
   }
 
+}
+
+export {
+  AddressLine,
+  AllowedParams as  AddressLineParams
 }
