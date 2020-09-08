@@ -11,15 +11,11 @@ import XsdAnySimpleType from './XsdAnySimpleType';
  *  fragment identifier, using the # character, such as ../prod.html#shirt.
  * More info http://www.datypic.com/sc/xsd/t-xsd_anyURI.html
  */
-export default class XsdAnyURI extends XsdAnySimpleType{
+export default class XsdAnyURI extends XsdAnySimpleType {
     
     constructor(content: string, attributtes: any){
         super(content, attributtes);
         this.validateContent();
-    }
-
-    validateContent(){
-
     }
 
     parseToJson(){

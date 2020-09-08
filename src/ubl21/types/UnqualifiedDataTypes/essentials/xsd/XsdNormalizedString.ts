@@ -17,12 +17,6 @@ import XsdString from './XsdString';
 export default class XsdNormalizedString extends XsdString{
     constructor(content: string, attributtes?: any){
         super(content, attributtes);
-        this.validateContent();
     }
-
-    validateContent(){
-        super.validateContent();
-    }
-
-    
+      
 }

@@ -26,6 +26,4 @@ export default class XsdBase64Binary extends XsdAnySimpleType{
         this.validateContent();
     }
 
-    validateContent(){
-    }
 }

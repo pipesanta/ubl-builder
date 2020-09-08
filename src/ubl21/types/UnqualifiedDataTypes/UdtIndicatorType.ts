@@ -15,8 +15,8 @@ import { XsdBoolean } from './essentials/xsd/XsdBoolean';
  */
 export class UdtIndicator extends XsdBoolean {
     /**@type {XsdBoolean}  value*/
-    constructor(content: string ){
-        super(content );
+    constructor(content: string | boolean ){
+        super(content);
         this.validateContent();
     }
 

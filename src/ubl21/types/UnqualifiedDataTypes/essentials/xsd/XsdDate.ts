@@ -20,7 +20,5 @@ export default class XsdDate extends XsdAnySimpleType{
         this.validateContent();
     }
 
-    validateContent(){
-    }
     
 }

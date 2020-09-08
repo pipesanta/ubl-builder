@@ -1,6 +1,7 @@
 import { IDictionary } from "../generics/IDictionary";
+import { IXsdAnySimpleType } from "./IXsdAnySimpleType";
 
-export default class XsdAnySimpleType {
+export default class XsdAnySimpleType implements IXsdAnySimpleType {
     content: string | number | boolean;
     attributes: IDictionary<string> = {};
 
@@ -16,6 +17,10 @@ export default class XsdAnySimpleType {
 
     parseToJson(){
         return { "#text": this.content }
+    }
+
+    validateContent(){
+        
     }
 
     private applyAttributes(attributes: any){

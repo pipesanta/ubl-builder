@@ -5,7 +5,7 @@ export class UdtIdentifier extends CctIdentifierType {
      * @param {String} content 
      * @param {UdtIdentifierAttributes} attributes 
      */
-    constructor(content: string, attributes: AllowedAttributes ){
+    constructor(content: string, attributes?: AllowedAttributes ){
         super(content, attributes);
     }
 

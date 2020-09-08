@@ -13,7 +13,7 @@ const VALID_VALUES = [ true, false, 1, 0, "true", "false" ];
  * More info http://www.datypic.com/sc/xsd/t-xsd_boolean.html
  */
 export class XsdBoolean extends XsdAnySimpleType{
-    constructor(content: string, attributtes?: any){
+    constructor(content: string | boolean, attributtes?: any){
         super(content, attributtes);
         this.validateContent();
     }

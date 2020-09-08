@@ -19,7 +19,4 @@ export default class XsdDecimal extends XsdAnySimpleType{
         this.validateContent();
     }
 
-    validateContent(){
-        
-    }  
 }
