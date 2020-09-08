@@ -14,7 +14,7 @@ export class UdtPercentType extends CctNumericType {
      * @param {String} content 
      * @param {UdtPercentTypeAttributes} attributes 
      */
-    constructor(content: string, attributes: UdtPercentTypeAttributes){
+    constructor(content: string, attributes?: UdtPercentTypeAttributes){
         super(content, attributes);
     }
 }

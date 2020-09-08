@@ -10,7 +10,7 @@ export class UdtQuantity extends CctQuantityType {
      * @param {String} content 
      * @param {UdtQuantityAttributes} attributes 
      */
-    constructor(content: string, attributes: UdtQuantityAttributes ){
+    constructor(content: string, attributes?: UdtQuantityAttributes ){
         super(content, attributes);
     }
     

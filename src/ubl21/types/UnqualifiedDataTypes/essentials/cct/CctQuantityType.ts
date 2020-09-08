@@ -1,4 +1,5 @@
-import { XsdDecimal } from '../xsd';
+import { XsdDecimal, XsdAnySimpleType } from '../xsd';
+import { UdtAmount } from '../../UdtAmountType';
 
 export type AllowedAttributes = {
     /** The unit of the quantity */
@@ -24,11 +25,7 @@ export type AllowedAttributes = {
  * More info: http://www.datypic.com/sc/ubl21/t-cct_QuantityType.html
  */
 export class CctQuantityType extends XsdDecimal {
-    /**
-     * @param {XsdDecimal} content 
-     * @param {CctCodeTypeAttributes} attributes 
-     */
-    constructor(content: string, attributes: AllowedAttributes){        
+    constructor(content: string, attributes?: AllowedAttributes){        
         super(content, attributes);
     }
     
