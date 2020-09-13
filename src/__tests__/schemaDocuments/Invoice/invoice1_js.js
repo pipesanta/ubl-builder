@@ -1,5 +1,4 @@
-
-const { Invoice } = require("../../../ubl21/schemaDocuments");
+const { Invoice } = require('../../../ubl21/schemaDocuments');
 
 const invoice = new Invoice('123456789', {});
 

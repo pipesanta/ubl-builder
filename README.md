@@ -16,6 +16,7 @@ Install:
 
 ##### How to create a Basic Document
 ```js
+// import { Invoice } from 'ubl-builder';
 const { Invoice } = require("ubl-builder");
 
 const invoice = new Invoice('123456789', {});

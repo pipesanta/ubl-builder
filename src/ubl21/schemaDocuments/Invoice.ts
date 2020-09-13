@@ -228,8 +228,8 @@ type InvoiceOptions = {
 };
 
 type XmlRefType = {
-  Invoice: any
-}
+  Invoice: any;
+};
 
 export default class Invoice {
   private options: InvoiceOptions;
@@ -247,7 +247,7 @@ export default class Invoice {
     if (!options) throw new Error('options object is required required');
 
     this.xmlRef = {
-      Invoice: { }
+      Invoice: {},
     };
 
     options.timestamp = options.timestamp || Date.now();
@@ -290,33 +290,36 @@ export default class Invoice {
     // this.fillEmptyExtensionForSignature();
   }
 
-  addProperty(key: string, value: string): Invoice{
+  addProperty(key: string, value: string): Invoice {
     this.xmlRef.Invoice[`@${key}`] = value;
     return this;
   }
 
-  removeProperty(key: string, value: string){
+  removeProperty(key: string, value: string) {
     this.xmlRef.Invoice[`@${key}`] = value;
     return this;
   }
 
-  setDefaultProperties(){
-
+  setDefaultProperties() {
     const defaultProperties = [
       { key: 'xmlns', value: 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2' },
       { key: 'xmlns:cac', value: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2' },
       { key: 'xmlns:cbc', value: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2' },
       { key: 'xmlns:ds', value: 'http://www.w3.org/2000/09/xmldsig#' },
       { key: 'xmlns:ext', value: 'urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2' },
-      { key: 'xmlns:sts', value: 'http://www.dian.gov.co/contratos/facturaelectronica/v1/Structures' }, 
+      { key: 'xmlns:sts', value: 'http://www.dian.gov.co/contratos/facturaelectronica/v1/Structures' },
       // "dian:gov:co:facturaelectronica:Structures-2-1" ,
       { key: 'xmlns:xades', value: 'http://uri.etsi.org/01903/v1.3.2#' },
       { key: 'xmlns:xades141', value: 'http://uri.etsi.org/01903/v1.4.1#' },
       { key: 'xmlns:xsi', value: 'http://www.w3.org/2001/XMLSchema-instance' },
-      { key: 'xsi:schemaLocation', value: 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd' }
+      {
+        key: 'xsi:schemaLocation',
+        value:
+          'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd',
+      },
     ];
 
-    defaultProperties.forEach(item => this.addProperty(item.key, item.value));
+    defaultProperties.forEach((item) => this.addProperty(item.key, item.value));
   }
 
   /**
@@ -1240,8 +1243,7 @@ export default class Invoice {
    * @param headless result without headers
    */
   getXml(pretty = false, headless = false): string {
-
-    Object.keys(this.properties)
+    Object.keys(this.properties);
 
     Object.keys(InvoiceSequence).forEach((attKey) => {
       if (this.children[attKey]) {
