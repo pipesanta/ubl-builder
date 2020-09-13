@@ -1,5 +1,5 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtIdentifier, UdtCode, UdtDate, UdtText } from "../types/UnqualifiedDataTypes";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtIdentifier, UdtCode, UdtDate, UdtText } from '../types/UnqualifiedDataTypes';
 
 /*
   1  cbc:ID [0..1]    An identifier for this means of payment.
@@ -17,7 +17,6 @@ import { UdtIdentifier, UdtCode, UdtDate, UdtText } from "../types/UnqualifiedDa
   13  cac:TradeFinancing [0..1]    A trade finance agreement applicable to this means of payment.
 */
 
-
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
   paymentMeansCode: { order: 2, attributeName: 'cbc:PaymentMeansCode', min: 1, max: 1, classRef: UdtCode },
@@ -27,37 +26,26 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   instructionNotes: { order: 6, attributeName: 'cbc:InstructionNote', min: 0, max: undefined, classRef: UdtText },
   paymentID: { order: 7, attributeName: 'cbc:PaymentID', min: 0, max: undefined, classRef: UdtIdentifier },
 
-
-  //##################################  TODO CAC MISSING ################################################
-
-
-}
-
+  // ##################################  TODO CAC MISSING ################################################
+};
 
 type AllowedParams = {
-  id: string | UdtIdentifier,
-  paymentMeansCode: string | UdtCode,
-  paymentDueDate: string | UdtDate,
-  paymentChannelCode: string | UdtCode,
-  instructionID: string | UdtIdentifier,
-  instructionNotes: string[] | UdtText[]
-  paymentID: string | UdtIdentifier,
-
-
-}
+  id: string | UdtIdentifier;
+  paymentMeansCode: string | UdtCode;
+  paymentDueDate: string | UdtDate;
+  paymentChannelCode: string | UdtCode;
+  instructionID: string | UdtIdentifier;
+  instructionNotes: string[] | UdtText[];
+  paymentID: string | UdtIdentifier;
+};
 
 /**
- * 
+ *
  */
 class PaymentMeans extends GenericAggregateComponent {
-
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:PaymentMeans");
+    super(content, ParamsMap, 'cac:PaymentMeans');
   }
-
 }
 
-export {
-  PaymentMeans as PaymentMeans,
-  AllowedParams as PaymentMeansParams,
-}
+export { PaymentMeans, AllowedParams as PaymentMeansParams };

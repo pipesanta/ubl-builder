@@ -1,12 +1,12 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtIdentifier, UdtDate, UdtTime, UdtText } from "../types/UnqualifiedDataTypes";
-import { DespatchAddress } from "./AddressTypeGroup";
-import { DespatchLocation } from "./LocationTypeGroup";
-import { DespatchParty, CarrierParty, NotifyParty } from "./PartyTypeGroup";
-import { Contact } from "./ContactTypeGroup";
-import { EstimatedDespatchPeriod } from "./PeriodTypeGroup";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtIdentifier, UdtDate, UdtTime, UdtText } from '../types/UnqualifiedDataTypes';
+import { DespatchAddress } from './AddressTypeGroup';
+import { DespatchLocation } from './LocationTypeGroup';
+import { DespatchParty, CarrierParty, NotifyParty } from './PartyTypeGroup';
+import { Contact } from './ContactTypeGroup';
+import { EstimatedDespatchPeriod } from './PeriodTypeGroup';
 
 /*
 
@@ -32,51 +32,61 @@ import { EstimatedDespatchPeriod } from "./PeriodTypeGroup";
 
 */
 
-
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-    id: { order: 1,  attributeName: 'cbc:ID', min: 0, max:1, classRef: UdtIdentifier },
-    requestedDespatchDate: { order: 2,  attributeName: 'cbc:RequestedDespatchDate', min: 0, max:1, classRef: UdtDate },
-    requestedDespatchTime: { order: 3,  attributeName: 'cbc:RequestedDespatchTime', min: 0, max:1, classRef: UdtTime },
-    estimatedDespatchDate: { order: 4,  attributeName: 'cbc:EstimatedDespatchDate', min: 0, max:1, classRef: UdtDate },
-    estimatedDespatchTime: { order: 5,  attributeName: 'cbc:EstimatedDespatchTime', min: 0, max:1, classRef: UdtTime },
-    actualDespatchDate: { order: 6,  attributeName: 'cbc:ActualDespatchDate', min: 0, max:1, classRef: UdtDate },
-    actualDespatchTime: { order: 7,  attributeName: 'cbc:ActualDespatchTime', min: 0, max:1, classRef: UdtTime },
-    guaranteedDespatchDate: { order: 8,  attributeName: 'cbc:GuaranteedDespatchDate', min: 0, max:1, classRef: UdtDate },
-    guaranteedDespatchTime: { order: 9,  attributeName: 'cbc:GuaranteedDespatchTime', min: 0, max:1, classRef: UdtTime },
-    releaseID: { order: 10,  attributeName: 'cbc:ReleaseID', min: 0, max:1, classRef: UdtIdentifier },
-    instructions: { order: 11,  attributeName: 'cbc:Instructions', min: 0, max: undefined, classRef: UdtText },
-    despatchAddress: { order: 12,  attributeName: 'cac:DespatchAddress', min: 0, max:1, classRef: DespatchAddress },
-    despatchLocation: { order: 13,  attributeName: 'cac:DespatchLocation', min: 0, max:1, classRef: DespatchLocation },
-    despatchParty: { order: 14,  attributeName: 'cac:DespatchParty', min: 0, max:1, classRef: DespatchParty },
-    carrierParty: { order: 15,  attributeName: 'cac:CarrierParty', min: 0, max:1, classRef: CarrierParty },
-    NotifyParties: { order: 16,  attributeName: 'cac:NotifyParty', min: 0, max: undefined, classRef: NotifyParty },
-    contact: { order: 17,  attributeName: 'cac:Contact', min: 0, max:1, classRef: Contact },
-    estimatedDespatchPeriod: { order: 18,  attributeName: 'cac:EstimatedDespatchPeriod', min: 0, max: 1, classRef: EstimatedDespatchPeriod },
-    requestedDespatchPeriod: { order: 19,  attributeName: 'cac:RequestedDespatchPeriod', min: 0, max:1, classRef: EstimatedDespatchPeriod }
-}
-
+  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  requestedDespatchDate: { order: 2, attributeName: 'cbc:RequestedDespatchDate', min: 0, max: 1, classRef: UdtDate },
+  requestedDespatchTime: { order: 3, attributeName: 'cbc:RequestedDespatchTime', min: 0, max: 1, classRef: UdtTime },
+  estimatedDespatchDate: { order: 4, attributeName: 'cbc:EstimatedDespatchDate', min: 0, max: 1, classRef: UdtDate },
+  estimatedDespatchTime: { order: 5, attributeName: 'cbc:EstimatedDespatchTime', min: 0, max: 1, classRef: UdtTime },
+  actualDespatchDate: { order: 6, attributeName: 'cbc:ActualDespatchDate', min: 0, max: 1, classRef: UdtDate },
+  actualDespatchTime: { order: 7, attributeName: 'cbc:ActualDespatchTime', min: 0, max: 1, classRef: UdtTime },
+  guaranteedDespatchDate: { order: 8, attributeName: 'cbc:GuaranteedDespatchDate', min: 0, max: 1, classRef: UdtDate },
+  guaranteedDespatchTime: { order: 9, attributeName: 'cbc:GuaranteedDespatchTime', min: 0, max: 1, classRef: UdtTime },
+  releaseID: { order: 10, attributeName: 'cbc:ReleaseID', min: 0, max: 1, classRef: UdtIdentifier },
+  instructions: { order: 11, attributeName: 'cbc:Instructions', min: 0, max: undefined, classRef: UdtText },
+  despatchAddress: { order: 12, attributeName: 'cac:DespatchAddress', min: 0, max: 1, classRef: DespatchAddress },
+  despatchLocation: { order: 13, attributeName: 'cac:DespatchLocation', min: 0, max: 1, classRef: DespatchLocation },
+  despatchParty: { order: 14, attributeName: 'cac:DespatchParty', min: 0, max: 1, classRef: DespatchParty },
+  carrierParty: { order: 15, attributeName: 'cac:CarrierParty', min: 0, max: 1, classRef: CarrierParty },
+  NotifyParties: { order: 16, attributeName: 'cac:NotifyParty', min: 0, max: undefined, classRef: NotifyParty },
+  contact: { order: 17, attributeName: 'cac:Contact', min: 0, max: 1, classRef: Contact },
+  estimatedDespatchPeriod: {
+    order: 18,
+    attributeName: 'cac:EstimatedDespatchPeriod',
+    min: 0,
+    max: 1,
+    classRef: EstimatedDespatchPeriod,
+  },
+  requestedDespatchPeriod: {
+    order: 19,
+    attributeName: 'cac:RequestedDespatchPeriod',
+    min: 0,
+    max: 1,
+    classRef: EstimatedDespatchPeriod,
+  },
+};
 
 type AllowedParams = {
-  id: string | UdtIdentifier,
-  requestedDespatchDate: string | UdtDate,
-  requestedDespatchTime: string | UdtTime,
-  estimatedDespatchDate: string | UdtDate,
-  estimatedDespatchTime: string | UdtTime,
-  actualDespatchDate: string | UdtDate,
-  actualDespatchTime: string | UdtTime,
-  guaranteedDespatchDate: string | UdtDate,
-  guaranteedDespatchTime: string | UdtTime,
-  releaseID: string | UdtIdentifier,
-  instructions: string | UdtText,
-  despatchAddress: DespatchAddress,
-  despatchLocation:  DespatchLocation,
-  despatchParty: DespatchParty,
-  carrierParty: CarrierParty,
-  NotifyParties: NotifyParty,
-  contact: Contact,
-  estimatedDespatchPeriod: EstimatedDespatchPeriod,
-  requestedDespatchPeriod: EstimatedDespatchPeriod
-}
+  id: string | UdtIdentifier;
+  requestedDespatchDate: string | UdtDate;
+  requestedDespatchTime: string | UdtTime;
+  estimatedDespatchDate: string | UdtDate;
+  estimatedDespatchTime: string | UdtTime;
+  actualDespatchDate: string | UdtDate;
+  actualDespatchTime: string | UdtTime;
+  guaranteedDespatchDate: string | UdtDate;
+  guaranteedDespatchTime: string | UdtTime;
+  releaseID: string | UdtIdentifier;
+  instructions: string | UdtText;
+  despatchAddress: DespatchAddress;
+  despatchLocation: DespatchLocation;
+  despatchParty: DespatchParty;
+  carrierParty: CarrierParty;
+  NotifyParties: NotifyParty;
+  contact: Contact;
+  estimatedDespatchPeriod: EstimatedDespatchPeriod;
+  requestedDespatchPeriod: EstimatedDespatchPeriod;
+};
 
 /**
  * A class to describe the despatching of goods (their pickup for delivery).
@@ -84,12 +94,8 @@ type AllowedParams = {
  */
 class Despatch extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:Despatch");
+    super(content, ParamsMap, 'cac:Despatch');
   }
-
 }
 
-export {
-   Despatch,
-   AllowedParams as DespatchParams,   
-}
+export { Despatch, AllowedParams as DespatchParams };

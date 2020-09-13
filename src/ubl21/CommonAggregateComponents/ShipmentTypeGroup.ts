@@ -1,6 +1,6 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtIdentifier, UdtCode, UdtText, UdtMeasure, UdtQuantity, UdtIndicator } from "../types/UnqualifiedDataTypes";
-import { UdtAmount } from "../types/UnqualifiedDataTypes/UdtAmountType";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtIdentifier, UdtCode, UdtText, UdtMeasure, UdtQuantity, UdtIndicator } from '../types/UnqualifiedDataTypes';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
 
 /*
 
@@ -39,31 +39,88 @@ import { UdtAmount } from "../types/UnqualifiedDataTypes/UdtAmountType";
 
 */
 
-
-
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-    id: { order: 1,  attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-    shippingPriorityLevelCode: { order: 2,  attributeName: 'cbc:ShippingPriorityLevelCode', min: 0, max: 1, classRef: UdtCode },
-    handlingCode: { order: 3,  attributeName: 'cbc:HandlingCode', min: 0, max: 1, classRef: UdtCode },
-    handlingInstructions: { order: 4,  attributeName: 'cbc:HandlingInstructions', min: 0, max: 1, classRef: UdtText },
-    informations: { order: 5,  attributeName: 'cbc:Information', min: 0, max: 1, classRef: UdtText },
-    grossWeightMeasure: { order: 6,  attributeName: 'cbc:GrossWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
-    netWeightMeasure: { order: 7,  attributeName: 'cbc:NetWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
-    netNetWeightMeasure: { order: 8,  attributeName: 'cbc:NetNetWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
-    grossVolumeMeasure: { order: 9,  attributeName: 'cbc:GrossVolumeMeasure', min: 0, max: 1, classRef: UdtMeasure },
-    netVolumeMeasure: { order: 10,  attributeName: 'cbc:NetVolumeMeasure', min: 0, max: 1, classRef: UdtMeasure },
-    totalGoodsItemQuantity: { order: 11,  attributeName: 'cbc:TotalGoodsItemQuantity', min: 0, max: 1, classRef: UdtQuantity },
-    TotalTransportHandlingUnitQuantity: { order: 12,  attributeName: 'cbc:TotalTransportHandlingUnitQuantity', min: 0, max: 1, classRef: UdtQuantity },
-    InsuranceValueAmount: { order: 13,  attributeName: 'cbc:InsuranceValueAmount', min: 0, max: 1, classRef: UdtAmount },
-    DeclaredCustomsValueAmount: { order: 14,  attributeName: 'cbc:DeclaredCustomsValueAmount', min: 0, max: 1, classRef: UdtAmount },
-    DeclaredForCarriageValueAmount: { order: 15,  attributeName: 'cbc:DeclaredForCarriageValueAmount', min: 0, max: 1, classRef: UdtAmount },
-    DeclaredStatisticsValueAmount: { order: 16,  attributeName: 'cbc:DeclaredStatisticsValueAmount', min: 0, max: 1, classRef: UdtAmount },
-    FreeOnBoardValueAmount: { order: 17,  attributeName: 'cbc:FreeOnBoardValueAmount', min: 0, max: 1, classRef: UdtAmount },
-    SpecialInstructions: { order: 18,  attributeName: 'cbc:SpecialInstructions', min: 0, max: undefined, classRef: UdtText },
-    DeliveryInstructions: { order: 19,  attributeName: 'cbc:DeliveryInstructions', min: 0, max: undefined, classRef: UdtText },
-    SplitConsignmentIndicator: { order: 20,  attributeName: 'cbc:SplitConsignmentIndicator', min: 0, max: 1, classRef: UdtIndicator },
-    ConsignmentQuantity: { order: 21,  attributeName: 'cbc:ConsignmentQuantity', min: 0, max: 1, classRef: UdtQuantity },
-
+  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  shippingPriorityLevelCode: {
+    order: 2,
+    attributeName: 'cbc:ShippingPriorityLevelCode',
+    min: 0,
+    max: 1,
+    classRef: UdtCode,
+  },
+  handlingCode: { order: 3, attributeName: 'cbc:HandlingCode', min: 0, max: 1, classRef: UdtCode },
+  handlingInstructions: { order: 4, attributeName: 'cbc:HandlingInstructions', min: 0, max: 1, classRef: UdtText },
+  informations: { order: 5, attributeName: 'cbc:Information', min: 0, max: 1, classRef: UdtText },
+  grossWeightMeasure: { order: 6, attributeName: 'cbc:GrossWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
+  netWeightMeasure: { order: 7, attributeName: 'cbc:NetWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
+  netNetWeightMeasure: { order: 8, attributeName: 'cbc:NetNetWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
+  grossVolumeMeasure: { order: 9, attributeName: 'cbc:GrossVolumeMeasure', min: 0, max: 1, classRef: UdtMeasure },
+  netVolumeMeasure: { order: 10, attributeName: 'cbc:NetVolumeMeasure', min: 0, max: 1, classRef: UdtMeasure },
+  totalGoodsItemQuantity: {
+    order: 11,
+    attributeName: 'cbc:TotalGoodsItemQuantity',
+    min: 0,
+    max: 1,
+    classRef: UdtQuantity,
+  },
+  TotalTransportHandlingUnitQuantity: {
+    order: 12,
+    attributeName: 'cbc:TotalTransportHandlingUnitQuantity',
+    min: 0,
+    max: 1,
+    classRef: UdtQuantity,
+  },
+  InsuranceValueAmount: { order: 13, attributeName: 'cbc:InsuranceValueAmount', min: 0, max: 1, classRef: UdtAmount },
+  DeclaredCustomsValueAmount: {
+    order: 14,
+    attributeName: 'cbc:DeclaredCustomsValueAmount',
+    min: 0,
+    max: 1,
+    classRef: UdtAmount,
+  },
+  DeclaredForCarriageValueAmount: {
+    order: 15,
+    attributeName: 'cbc:DeclaredForCarriageValueAmount',
+    min: 0,
+    max: 1,
+    classRef: UdtAmount,
+  },
+  DeclaredStatisticsValueAmount: {
+    order: 16,
+    attributeName: 'cbc:DeclaredStatisticsValueAmount',
+    min: 0,
+    max: 1,
+    classRef: UdtAmount,
+  },
+  FreeOnBoardValueAmount: {
+    order: 17,
+    attributeName: 'cbc:FreeOnBoardValueAmount',
+    min: 0,
+    max: 1,
+    classRef: UdtAmount,
+  },
+  SpecialInstructions: {
+    order: 18,
+    attributeName: 'cbc:SpecialInstructions',
+    min: 0,
+    max: undefined,
+    classRef: UdtText,
+  },
+  DeliveryInstructions: {
+    order: 19,
+    attributeName: 'cbc:DeliveryInstructions',
+    min: 0,
+    max: undefined,
+    classRef: UdtText,
+  },
+  SplitConsignmentIndicator: {
+    order: 20,
+    attributeName: 'cbc:SplitConsignmentIndicator',
+    min: 0,
+    max: 1,
+    classRef: UdtIndicator,
+  },
+  ConsignmentQuantity: { order: 21, attributeName: 'cbc:ConsignmentQuantity', min: 0, max: 1, classRef: UdtQuantity },
 
   //  ##################################  TODO CAC MISSING ################################################
   // 22    cac:Consignment [0..*]    A consignment covering this shipment.
@@ -77,45 +134,39 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   // 30    cac:LastExitPortLocation [0..1]    The final exporting location for a shipment. This would be a port for sea, an airport for air, a terminal for rail, or a border post for land crossing.
   // 31    cac:ExportCountry [0..1]    The country from which the goods were originally exported, without any commercial transaction taking place in intermediate countries.
   // 32    cac:FreightAllowanceCharge [0..*]    A cost incurred by the shipper in moving goods, by whatever means, from one place to another under the terms of the contract of carriage. In addition to transport costs, this may include such elements as packing, documentation, loading, unloading, and insurance to the extent that they relate to the freight costs.
+};
 
-}
-
-
-type AllowedParams = {  
-    id: string | UdtIdentifier,
-    shippingPriorityLevelCode: string | UdtCode,
-    handlingCode: string | UdtCode,
-    handlingInstructions: string | UdtText,
-    informations: string | UdtText,
-    grossWeightMeasure: string | UdtMeasure,
-    netWeightMeasure: string | UdtMeasure,
-    netNetWeightMeasure: string | UdtMeasure,
-    grossVolumeMeasure: string | UdtMeasure,
-    netVolumeMeasure: string | UdtMeasure,
-    totalGoodsItemQuantity: string | UdtQuantity,
-    TotalTransportHandlingUnitQuantity: string | UdtQuantity,
-    InsuranceValueAmount: string | UdtAmount,
-    DeclaredCustomsValueAmount: string | UdtAmount,
-    DeclaredForCarriageValueAmount: string | UdtAmount,
-    DeclaredStatisticsValueAmount: string | UdtAmount,
-    FreeOnBoardValueAmount: string | UdtAmount,
-    SpecialInstructions: string | UdtText,
-    DeliveryInstructions: string | UdtText,
-    SplitConsignmentIndicator: string | UdtIndicator,
-    ConsignmentQuantity: string | UdtQuantity,
-}
+type AllowedParams = {
+  id: string | UdtIdentifier;
+  shippingPriorityLevelCode: string | UdtCode;
+  handlingCode: string | UdtCode;
+  handlingInstructions: string | UdtText;
+  informations: string | UdtText;
+  grossWeightMeasure: string | UdtMeasure;
+  netWeightMeasure: string | UdtMeasure;
+  netNetWeightMeasure: string | UdtMeasure;
+  grossVolumeMeasure: string | UdtMeasure;
+  netVolumeMeasure: string | UdtMeasure;
+  totalGoodsItemQuantity: string | UdtQuantity;
+  TotalTransportHandlingUnitQuantity: string | UdtQuantity;
+  InsuranceValueAmount: string | UdtAmount;
+  DeclaredCustomsValueAmount: string | UdtAmount;
+  DeclaredForCarriageValueAmount: string | UdtAmount;
+  DeclaredStatisticsValueAmount: string | UdtAmount;
+  FreeOnBoardValueAmount: string | UdtAmount;
+  SpecialInstructions: string | UdtText;
+  DeliveryInstructions: string | UdtText;
+  SplitConsignmentIndicator: string | UdtIndicator;
+  ConsignmentQuantity: string | UdtQuantity;
+};
 
 /**
- * 
+ *
  */
 class ShipmentType extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:ShipmentType");
+    super(content, ParamsMap, 'cac:ShipmentType');
   }
-
 }
 
-export {
-   ShipmentType,
-   AllowedParams as ShipmentTypeParams,   
-}
+export { ShipmentType, AllowedParams as ShipmentTypeParams };

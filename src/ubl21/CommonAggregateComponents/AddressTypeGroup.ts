@@ -1,10 +1,16 @@
 import GenericAggregateComponent, { ParamsMapValues, IGenericKeyValue } from './GenericAggregateComponent';
 
-import { 
-  UdtCode, UdtCodeAttributes,
-  UdtIdentifier, UdtIdentifierAttributes,
-  UdtDate, UdtText, UdtTextAttributes, UdtTime, UdtName
- } from '../types/UnqualifiedDataTypes';
+import {
+  UdtCode,
+  UdtCodeAttributes,
+  UdtIdentifier,
+  UdtIdentifierAttributes,
+  UdtDate,
+  UdtText,
+  UdtTextAttributes,
+  UdtTime,
+  UdtName,
+} from '../types/UnqualifiedDataTypes';
 
 /* TODO GENERIC CLASSES */
 import { AddressLine } from './AddressLine';
@@ -42,85 +48,74 @@ import { Country } from './CountryTypeGroup';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-    id:                   { order: 1,   attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-    cityName:             { order: 18,  attributeName: 'cbc:CityName', min: 0, max: 1, classRef: UdtName },
-    countrySubentity:     { order: 20,  attributeName: 'cbc:CountrySubentity', min: 0, max: 1, classRef: UdtText },
-    countrySubentityCode: { order: 21,  attributeName: 'cbc:CountrySubentityCode', min: 0, max: 1, classRef: UdtCode },
-    addressLines:         { order: 25,  attributeName: 'cac:AddressLine', min: 0, max: undefined, classRef: AddressLine },
-    // country:              { order: 26,  attributeName: 'cac:Country', min: 0, max: 1, classRef: Country },
-    //##################################  TODO CAC MISSING ################################################
+  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  cityName: { order: 18, attributeName: 'cbc:CityName', min: 0, max: 1, classRef: UdtName },
+  countrySubentity: { order: 20, attributeName: 'cbc:CountrySubentity', min: 0, max: 1, classRef: UdtText },
+  countrySubentityCode: { order: 21, attributeName: 'cbc:CountrySubentityCode', min: 0, max: 1, classRef: UdtCode },
+  addressLines: { order: 25, attributeName: 'cac:AddressLine', min: 0, max: undefined, classRef: AddressLine },
+  // country:              { order: 26,  attributeName: 'cac:Country', min: 0, max: 1, classRef: Country },
+  // ##################################  TODO CAC MISSING ################################################
 
-    // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }, //
-  
-    //##################################  TODO CAC MISSING ################################################
+  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }, //
 
-}
-
+  // ##################################  TODO CAC MISSING ################################################
+};
 
 type AllowedParams = {
-    /** An identifier for this address within an agreed scheme of address identifiers */
-    id?: string | UdtIdentifier,
-    /** The name of a city, town, or village */
-    cityName?: string | UdtName,
-    /** The political or administrative division of a country in which this address is located, such as the name of its county, province, or state, expressed as text */
-    countrySubentity?: string | UdtText,
-    /** The political or administrative division of a country in which this address is located, such as a county, province, or state, expressed as a code (typically nationally agreed)*/
-    countrySubentityCode?: string | UdtText,
-    /** An unstructured address line */
-    addressLines?: AddressLine[],
-    /**  The country in which this address is situated*/
-    country?: Country
-    //##################################  TODO CAC MISSING ################################################
-    // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }
-}
+  /** An identifier for this address within an agreed scheme of address identifiers */
+  id?: string | UdtIdentifier;
+  /** The name of a city, town, or village */
+  cityName?: string | UdtName;
+  /** The political or administrative division of a country in which this address is located, such as the name of its county, province, or state, expressed as text */
+  countrySubentity?: string | UdtText;
+  /** The political or administrative division of a country in which this address is located, such as a county, province, or state, expressed as a code (typically nationally agreed) */
+  countrySubentityCode?: string | UdtText;
+  /** An unstructured address line */
+  addressLines?: AddressLine[];
+  /**  The country in which this address is situated */
+  country?: Country;
+  // ##################################  TODO CAC MISSING ################################################
+  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }
+};
 
 export class AddressType extends GenericAggregateComponent {
   /**     *
    * @param {AllowedParams} content
-   * @param {String} name
+   * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:AddressType");
+    super(content, ParamsMap, 'cac:AddressType');
   }
 
-  addAddressLine(value: string | AddressLine){
-    if(!this.attributes.addressLines){
+  addAddressLine(value: string | AddressLine) {
+    if (!this.attributes.addressLines) {
       this.attributes.addressLines = [];
     }
-    const itemToPush = ( value instanceof AddressLine )
-      ? value
-      : new AddressLine({ line: value });
+    const itemToPush = value instanceof AddressLine ? value : new AddressLine({ line: value });
     this.attributes.addressLines.push(itemToPush);
   }
 
-  setCountry(value: string | Country ){
-    if(value instanceof Country){
-      this.attributes.country = value
-    } else if (typeof value === "string") {
-      this.attributes.country = new Country({ name: value })
-    }else{
+  setCountry(value: string | Country) {
+    if (value instanceof Country) {
+      this.attributes.country = value;
+    } else if (typeof value === 'string') {
+      this.attributes.country = new Country({ name: value });
+    } else {
       this.attributes.country = new Country(value);
     }
   }
 
   /**
-   * 
+   *
    * @param value
-   * @param attributes 
+   * @param attributes
    */
-  setId(value: string | UdtIdentifier, attributes: UdtIdentifierAttributes){
-    this.attributes.id = (value instanceof UdtIdentifier)
-      ? value
-      : new UdtIdentifier(value, attributes)
+  setId(value: string | UdtIdentifier, attributes: UdtIdentifierAttributes) {
+    this.attributes.id = value instanceof UdtIdentifier ? value : new UdtIdentifier(value, attributes);
   }
-
-
-
 }
 
-
-
-// todo missing exports 
+// todo missing exports
 /*
 
 Element cac:ApplicableAddress
@@ -142,5 +137,5 @@ export {
   AddressType as RegistrationAddress,
   AddressType as JurisdictionRegionAddress,
   AddressType as DeliveryAddress,
-  AddressType as DespatchAddress
-}
+  AddressType as DespatchAddress,
+};

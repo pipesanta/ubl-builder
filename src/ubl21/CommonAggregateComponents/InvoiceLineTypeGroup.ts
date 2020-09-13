@@ -1,20 +1,20 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtIdentifier, UdtText, UdtQuantity, UdtDate, UdtCode, UdtIndicator } from "../types/UnqualifiedDataTypes";
-import { UdtAmount } from "../types/UnqualifiedDataTypes/UdtAmountType";
-import { PeriodType } from "./PeriodTypeGroup";
-import { OrderLineReference } from "./OrderLineReference";
-import { DespatchLineReference, ReceiptLineReference } from "./LineReferenceTypeGroup";
-import { BillingReference } from "./BillingReference";
-import { DocumentReference } from "./DocumentReferenceGroup";
-import { Party } from "./PartyTypeGroup";
-import { Delivery } from "./DeliveryTypeGroup";
-import { PaymentTerms } from "./PaymentTermsTypeGroup";
-import { TaxTotal, WithholdingTaxTotal } from "./TaxTotalTypeGroup";
-import { Item } from "./ItemTypeGroup";
-import { Price } from "./PriceTypeGroup";
-import { DeliveryTerms } from "./DeliveryTerms";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtIdentifier, UdtText, UdtQuantity, UdtDate, UdtCode, UdtIndicator } from '../types/UnqualifiedDataTypes';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { PeriodType } from './PeriodTypeGroup';
+import { OrderLineReference } from './OrderLineReference';
+import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
+import { BillingReference } from './BillingReference';
+import { DocumentReference } from './DocumentReferenceGroup';
+import { Party } from './PartyTypeGroup';
+import { Delivery } from './DeliveryTypeGroup';
+import { PaymentTerms } from './PaymentTermsTypeGroup';
+import { TaxTotal, WithholdingTaxTotal } from './TaxTotalTypeGroup';
+import { Item } from './ItemTypeGroup';
+import { Price } from './PriceTypeGroup';
+import { DeliveryTerms } from './DeliveryTerms';
 
 /*
   1    cbc:ID [1..1]    An identifier for this invoice line.
@@ -47,130 +47,161 @@ import { DeliveryTerms } from "./DeliveryTerms";
   28    cac:ItemPriceExtension [0..1]    The price extension, calculated by multiplying the price per unit by the quantity of items on this invoice line.
 */
 
-
-
-//##################################  TODO CAC MISSING ################################################
+// ##################################  TODO CAC MISSING ################################################
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-    id: { order: 1,  attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
-    uuid: { order: 2,  attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
-    notes: { order: 3,  attributeName: 'cbc:Note', min: 0, max: undefined, classRef: UdtText },
-    invoicedQuantity: { order: 4,  attributeName: 'cbc:InvoicedQuantity', min: 0, max: 1, classRef: UdtQuantity },
-    lineExtensionAmount: { order: 5,  attributeName: 'cbc:LineExtensionAmount', min: 1, max: 1, classRef: UdtAmount },
-    taxPointDate: { order: 6,  attributeName: 'cbc:TaxPointDate', min: 0, max: 1, classRef: UdtDate },
-    accountingCostCode: { order: 7,  attributeName: 'cbc:AccountingCostCode', min: 0, max: 1, classRef: UdtCode },
-    accountingCost: { order: 8,  attributeName: 'cbc:AccountingCost', min: 0, max: 1, classRef: UdtText },
-    paymentPurposeCode: { order: 9,  attributeName: 'cbc:PaymentPurposeCode', min: 0, max: 1, classRef: UdtCode },
-    freeOfChargeIndicator: { order: 10,  attributeName: 'cbc:FreeOfChargeIndicator', min: 0, max: 1, classRef: UdtIndicator },
-    invoicePeriods: { order: 11,  attributeName: 'cac:InvoicePeriod', min: 0, max: undefined, classRef: PeriodType },
-    orderLineReferences: { order: 12,  attributeName: 'cac:OrderLineReference', min: 0, max: undefined, classRef: OrderLineReference },
-    despatchLineReference: { order: 13,  attributeName: 'cac:DespatchLineReference', min: 0, max: undefined, classRef: DespatchLineReference },
-    receiptLineReference: { order: 14,  attributeName: 'cac:ReceiptLineReference', min: 0, max: undefined, classRef: ReceiptLineReference },
-    billingReference: { order: 15,  attributeName: 'cac:BillingReference', min: 0, max: undefined, classRef: BillingReference },
-    documentReference: { order: 16,  attributeName: 'cac:DocumentReference', min: 0, max: undefined, classRef: DocumentReference },
-    // PricingReference: { order: 17,  attributeName: 'cac:PricingReference', min: 0, max: undefined, classRef: PricingReference },
-    originatorParty: { order: 18,  attributeName: 'cac:OriginatorParty', min: 0, max: undefined, classRef: Party },
-    delivery: { order: 19,  attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: Delivery },
-    paymentTerms: { order: 20,  attributeName: 'cac:PaymentTerms', min: 0, max: undefined, classRef: PaymentTerms },
-    // allowanceCharges: { order: 21,  attributeName: 'cac:AllowanceCharge', min: 0, max: undefined, classRef: AllowanceCharge },
-    taxTotals: { order: 22,  attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: TaxTotal },
-    withholdingTaxTotal: { order: 23,  attributeName: 'cac:WithholdingTaxTotal', min: 0, max: undefined, classRef: WithholdingTaxTotal },
-    item: { order: 24,  attributeName: 'cac:Item', min: 0, max: undefined, classRef: Item },
-    price: { order: 25,  attributeName: 'cac:Price', min: 0, max: undefined, classRef: Price },
-    deliveryTerms: { order: 26,  attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
-    // subInvoiceLine: { order: 27,  attributeName: 'cac:SubInvoiceLine', min: 0, max: undefined, classRef: SubInvoiceLine },
-
-}
-
+  id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
+  uuid: { order: 2, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
+  notes: { order: 3, attributeName: 'cbc:Note', min: 0, max: undefined, classRef: UdtText },
+  invoicedQuantity: { order: 4, attributeName: 'cbc:InvoicedQuantity', min: 0, max: 1, classRef: UdtQuantity },
+  lineExtensionAmount: { order: 5, attributeName: 'cbc:LineExtensionAmount', min: 1, max: 1, classRef: UdtAmount },
+  taxPointDate: { order: 6, attributeName: 'cbc:TaxPointDate', min: 0, max: 1, classRef: UdtDate },
+  accountingCostCode: { order: 7, attributeName: 'cbc:AccountingCostCode', min: 0, max: 1, classRef: UdtCode },
+  accountingCost: { order: 8, attributeName: 'cbc:AccountingCost', min: 0, max: 1, classRef: UdtText },
+  paymentPurposeCode: { order: 9, attributeName: 'cbc:PaymentPurposeCode', min: 0, max: 1, classRef: UdtCode },
+  freeOfChargeIndicator: {
+    order: 10,
+    attributeName: 'cbc:FreeOfChargeIndicator',
+    min: 0,
+    max: 1,
+    classRef: UdtIndicator,
+  },
+  invoicePeriods: { order: 11, attributeName: 'cac:InvoicePeriod', min: 0, max: undefined, classRef: PeriodType },
+  orderLineReferences: {
+    order: 12,
+    attributeName: 'cac:OrderLineReference',
+    min: 0,
+    max: undefined,
+    classRef: OrderLineReference,
+  },
+  despatchLineReference: {
+    order: 13,
+    attributeName: 'cac:DespatchLineReference',
+    min: 0,
+    max: undefined,
+    classRef: DespatchLineReference,
+  },
+  receiptLineReference: {
+    order: 14,
+    attributeName: 'cac:ReceiptLineReference',
+    min: 0,
+    max: undefined,
+    classRef: ReceiptLineReference,
+  },
+  billingReference: {
+    order: 15,
+    attributeName: 'cac:BillingReference',
+    min: 0,
+    max: undefined,
+    classRef: BillingReference,
+  },
+  documentReference: {
+    order: 16,
+    attributeName: 'cac:DocumentReference',
+    min: 0,
+    max: undefined,
+    classRef: DocumentReference,
+  },
+  // PricingReference: { order: 17,  attributeName: 'cac:PricingReference', min: 0, max: undefined, classRef: PricingReference },
+  originatorParty: { order: 18, attributeName: 'cac:OriginatorParty', min: 0, max: undefined, classRef: Party },
+  delivery: { order: 19, attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: Delivery },
+  paymentTerms: { order: 20, attributeName: 'cac:PaymentTerms', min: 0, max: undefined, classRef: PaymentTerms },
+  // allowanceCharges: { order: 21,  attributeName: 'cac:AllowanceCharge', min: 0, max: undefined, classRef: AllowanceCharge },
+  taxTotals: { order: 22, attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: TaxTotal },
+  withholdingTaxTotal: {
+    order: 23,
+    attributeName: 'cac:WithholdingTaxTotal',
+    min: 0,
+    max: undefined,
+    classRef: WithholdingTaxTotal,
+  },
+  item: { order: 24, attributeName: 'cac:Item', min: 0, max: undefined, classRef: Item },
+  price: { order: 25, attributeName: 'cac:Price', min: 0, max: undefined, classRef: Price },
+  deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
+  // subInvoiceLine: { order: 27,  attributeName: 'cac:SubInvoiceLine', min: 0, max: undefined, classRef: SubInvoiceLine },
+};
 
 type AllowedParams = {
-  id: string | UdtIdentifier,
-  uuid: string | UdtIdentifier,
-  notes: string[] | UdtText[],
-  invoicedQuantity: string | UdtQuantity,
-  lineExtensionAmount: string | UdtAmount,
-  taxPointDate: string | UdtDate,
-  accountingCostCode: string | UdtCode,
-  accountingCost:  string | UdtText,
-  paymentPurposeCode: string | UdtCode,
-  freeOfChargeIndicator: string | UdtIndicator,
-  invoicePeriods: PeriodType[],
-  orderLineReferences: OrderLineReference[],
-  despatchLineReference: DespatchLineReference[],
-  receiptLineReference: ReceiptLineReference[],
-  billingReference: BillingReference[],
-  documentReference: DocumentReference[],
+  id: string | UdtIdentifier;
+  uuid: string | UdtIdentifier;
+  notes: string[] | UdtText[];
+  invoicedQuantity: string | UdtQuantity;
+  lineExtensionAmount: string | UdtAmount;
+  taxPointDate: string | UdtDate;
+  accountingCostCode: string | UdtCode;
+  accountingCost: string | UdtText;
+  paymentPurposeCode: string | UdtCode;
+  freeOfChargeIndicator: string | UdtIndicator;
+  invoicePeriods: PeriodType[];
+  orderLineReferences: OrderLineReference[];
+  despatchLineReference: DespatchLineReference[];
+  receiptLineReference: ReceiptLineReference[];
+  billingReference: BillingReference[];
+  documentReference: DocumentReference[];
   // PricingReference: "",
-  originatorParty: Party,
-  delivery: Delivery,
-  paymentTerms: PaymentTerms,
+  originatorParty: Party;
+  delivery: Delivery;
+  paymentTerms: PaymentTerms;
   // allowanceCharges: "",
-  taxTotals: TaxTotal[],
-  withholdingTaxTotal: WithholdingTaxTotal[],
-  item: Item,
-  price: Price,
-  deliveryTerms: DeliveryTerms,
+  taxTotals: TaxTotal[];
+  withholdingTaxTotal: WithholdingTaxTotal[];
+  item: Item;
+  price: Price;
+  deliveryTerms: DeliveryTerms;
   // subInvoiceLine: "",
-}
+};
 
 /**
- * 
+ *
  */
 class InvoiceLine extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:InvoiceLine");
+    super(content, ParamsMap, 'cac:InvoiceLine');
   }
 
-  
   /**
    * @returns { TaxTotal[] }
    */
-  getTaxTotals(){
+  getTaxTotals() {
     return this.attributes.taxTotals;
   }
 
   /**
    * @param { TaxTotal[] } taxTotals
    */
-  setTaxTotals(taxTotals: TaxTotal[]){
-    if(!Array.isArray(taxTotals)) throw "value must to be an Array";
-    taxTotals.forEach(value => { if( !(value instanceof TaxTotal) ) throw "All items must to be instance of TaxTotal class" });
+  setTaxTotals(taxTotals: TaxTotal[]) {
+    if (!Array.isArray(taxTotals)) throw new Error('value must to be an Array');
+    taxTotals.forEach((value) => {
+      if (!(value instanceof TaxTotal)) throw new Error('All items must to be instance of TaxTotal class');
+    });
     this.attributes.taxTotals = taxTotals;
   }
 
-  setId(value : string | UdtIdentifier){
-    this.attributes.id = (value instanceof UdtIdentifier)
-      ? value
-      : new UdtIdentifier(value)
+  setId(value: string | UdtIdentifier) {
+    this.attributes.id = (value instanceof UdtIdentifier) 
+      ? value 
+      : new UdtIdentifier(value);
   }
 
   /**
-   * 
-   * @param {Boolean} rawValue 
-   * @returns { UdtAmount | String }
+   *
+   * @param {boolean} rawValue
+   * @returns { UdtAmount | string }
    */
-  getLineExtensionAmount(rawValue=true){
-    return rawValue 
-      ? this.attributes.lineExtensionAmount.content 
-      : this.attributes.lineExtensionAmount;
+  getLineExtensionAmount(rawValue = true) {
+    return rawValue ? this.attributes.lineExtensionAmount.content : this.attributes.lineExtensionAmount;
   }
 
-  setLineExtensionAmount(value: string | UdtAmount, currencyID = "COP"){
-    if(!value) throw "value is required"
-    this.attributes.lineExtensionAmount = (value instanceof UdtAmount)
-      ? value
-      : new UdtAmount(value, { currencyID })
+  setLineExtensionAmount(value: string | UdtAmount, currencyID = 'COP') {
+    if (!value) throw new Error('value is required');
+    this.attributes.lineExtensionAmount = value instanceof UdtAmount ? value : new UdtAmount(value, { currencyID });
   }
 
   /**
    * @returns { Price } Price object
    */
-  getPrice(){
+  getPrice() {
     return this.attributes.price;
   }
-
 }
 
-export  {
-  InvoiceLine as InvoiceLine,
-  AllowedParams as InvoiceLineParams,   
-}
+export { InvoiceLine, AllowedParams as InvoiceLineParams };

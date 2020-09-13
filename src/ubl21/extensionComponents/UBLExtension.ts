@@ -1,6 +1,9 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "../CommonAggregateComponents/GenericAggregateComponent";
-import { UdtIdentifier, UdtName, UdtText, UdtCode } from "../types/UnqualifiedDataTypes";
-import AnyExtensionContent from "./AnyExtensionContent";
+import GenericAggregateComponent, {
+  IGenericKeyValue,
+  ParamsMapValues,
+} from '../CommonAggregateComponents/GenericAggregateComponent';
+import { UdtIdentifier, UdtName, UdtText, UdtCode } from '../types/UnqualifiedDataTypes';
+import AnyExtensionContent from './AnyExtensionContent';
 
 /*
     1    cbc:ID [0..1]     An identifier for the Extension assigned by the creator of the extension.
@@ -16,61 +19,56 @@ import AnyExtensionContent from "./AnyExtensionContent";
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-    id: { order: 1,  attributeName: 'cbc:ID', min: 0, max:1, classRef: UdtIdentifier },
-    name: { order: 2,  attributeName: 'cbc:Name', min: 0, max:1, classRef: UdtName },
-    extensionAgencyID: { order: 3,  attributeName: 'ext:ExtensionAgencyID', min: 0, max:1, classRef: UdtIdentifier },
-    extensionAgencyName: { order: 4,  attributeName: 'ext:ExtensionAgencyName', min: 0, max:1, classRef: UdtText },
-    extensionVersionID: { order: 5,  attributeName: 'ext:ExtensionVersionID', min: 0, max:1, classRef: UdtIdentifier },
-    extensionAgencyURI: { order: 6,  attributeName: 'ext:ExtensionAgencyURI', min: 0, max:1, classRef: UdtIdentifier },
-    extensionURI: { order: 7,  attributeName: 'ext:ExtensionURI', min: 0, max:1, classRef: UdtIdentifier },
-    extensionReasonCode: { order: 8,  attributeName: 'ext:ExtensionReasonCode', min: 0, max:1, classRef: UdtCode },
-    extensionReason: { order: 9,  attributeName: 'ext:ExtensionReason', min: 0, max:1, classRef: UdtText },
-    extensionContent: { order: 10,  attributeName: 'ext:ExtensionContent', min: 1, max:1, classRef: AnyExtensionContent }
-}
-
+  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
+  extensionAgencyID: { order: 3, attributeName: 'ext:ExtensionAgencyID', min: 0, max: 1, classRef: UdtIdentifier },
+  extensionAgencyName: { order: 4, attributeName: 'ext:ExtensionAgencyName', min: 0, max: 1, classRef: UdtText },
+  extensionVersionID: { order: 5, attributeName: 'ext:ExtensionVersionID', min: 0, max: 1, classRef: UdtIdentifier },
+  extensionAgencyURI: { order: 6, attributeName: 'ext:ExtensionAgencyURI', min: 0, max: 1, classRef: UdtIdentifier },
+  extensionURI: { order: 7, attributeName: 'ext:ExtensionURI', min: 0, max: 1, classRef: UdtIdentifier },
+  extensionReasonCode: { order: 8, attributeName: 'ext:ExtensionReasonCode', min: 0, max: 1, classRef: UdtCode },
+  extensionReason: { order: 9, attributeName: 'ext:ExtensionReason', min: 0, max: 1, classRef: UdtText },
+  extensionContent: { order: 10, attributeName: 'ext:ExtensionContent', min: 1, max: 1, classRef: AnyExtensionContent },
+};
 
 type AllowedParams = {
-  id: string | UdtIdentifier,
-  name: string | UdtName,
-  extensionAgencyID: string | UdtIdentifier,
-  extensionAgencyName: string | UdtText,
-  extensionVersionID: string | UdtIdentifier,
-  extensionAgencyURI: string | UdtIdentifier,
-  extensionURI: string | UdtIdentifier,
-  extensionReasonCode: string | UdtCode,
-  extensionReason: string | UdtText,
-  extensionContent: AnyExtensionContent,
-}
+  id?: string | UdtIdentifier;
+  name?: string | UdtName;
+  extensionAgencyID?: string | UdtIdentifier;
+  extensionAgencyName?: string | UdtText;
+  extensionVersionID?: string | UdtIdentifier;
+  extensionAgencyURI?: string | UdtIdentifier;
+  extensionURI?: string | UdtIdentifier;
+  extensionReasonCode?: string | UdtCode;
+  extensionReason?: string | UdtText;
+  extensionContent?: AnyExtensionContent;
+};
 
 /**
- * 
+ *
  */
 class UBLExtension extends GenericAggregateComponent {
   /**     *
    * @param {AllowedParams} content
-   * @param {String} name
+   * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:UBLExtension");
+    super(content, ParamsMap, 'cac:UBLExtension');
   }
 
-  setExtensionContent(value: AnyExtensionContent){
-    if(!(value instanceof AnyExtensionContent)) throw "value must be an AnyExtensionContent instance";
+  setExtensionContent(value: AnyExtensionContent) {
+    if (!(value instanceof AnyExtensionContent)) {
+      throw new Error('value must be an AnyExtensionContent instance');
+    }
     this.attributes.extensionContent = value;
   }
 
   /**
    * @returns {AnyExtensionContent}
    */
-  getExtensionContent(){
+  getExtensionContent() {
     return this.attributes.extensionContent;
   }
-
-
-
 }
 
-export {
-  UBLExtension as UBLExtensionType,
-  AllowedParams as UBLExtensionTypeParams,   
-}
+export { UBLExtension as UBLExtensionType, AllowedParams as UBLExtensionTypeParams };

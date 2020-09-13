@@ -1,7 +1,7 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtAmount } from "../types/UnqualifiedDataTypes/UdtAmountType";
-import { UdtIndicator, UdtIdentifier } from "../types/UnqualifiedDataTypes";
-import { TaxSubtotal } from "./TaxSubtotal";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { UdtIndicator, UdtIdentifier } from '../types/UnqualifiedDataTypes';
+import { TaxSubtotal } from './TaxSubtotal';
 
 /*
 
@@ -13,85 +13,69 @@ import { TaxSubtotal } from "./TaxSubtotal";
 
 */
 
-
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   taxAmount: { order: 1, attributeName: 'cbc:TaxAmount', min: 1, max: 1, classRef: UdtAmount },
   roundingAmount: { order: 2, attributeName: 'cbc:RoundingAmount', min: 0, max: 1, classRef: UdtAmount },
   taxEvidenceIndicator: { order: 3, attributeName: 'cbc:TaxEvidenceIndicator', min: 0, max: 1, classRef: UdtIndicator },
   taxIncludedIndicator: { order: 4, attributeName: 'cac:TaxIncludedIndicator', min: 0, max: 1, classRef: UdtIndicator },
-  taxSubtotals: { order: 5, attributeName: 'cac:TaxSubtotal', min: 0, max: undefined, classRef: TaxSubtotal }
-}
-
+  taxSubtotals: { order: 5, attributeName: 'cac:TaxSubtotal', min: 0, max: undefined, classRef: TaxSubtotal },
+};
 
 type AllowedParams = {
-  taxAmount: string | UdtAmount,
-  roundingAmount: string | UdtAmount,
-  taxEvidenceIndicator: string | UdtIndicator,
-  taxSubtotals: TaxSubtotal[],
-}
+  taxAmount: string | UdtAmount;
+  roundingAmount: string | UdtAmount;
+  taxEvidenceIndicator: string | UdtIndicator;
+  taxSubtotals: TaxSubtotal[];
+};
 
 /**
- * 
+ *
  */
 class TaxTotalType extends GenericAggregateComponent {
   /**
    * @param {AllowedParams} content
-   * @param {String} name
+   * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:TaxTotalType");
+    super(content, ParamsMap, 'cac:TaxTotalType');
   }
 
   /**
-   * 
-   * @param { UdtAmount | String } value 
+   *
+   * @param { UdtAmount | string } value
    */
   setTaxAmount(value: string | UdtAmount) {
-    this.attributes.taxAmount = (value instanceof UdtAmount)
-      ? value
-      : new UdtAmount(value)
+    this.attributes.taxAmount = value instanceof UdtAmount ? value : new UdtAmount(value);
   }
 
   /**
-   * 
-   * @param {Boolean} raw raw value
+   *
+   * @param {boolean} raw raw value
    */
   getTaxAmount(raw = true) {
-    return (raw) ? this.attributes.taxAmount.content : this.attributes.taxAmount;
+    return raw ? this.attributes.taxAmount.content : this.attributes.taxAmount;
   }
 
-
-  /**
-   * @returns { TaxSubtotal[] }
-   */
-  getTaxSubtotals() {
+  getTaxSubtotals(): TaxSubtotal[] {
     return this.attributes.taxSubtotals;
   }
 
   setTaxSubtotals(taxSubtotals: TaxSubtotal[]) {
-    if (!Array.isArray(taxSubtotals)) throw "taxSubtotals must to be an Array";
-    taxSubtotals.forEach(value => {
+    if (!Array.isArray(taxSubtotals)) throw new Error('taxSubtotals must to be an Array');
+    taxSubtotals.forEach((value) => {
       if (!(value instanceof TaxSubtotal)) {
-        console.log(typeof value);
-        throw "Items of taxSubtotals must be instance of TaxSubtotal class"
+        throw new Error('Items of taxSubtotals must be instance of TaxSubtotal class');
       }
     });
-
 
     this.attributes.taxSubtotals = taxSubtotals;
   }
 
   calculateTotalTaxAmount() {
-    let total = 0;
-    return this.attributes.taxSubtotals.reduce((acc: number, current: TaxSubtotal ) => {
+    return this.attributes.taxSubtotals.reduce((acc: number, current: TaxSubtotal) => {
       return acc + current.getTaxAmount();
     }, 0);
   }
-  
 }
 
-export {
-  TaxTotalType as TaxTotal,
-  AllowedParams as TaxTotalTypeParams,
-  TaxTotalType as WithholdingTaxTotal
-}
+export { TaxTotalType as TaxTotal, AllowedParams as TaxTotalTypeParams, TaxTotalType as WithholdingTaxTotal };

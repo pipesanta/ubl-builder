@@ -1,3 +1,3 @@
 export interface IXsdAnySimpleType {
-    validateContent(): void;
+  validateContent(): void;
 }

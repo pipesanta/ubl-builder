@@ -1,46 +1,40 @@
 // 'use strict'
 
-import AnyExtensionContent from "../AnyExtensionContent";
-import { IGenericKeyValue, ParamsMapValues } from "../../CommonAggregateComponents/GenericAggregateComponent";
+import AnyExtensionContent from '../AnyExtensionContent';
+import { IGenericKeyValue, ParamsMapValues } from '../../CommonAggregateComponents/GenericAggregateComponent';
 
 // const { AnyExtensionContent } = require("../AnyExtensionContent");
 // const { SignatureExtensionsContent, SignatureExtensionsContentParams } = require("./DianExtensionContent");
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  //##################################  TODO CAC MISSING ################################################
+  // ##################################  TODO CAC MISSING ################################################
   // signature: { order: 1,  attributeName: 'ds:Signature', min: 0, max: 1, classRef: SignatureExtensionsContent }
-}
-
+};
 
 type AllowedParams = {
-  signature: string
-}
+  signature: string;
+};
 
 /**
- * 
+ *
  */
 class SignatureExtensions extends AnyExtensionContent {
   /**     *
    * @param {AllowedParams} content
-   * @param {String} name
+   * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:SignatureExtensions");
+    super(content, ParamsMap, 'cac:SignatureExtensions');
   }
 
-
   // /**
-  //  * 
-  //  * @param { SignatureExtensionsContent | SignatureExtensionsContentParams } value 
+  //  *
+  //  * @param { SignatureExtensionsContent | SignatureExtensionsContentParams } value
   //  */
   // setSignatureExtensionsContent(value: SignatureExtensionsContent | SignatureExtensionsContentParams){
   //   console.log(value);
   //   throw "not implemented"
   // }
-
 }
 
-export {
-  SignatureExtensions as SignatureExtensions,
-  AllowedParams as SignatureExtensionsParams,
-}
+export { SignatureExtensions, AllowedParams as SignatureExtensionsParams };

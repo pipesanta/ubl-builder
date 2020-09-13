@@ -1,7 +1,7 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtAmount } from "../types/UnqualifiedDataTypes/UdtAmountType";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
 
 /*
   1  cbc:LineExtensionAmount [0..1]    The monetary amount of an extended transaction line, net of tax and settlement discounts, but inclusive of any applicable rounding amount.
@@ -24,57 +24,54 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   prepaidAmount: { order: 6, attributeName: 'cbc:PrepaidAmount', min: 0, max: 1, classRef: UdtAmount },
   payableRoundingAmount: { order: 7, attributeName: 'cbc:PayableRoundingAmount', min: 0, max: 1, classRef: UdtAmount },
   payableAmount: { order: 8, attributeName: 'cbc:PayableAmount', min: 1, max: 1, classRef: UdtAmount },
-  payableAlternativeAmount: { order: 9, attributeName: 'cbc:PayableAlternativeAmount', min: 0, max: 1, classRef: UdtAmount }
-}
+  payableAlternativeAmount: {
+    order: 9,
+    attributeName: 'cbc:PayableAlternativeAmount',
+    min: 0,
+    max: 1,
+    classRef: UdtAmount,
+  },
+};
 
 type AllowedParams = {
-  lineExtensionAmount: string | UdtAmount,
-  taxExclusiveAmount: string | UdtAmount,
-  taxInclusiveAmount: string | UdtAmount,
-  allowanceTotalAmount: string | UdtAmount,
-  chargeTotalAmount: string | UdtAmount,
-  prepaidAmount: string | UdtAmount,
-  payableRoundingAmount: string | UdtAmount,
-  payableAmount: string | UdtAmount,
-  payableAlternativeAmount: string | UdtAmount,
-}
+  lineExtensionAmount: string | UdtAmount;
+  taxExclusiveAmount: string | UdtAmount;
+  taxInclusiveAmount: string | UdtAmount;
+  allowanceTotalAmount: string | UdtAmount;
+  chargeTotalAmount: string | UdtAmount;
+  prepaidAmount: string | UdtAmount;
+  payableRoundingAmount: string | UdtAmount;
+  payableAmount: string | UdtAmount;
+  payableAlternativeAmount: string | UdtAmount;
+};
 
 /**
- * 
+ *
  */
 class MonetaryTotal extends GenericAggregateComponent {
   /**     *
    * @param {AllowedParams} content
-   * @param {String} name
+   * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:MonetaryTotal");
+    super(content, ParamsMap, 'cac:MonetaryTotal');
   }
 
   /**
-   * 
-   * @param {Boolean} raw Raw value
+   *
+   * @param {boolean} raw Raw value
    */
   getLineExtensionAmount(raw = true) {
-    return raw
-      ? this.attributes.lineExtensionAmount.content
-      : this.attributes.lineExtensionAmount;
+    return raw ? this.attributes.lineExtensionAmount.content : this.attributes.lineExtensionAmount;
   }
 
   /**
-   * 
-   * @param {Boolean} [raw=true] raw value
+   *
+   * @param {boolean} [raw=true] raw value
    */
   getPayableAmount(raw = true) {
-    return raw
-      ? this.attributes.payableAmount.content
-      : this.attributes.payableAmount;
+    return raw ? this.attributes.payableAmount.content : this.attributes.payableAmount;
   }
-
 }
 
-export {
-  MonetaryTotal,
-  AllowedParams as MonetaryTotalParams,
-  MonetaryTotal as LegalMonetaryTotal
-}
+export { MonetaryTotal, AllowedParams as MonetaryTotalParams, MonetaryTotal as LegalMonetaryTotal };

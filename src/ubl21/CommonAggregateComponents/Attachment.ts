@@ -3,35 +3,37 @@ import { UdtBinaryObjectType } from '../types/UnqualifiedDataTypes';
 import { ExternalReference } from './ExternalReference';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-    embeddedDocumentBinaryObject: { 
-      order: 1, attributeName: 'cbc:EmbeddedDocumentBinaryObject', min: 0, max: 1, classRef: UdtBinaryObjectType
-    },
-    externalReference: { 
-      order:1,  attributeName: 'cac:ExternalReference', min: 0, max: 1, classRef: ExternalReference 
-    },
-}
+  embeddedDocumentBinaryObject: {
+    order: 1,
+    attributeName: 'cbc:EmbeddedDocumentBinaryObject',
+    min: 0,
+    max: 1,
+    classRef: UdtBinaryObjectType,
+  },
+  externalReference: {
+    order: 1,
+    attributeName: 'cac:ExternalReference',
+    min: 0,
+    max: 1,
+    classRef: ExternalReference,
+  },
+};
 
 type AllowedParams = {
-    /** A binary large object containing an attached document*/
-    embeddedDocumentBinaryObject?: UdtBinaryObjectType | String,
-    /** A reference to an attached document that is external to the document(s) being exchanged */
-    externalReference?: ExternalReference,
-}
+  /** A binary large object containing an attached document */
+  embeddedDocumentBinaryObject?: UdtBinaryObjectType | string;
+  /** A reference to an attached document that is external to the document(s) being exchanged */
+  externalReference?: ExternalReference;
+};
 
 class Attachment extends GenericAggregateComponent {
-  
   /**
-   * 
+   *
    * @param content children nodes
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:Attachment");
+    super(content, ParamsMap, 'cac:Attachment');
   }
-
 }
 
-export {
-  Attachment,
-  AllowedParams as AttachmentParams
-}
-
+export { Attachment, AllowedParams as AttachmentParams };

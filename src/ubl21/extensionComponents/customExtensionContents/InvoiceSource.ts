@@ -1,7 +1,10 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "../../CommonAggregateComponents/GenericAggregateComponent";
-import { UdtCode } from "../../types/UnqualifiedDataTypes";
+import GenericAggregateComponent, {
+  IGenericKeyValue,
+  ParamsMapValues,
+} from '../../CommonAggregateComponents/GenericAggregateComponent';
+import { UdtCode } from '../../types/UnqualifiedDataTypes';
 
 // const GenericAggregateComponent = require("../../CommonAggregateComponents/GenericAggregateComponent");
 
@@ -10,13 +13,12 @@ import { UdtCode } from "../../types/UnqualifiedDataTypes";
 // const { UdtCode } = require("../../types/UnqualifiedDataTypes");
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  identificationCode: { order: 1,  attributeName: 'cbc:IdentificationCode', min: 0, max: 1, classRef: UdtCode }
-}
-
+  identificationCode: { order: 1, attributeName: 'cbc:IdentificationCode', min: 0, max: 1, classRef: UdtCode },
+};
 
 type AllowedParams = {
-  identificationCode: string | UdtCode
-}
+  identificationCode?: string | UdtCode | any
+};
 
 /**
  * Body of Dian extension content
@@ -24,18 +26,11 @@ type AllowedParams = {
 class InvoiceSource extends GenericAggregateComponent {
   /**     *
    * @param {AllowedParams} content
-   * @param {String} name
+   * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "sts:InvoiceSource");
+    super(content, ParamsMap, 'sts:InvoiceSource');
   }
-
 }
 
-
-
-
-export {
-   InvoiceSource,
-   AllowedParams as InvoiceSourceParams 
-}
+export { InvoiceSource, AllowedParams as InvoiceSourceParams };

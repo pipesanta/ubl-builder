@@ -1,11 +1,10 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtCode, UdtIdentifier, UdtDate } from "../types/UnqualifiedDataTypes";
-import { UdtRate } from "../types/UnqualifiedDataTypes/UdtRateType";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtCode, UdtIdentifier, UdtDate } from '../types/UnqualifiedDataTypes';
+import { UdtRate } from '../types/UnqualifiedDataTypes/UdtRateType';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");
-
 
 // /* TODO GANERIC CLASSES */
 
@@ -27,52 +26,47 @@ import { UdtRate } from "../types/UnqualifiedDataTypes/UdtRateType";
 
 */
 
-
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  sourceCurrencyCode: { order: 1,  attributeName: 'cbc:SourceCurrencyCode', min: 1, max:1, classRef: UdtCode },
-  sourceCurrencyBaseRate: { order: 2,  attributeName: 'cbc:SourceCurrencyBaseRate', min: 0, max:1, classRef: UdtRate },
-  targetCurrencyCode: { order: 3,  attributeName: 'cbc:TargetCurrencyCode', min: 1, max:1, classRef: UdtCode },
-  targetCurrencyBaseRate: { order: 4,  attributeName: 'cbc:TargetCurrencyBaseRate', min: 0, max:1, classRef: UdtRate },
-  exchangeMarketID: { order: 5,  attributeName: 'cbc:ExchangeMarketID', min: 0, max:1, classRef: UdtIdentifier },
-  calculationRate: { order: 6,  attributeName: 'cbc:CalculationRate', min: 0, max:1, classRef: UdtRate },
-  mathematicOperatorCode: { order: 7,  attributeName: 'cbc:MathematicOperatorCode', min: 0, max:1, classRef: UdtCode },
-  date: { order: 8,  attributeName: 'cbc:Date', min: 0, max:1, classRef: UdtDate },
+  sourceCurrencyCode: { order: 1, attributeName: 'cbc:SourceCurrencyCode', min: 1, max: 1, classRef: UdtCode },
+  sourceCurrencyBaseRate: { order: 2, attributeName: 'cbc:SourceCurrencyBaseRate', min: 0, max: 1, classRef: UdtRate },
+  targetCurrencyCode: { order: 3, attributeName: 'cbc:TargetCurrencyCode', min: 1, max: 1, classRef: UdtCode },
+  targetCurrencyBaseRate: { order: 4, attributeName: 'cbc:TargetCurrencyBaseRate', min: 0, max: 1, classRef: UdtRate },
+  exchangeMarketID: { order: 5, attributeName: 'cbc:ExchangeMarketID', min: 0, max: 1, classRef: UdtIdentifier },
+  calculationRate: { order: 6, attributeName: 'cbc:CalculationRate', min: 0, max: 1, classRef: UdtRate },
+  mathematicOperatorCode: { order: 7, attributeName: 'cbc:MathematicOperatorCode', min: 0, max: 1, classRef: UdtCode },
+  date: { order: 8, attributeName: 'cbc:Date', min: 0, max: 1, classRef: UdtDate },
   // ForeignExchangeContract: { order: 8,  attributeName: 'cac:ForeignExchangeContract', min: 0, max:1, classRef: ForeignExchangeContract },
 
-    //##################################  TODO CAC MISSING ################################################
+  // ##################################  TODO CAC MISSING ################################################
 
-    // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }, //
-  
-    //##################################  TODO CAC MISSING ################################################
+  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }, //
 
-}
-
+  // ##################################  TODO CAC MISSING ################################################
+};
 
 type AllowedParams = {
-  sourceCurrencyCode: string | UdtCode,
-  sourceCurrencyBaseRate: string | UdtRate,
-  targetCurrencyCode: string | UdtCode,
-  targetCurrencyBaseRate: string | UdtRate,
-  exchangeMarketID: string | UdtIdentifier,
-  calculationRate: string | UdtRate,
-  mathematicOperatorCode: string | UdtCode,
-  date: string | UdtDate,
-}
+  sourceCurrencyCode: string | UdtCode;
+  sourceCurrencyBaseRate: string | UdtRate;
+  targetCurrencyCode: string | UdtCode;
+  targetCurrencyBaseRate: string | UdtRate;
+  exchangeMarketID: string | UdtIdentifier;
+  calculationRate: string | UdtRate;
+  mathematicOperatorCode: string | UdtCode;
+  date: string | UdtDate;
+};
 
 /**
- * 
+ *
  */
 class ExchangeRate extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:ExchangeRate");
+    super(content, ParamsMap, 'cac:ExchangeRate');
   }
-
 }
 
 export {
   ExchangeRate,
   AllowedParams as ExchangeRateParams,
   ExchangeRate as PaymentExchangeRate,
-  ExchangeRate as PricingExchangeRate
-
-}
+  ExchangeRate as PricingExchangeRate,
+};

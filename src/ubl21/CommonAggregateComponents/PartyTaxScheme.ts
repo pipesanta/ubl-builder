@@ -1,9 +1,9 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtName, UdtIdentifier, UdtCode, UdtText } from "../types/UnqualifiedDataTypes";
-import { RegistrationAddress } from "./AddressTypeGroup";
-import { TaxScheme } from "./TaxScheme";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtName, UdtIdentifier, UdtCode, UdtText } from '../types/UnqualifiedDataTypes';
+import { RegistrationAddress } from './AddressTypeGroup';
+import { TaxScheme } from './TaxScheme';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");
 
@@ -27,25 +27,30 @@ import { TaxScheme } from "./TaxScheme";
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-    registrationName: { order: 1,  attributeName: 'cbc:RegistrationName', min: 0, max:1, classRef: UdtName },
-    companyID: { order: 2,  attributeName: 'cbc:CompanyID', min: 0, max:1, classRef: UdtIdentifier },
-    taxLevelCode: { order: 3,  attributeName: 'cbc:TaxLevelCode', min: 0, max:1, classRef: UdtCode },
-    exemptionReasonCode: { order: 4,  attributeName: 'cbc:ExemptionReasonCode', min: 0, max:1, classRef: UdtCode },
-    exemptionReason: { order: 5,  attributeName: 'cbc:ExemptionReason', min: 0, max: undefined, classRef: UdtText },
-    registrationAddress: { order: 6,  attributeName: 'cac:RegistrationAddress', min: 0, max: 1, classRef: RegistrationAddress },
-    taxScheme: { order: 7,  attributeName: 'cac:TaxScheme', min: 1, max: 1, classRef: TaxScheme },
-}
-
+  registrationName: { order: 1, attributeName: 'cbc:RegistrationName', min: 0, max: 1, classRef: UdtName },
+  companyID: { order: 2, attributeName: 'cbc:CompanyID', min: 0, max: 1, classRef: UdtIdentifier },
+  taxLevelCode: { order: 3, attributeName: 'cbc:TaxLevelCode', min: 0, max: 1, classRef: UdtCode },
+  exemptionReasonCode: { order: 4, attributeName: 'cbc:ExemptionReasonCode', min: 0, max: 1, classRef: UdtCode },
+  exemptionReason: { order: 5, attributeName: 'cbc:ExemptionReason', min: 0, max: undefined, classRef: UdtText },
+  registrationAddress: {
+    order: 6,
+    attributeName: 'cac:RegistrationAddress',
+    min: 0,
+    max: 1,
+    classRef: RegistrationAddress,
+  },
+  taxScheme: { order: 7, attributeName: 'cac:TaxScheme', min: 1, max: 1, classRef: TaxScheme },
+};
 
 type AllowedParams = {
-  registrationName: string | UdtName,
-  companyID: string | UdtIdentifier,
-  taxLevelCode: string | UdtCode,
-  exemptionReasonCode: string | UdtCode,
-  exemptionReason: string,
-  registrationAddress: RegistrationAddress,
-  taxScheme: TaxScheme,
-}
+  registrationName: string | UdtName;
+  companyID: string | UdtIdentifier;
+  taxLevelCode: string | UdtCode;
+  exemptionReasonCode: string | UdtCode;
+  exemptionReason: string;
+  registrationAddress: RegistrationAddress;
+  taxScheme: TaxScheme;
+};
 
 /**
  * A class to describe a taxation scheme applying to a party.
@@ -53,20 +58,16 @@ type AllowedParams = {
  */
 class PartyTaxScheme extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:PartyTaxScheme");
+    super(content, ParamsMap, 'cac:PartyTaxScheme');
   }
 
   /**
-   * 
-   * @param {Boolean} [raw=true] raw value 
+   *
+   * @param {boolean} [raw=true] raw value
    */
-  getCompanyID(raw = true){
+  getCompanyID(raw = true) {
     return raw ? this.attributes.companyID.content : this.attributes.companyID;
   }
-
 }
 
-export{
-  PartyTaxScheme as PartyTaxScheme,
-  AllowedParams as PartyTaxSchemeParams,   
-}
+export { PartyTaxScheme, AllowedParams as PartyTaxSchemeParams };

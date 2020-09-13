@@ -1,9 +1,9 @@
-import GenericAggregateComponent from "./GenericAggregateComponent";
-import { UdtAmount } from "../types/UnqualifiedDataTypes/UdtAmountType";
-import { UdtNumeric } from "../types/UnqualifiedDataTypes/UdtNumericType";
-import { UdtPercentType } from "../types/UnqualifiedDataTypes/UdtPercentType";
-import { UdtMeasure, UdtText } from "../types/UnqualifiedDataTypes";
-import { TaxCategory } from "./TaxCategoryTypeGroup";
+import GenericAggregateComponent from './GenericAggregateComponent';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumericType';
+import { UdtPercentType } from '../types/UnqualifiedDataTypes/UdtPercentType';
+import { UdtMeasure, UdtText } from '../types/UnqualifiedDataTypes';
+import { TaxCategory } from './TaxCategoryTypeGroup';
 
 /*
 
@@ -20,119 +20,114 @@ import { TaxCategory } from "./TaxCategoryTypeGroup";
 
 */
 
-
 const ParamsMap = {
   taxableAmount: { order: 1, attributeName: 'cbc:TaxableAmount', min: 0, max: 1, classRef: UdtAmount },
   taxAmount: { order: 2, attributeName: 'cbc:TaxAmount', min: 1, max: 1, classRef: UdtAmount },
-  calculationSequenceNumeric: { order: 3, attributeName: 'cbc:CalculationSequenceNumeric', min: 0, max: 1, classRef: UdtNumeric },
-  transactionCurrencyTaxAmount: { order: 4, attributeName: 'cbc:TransactionCurrencyTaxAmount', min: 0, max: 1, classRef: UdtAmount },
+  calculationSequenceNumeric: {
+    order: 3,
+    attributeName: 'cbc:CalculationSequenceNumeric',
+    min: 0,
+    max: 1,
+    classRef: UdtNumeric,
+  },
+  transactionCurrencyTaxAmount: {
+    order: 4,
+    attributeName: 'cbc:TransactionCurrencyTaxAmount',
+    min: 0,
+    max: 1,
+    classRef: UdtAmount,
+  },
   percent: { order: 5, attributeName: 'cbc:Percent', min: 0, max: 1, classRef: UdtPercentType },
   baseUnitMeasure: { order: 6, attributeName: 'cbc:BaseUnitMeasure', min: 0, max: 1, classRef: UdtMeasure },
   perUnitAmount: { order: 7, attributeName: 'cbc:PerUnitAmount', min: 0, max: 1, classRef: UdtAmount },
   tierRange: { order: 8, attributeName: 'cbc:TierRange', min: 0, max: 1, classRef: UdtText },
   tierRatePercent: { order: 9, attributeName: 'cbc:TierRatePercent', min: 0, max: 1, classRef: UdtPercentType },
   taxCategory: { order: 10, attributeName: 'cac:TaxCategory', min: 1, max: 1, classRef: TaxCategory },
-
-}
-
+};
 
 type AllowedParams = {
-  taxableAmount: string | UdtAmount,
-  taxAmount: string | UdtAmount,
-  calculationSequenceNumeric: string | UdtNumeric,
-  transactionCurrencyTaxAmount: string | UdtAmount,
-  percent: string | UdtPercentType,
-  baseUnitMeasure: string | UdtMeasure,
-  perUnitAmount: string | UdtAmount,
-  tierRange: string | UdtText,
-  tierRatePercent: string | UdtPercentType,
-  taxCategory: TaxCategory,
-}
+  taxableAmount: string | UdtAmount;
+  taxAmount: string | UdtAmount;
+  calculationSequenceNumeric: string | UdtNumeric;
+  transactionCurrencyTaxAmount: string | UdtAmount;
+  percent: string | UdtPercentType;
+  baseUnitMeasure: string | UdtMeasure;
+  perUnitAmount: string | UdtAmount;
+  tierRange: string | UdtText;
+  tierRatePercent: string | UdtPercentType;
+  taxCategory: TaxCategory;
+};
 
 /**
- * 
+ *
  */
 class TaxSubtotal extends GenericAggregateComponent {
   /**     *
    * @param {AllowedParams} content
-   * @param {String} name
+   * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:TaxSubtotal");
+    super(content, ParamsMap, 'cac:TaxSubtotal');
   }
 
-
   /**
-   * 
-   * @param {Boolean} rawValue 
+   *
+   * @param {boolean} rawValue
    */
   getTaxableAmount(rawValue = true) {
     return rawValue ? this.attributes.taxableAmount.content : this.attributes.taxableAmount;
   }
 
   setTaxableAmount(value: string | UdtAmount) {
-    this.attributes.taxableAmount = (value instanceof UdtAmount)
-      ? value
-      : new UdtAmount(value);
+    this.attributes.taxableAmount = value instanceof UdtAmount ? value : new UdtAmount(value);
   }
 
   /**
-   * 
-   * @param {Boolean} rawValue
-   * 
+   *
+   * @param {boolean} rawValue
+   *
    */
   getTaxAmount(rawValue = true) {
     return rawValue ? this.attributes.taxAmount.content : this.attributes.taxAmount;
   }
 
   /**
-   * 
-   * @param { UdtAmount | String } value 
+   *
+   * @param { UdtAmount | string } value
    */
   setTaxAmount(value: string | UdtAmount) {
-    this.attributes.taxAmount = (value instanceof UdtAmount)
-      ? value
-      : new UdtAmount(value);
+    this.attributes.taxAmount = value instanceof UdtAmount ? value : new UdtAmount(value);
   }
 
   /**
-   * 
-   * @param {*} rawValue 
+   *
+   * @param {*} rawValue
    */
   getPercent(rawValue = true) {
     return rawValue ? this.attributes.percent.content : this.attributes.percentage;
   }
 
   /**
-   * 
-   * @param {UdtPercentType | String} value 
+   *
+   * @param {UdtPercentType | string} value
    */
   setPercent(value: string | UdtPercentType) {
-    this.attributes.percent = (value instanceof UdtPercentType)
-      ? value
-      : new UdtPercentType(value);
+    this.attributes.percent = value instanceof UdtPercentType ? value : new UdtPercentType(value);
   }
 
   /**
-   * 
+   *
    * @param {TaxCategory} value
    */
   setTaxCategory(value: TaxCategory) {
-    if (!(value instanceof TaxCategory)) throw "Value must be instace of TaxCategory";
+    if (!(value instanceof TaxCategory)) throw new Error('Value must be instace of TaxCategory');
 
     this.attributes.taxCategory = value;
   }
 
-  /**
-   * @returns { TaxCategory }
-   */
-  getTaxCategory() {
-    return this.attributes.taxCategory
+  getTaxCategory(): TaxCategory {
+    return this.attributes.taxCategory;
   }
-
 }
 
-export {
-  TaxSubtotal as TaxSubtotal,
-  AllowedParams as TaxSubtotalParams,
-}
+export { TaxSubtotal, AllowedParams as TaxSubtotalParams };

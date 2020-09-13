@@ -1,6 +1,6 @@
 {
   "name": "ubl-builder",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Tool to create xml documents with UBL 2.0 standard",
   "main": "lib/index.js",
   "files": [
@@ -34,7 +34,10 @@
   },
   "homepage": "https://github.com/pipesanta/ubl-builder#readme",
   "dependencies": {
-    "xmlbuilder": "^15.1.1"
+    "weeknumber": "^1.1.2",
+    "xmlbuilder": "^15.1.1",
+    "xmldom": "^0.3.0",
+    "xpath": "0.0.29"
   },
   "devDependencies": {
     "@types/jest": "^26.0.13",

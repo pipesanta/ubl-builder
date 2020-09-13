@@ -1,5 +1,14 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtCode, UdtIdentifier, UdtDate, UdtText, UdtTime, UdtName, UdtQuantity,  UdtIndicator } from '../types/UnqualifiedDataTypes/';
+import {
+  UdtCode,
+  UdtIdentifier,
+  UdtDate,
+  UdtText,
+  UdtTime,
+  UdtName,
+  UdtQuantity,
+  UdtIndicator,
+} from '../types/UnqualifiedDataTypes/';
 
 /* TODO GANERIC CLASSES */
 /*
@@ -21,36 +30,40 @@ import { UdtCode, UdtIdentifier, UdtDate, UdtText, UdtTime, UdtName, UdtQuantity
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-    id: { order: 1,  attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-    chargeIndicator: { order: 2,  attributeName: 'cbc:ChargeIndicator', min: 1, max: 1, classRef: UdtIndicator },
-    AllowanceChargeReasonCode: { order: 3,  attributeName: 'cbc:AllowanceChargeReasonCode', min: 1, max: 1, classRef: UdtCode },
-    AllowanceChargeReason: { order: 4,  attributeName: 'cbc:AllowanceChargeReason', min: 1, max: 1, classRef: UdtText }
-}
-
+  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  chargeIndicator: { order: 2, attributeName: 'cbc:ChargeIndicator', min: 1, max: 1, classRef: UdtIndicator },
+  AllowanceChargeReasonCode: {
+    order: 3,
+    attributeName: 'cbc:AllowanceChargeReasonCode',
+    min: 1,
+    max: 1,
+    classRef: UdtCode,
+  },
+  AllowanceChargeReason: { order: 4, attributeName: 'cbc:AllowanceChargeReason', min: 1, max: 1, classRef: UdtText },
+};
 
 type AllowedParams = {
   /**  An identifier for this allowance or charge */
-  id: String | UdtIdentifier,
+  id: string | UdtIdentifier;
   /** An indicator that this AllowanceCharge describes a charge (true) or a discount (false) */
-  chargeIndicator: Boolean | UdtIndicator,
+  chargeIndicator: boolean | UdtIndicator;
   /** A mutually agreed code signifying the reason for this allowance or charge */
-  AllowanceChargeReasonCode: String | UdtCode,
+  AllowanceChargeReasonCode: string | UdtCode;
   /** The reason for this allowance or charge */
-  AllowanceChargeReason:  String | UdtText
-}
+  AllowanceChargeReason: string | UdtText;
+};
 
 /**
- * 
+ *
  */
 class AllowanceCharge extends GenericAggregateComponent {
   /**
    * @param {AllowedParams} content
-   * @param {String} name
+   * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:AllowanceCharge");
+    super(content, ParamsMap, 'cac:AllowanceCharge');
   }
-
 }
 /*
     Element cac:AllowanceCharge
@@ -59,7 +72,4 @@ class AllowanceCharge extends GenericAggregateComponent {
     Element cac:ServiceAllowanceCharge
  */
 
-export  {
-   AllowanceCharge,
-   AllowedParams as AllowanceChargeParams
-}
+export { AllowanceCharge, AllowedParams as AllowanceChargeParams };

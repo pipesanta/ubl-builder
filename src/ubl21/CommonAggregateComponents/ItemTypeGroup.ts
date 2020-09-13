@@ -1,7 +1,6 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtText, UdtQuantity, UdtIndicator, UdtName, UdtIdentifier } from "../types/UnqualifiedDataTypes";
-import { UdtNumeric } from "../types/UnqualifiedDataTypes/UdtNumericType";
-
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtText, UdtQuantity, UdtIndicator, UdtName, UdtIdentifier } from '../types/UnqualifiedDataTypes';
+import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumericType';
 
 /*
     1   cbc:Description [0..*]    Text describing this item.
@@ -36,8 +35,7 @@ import { UdtNumeric } from "../types/UnqualifiedDataTypes/UdtNumericType";
     30  cac:Dimension [0..*]    One of the measurable dimensions (length, mass, weight, or volume) of this item.
 */
 
-
-//##################################  TODO CAC MISSING ################################################
+// ##################################  TODO CAC MISSING ################################################
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   descriptions: { order: 1, attributeName: 'cbc:Description', min: 0, max: undefined, classRef: UdtText },
@@ -45,46 +43,56 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   packSizeNumeric: { order: 3, attributeName: 'cbc:PackSizeNumeric', min: 0, max: 1, classRef: UdtNumeric },
   catalogueIndicator: { order: 4, attributeName: 'cbc:CatalogueIndicator', min: 0, max: 1, classRef: UdtIndicator },
   name: { order: 5, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
-  hazardousRiskIndicator: { order: 6, attributeName: 'cbc:HazardousRiskIndicator', min: 0, max: 1, classRef: UdtIndicator },
-  additionalInformations: { order: 7, attributeName: 'cbc:AdditionalInformation', min: 0, max: undefined, classRef: UdtText },
+  hazardousRiskIndicator: {
+    order: 6,
+    attributeName: 'cbc:HazardousRiskIndicator',
+    min: 0,
+    max: 1,
+    classRef: UdtIndicator,
+  },
+  additionalInformations: {
+    order: 7,
+    attributeName: 'cbc:AdditionalInformation',
+    min: 0,
+    max: undefined,
+    classRef: UdtText,
+  },
   keywords: { order: 8, attributeName: 'cbc:Keyword', min: 0, max: undefined, classRef: UdtText },
   brandName: { order: 9, attributeName: 'cbc:BrandName', min: 0, max: undefined, classRef: UdtName },
   modelName: { order: 10, attributeName: 'cbc:ModelName', min: 0, max: undefined, classRef: UdtName },
-  sellersItemIdentification: { order: 12, attributeName: 'cac:SellersItemIdentification', min: 0, max: 1, classRef: null }, //ItemIdentificationType
+  sellersItemIdentification: {
+    order: 12,
+    attributeName: 'cac:SellersItemIdentification',
+    min: 0,
+    max: 1,
+    classRef: null,
+  }, 
+  // ItemIdentificationType
+};
 
-}
-
-
-//##################################  TODO CAC MISSING ################################################
+// ##################################  TODO CAC MISSING ################################################
 type AllowedParams = {
-  descriptions: string[] | UdtText[],
-  packQuantity: string | UdtQuantity,
-  packSizeNumeric: string | UdtNumeric,
-  catalogueIndicator: string | UdtIndicator,
-  name: string | UdtName,
-  hazardousRiskIndicator: string | UdtIndicator,
-  additionalInformations: string[] | UdtText[],
-  keywords: string[] | UdtText[],
+  descriptions: string[] | UdtText[];
+  packQuantity: string | UdtQuantity;
+  packSizeNumeric: string | UdtNumeric;
+  catalogueIndicator: string | UdtIndicator;
+  name: string | UdtName;
+  hazardousRiskIndicator: string | UdtIndicator;
+  additionalInformations: string[] | UdtText[];
+  keywords: string[] | UdtText[];
   /** @type {UdtName} */
-  brandName: string | UdtName,
-  modelName: string | UdtName,
-  // sellersItemIdentification: 
-}
+  brandName: string | UdtName;
+  modelName: string | UdtName;
+  // sellersItemIdentification:
+};
 
 /**
- * 
+ *
  */
 class ItemType extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:ItemType");
+    super(content, ParamsMap, 'cac:ItemType');
   }
-
 }
 
-export {
-  ItemType as Item,
-  AllowedParams as ItemTypeParams,
-
-  ItemType as SupplyItem
-
-}
+export { ItemType as Item, AllowedParams as ItemTypeParams, ItemType as SupplyItem };

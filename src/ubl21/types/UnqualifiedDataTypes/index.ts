@@ -8,15 +8,26 @@ import { UdtQuantity } from './UdtQuantityType';
 import { UdtIndicator } from './UdtIndicatorType';
 import { UdtBinaryObjectType } from './UdtBinaryObjectType';
 import { UdtMeasure, UdtMeasureAttributes } from './UdtMeasureType';
+import { UdtAmount, UdtAmountAttributes } from "./UdtAmountType";
+import { UBLVersionID, UBLVersionIDAttributes } from "./UBLVersionIDType"
+import { UdtNumeric, UdtNumericAttributes } from "./UdtNumericType"
 
 export {
-    UdtCode, UdtCodeAttributes,
-    UdtIdentifier, UdtIdentifierAttributes,
-    UdtDate,
-    UdtText, UdtTextAttributes,
-    UdtTime, UdtName,
-    UdtQuantity,
-    UdtIndicator,
-    UdtBinaryObjectType,
-    UdtMeasure, UdtMeasureAttributes
-}
+  UdtCode,
+  UdtCodeAttributes,
+  UdtIdentifier,
+  UdtIdentifierAttributes,
+  UdtDate,
+  UdtText,
+  UdtTextAttributes,
+  UdtTime,
+  UdtName,
+  UdtQuantity,
+  UdtIndicator,
+  UdtBinaryObjectType,
+  UdtMeasure,
+  UdtMeasureAttributes,
+  UdtAmount, UdtAmountAttributes,
+  UBLVersionID, UBLVersionIDAttributes,
+  UdtNumeric, UdtNumericAttributes
+};

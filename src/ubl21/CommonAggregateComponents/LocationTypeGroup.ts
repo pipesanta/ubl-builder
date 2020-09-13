@@ -1,9 +1,7 @@
-
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtIdentifier, UdtText, UdtCode, UdtName } from "../types/UnqualifiedDataTypes";
-import { ValidityPeriod } from "./ValidityPeriod";
-import { Address } from "./AddressTypeGroup";
-
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtIdentifier, UdtText, UdtCode, UdtName } from '../types/UnqualifiedDataTypes';
+import { ValidityPeriod } from './ValidityPeriod';
+import { Address } from './AddressTypeGroup';
 
 /*http://www.datypic.com/sc/ubl21/e-cac_PhysicalLocation.html
 cbc:ID [0..1]    An identifier for this location, e.g., the EAN Location Number, GLN.
@@ -32,56 +30,49 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   validityPeriod: { order: 9, attributeName: 'cac:ValidityPeriod', min: 0, max: undefined, classRef: ValidityPeriod },
   address: { order: 10, attributeName: 'cac:Address', min: 0, max: 1, classRef: Address },
 
-  //##################################  TODO CAC MISSING ################################################
+  // ##################################  TODO CAC MISSING ################################################
 
   // markCareIndicator: { order: 11,  attributeName: 'cbc:MarkCareIndicator', min: 0, max:1, classRef: null  },
   // markCareIndicator: { order: 12,  attributeName: 'cbc:MarkCareIndicator', min: 0, max:1, classRef: null }
 
-
-  //##################################  TODO CAC MISSING ################################################
-
-}
-
+  // ##################################  TODO CAC MISSING ################################################
+};
 
 type AllowedParams = {
-  id: string | UdtIdentifier,
-  description: string | UdtText,
-  conditions: string | UdtText,
-  countrySubentity: string | UdtText,
-  countrySubentityCode: string | UdtCode,
-  locationTypeCode: string | UdtCode,
-  informationURI: string | UdtIdentifier
-  name: string | UdtName
-  validityPeriod: string | ValidityPeriod,
-  address: string | Address
-}
+  id: string | UdtIdentifier;
+  description: string | UdtText;
+  conditions: string | UdtText;
+  countrySubentity: string | UdtText;
+  countrySubentityCode: string | UdtCode;
+  locationTypeCode: string | UdtCode;
+  informationURI: string | UdtIdentifier;
+  name: string | UdtName;
+  validityPeriod: string | ValidityPeriod;
+  address: string | Address;
+};
 
 /**
- * 
+ *
  */
 class LocationType extends GenericAggregateComponent {
-
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:LocationType");
+    super(content, ParamsMap, 'cac:LocationType');
   }
 
   /**
-   * 
-   * @param value 
+   *
+   * @param value
    */
   setAddress(value: Address) {
-    if (!(value instanceof Address)) throw "Value must be instance of Address"
+    if (!(value instanceof Address)) throw new Error('Value must be instance of Address');
     this.attributes.address = value;
-
   }
-
 }
 
 export {
   LocationType as PhysicalLocation,
   AllowedParams as LocationTypeParams,
-
   LocationType as DeliveryLocation,
   LocationType as AlternativeDeliveryLocation,
-  LocationType as DespatchLocation
-}
+  LocationType as DespatchLocation,
+};

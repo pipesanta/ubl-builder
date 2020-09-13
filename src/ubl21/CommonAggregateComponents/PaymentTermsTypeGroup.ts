@@ -1,10 +1,10 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtIdentifier, UdtText, UdtCode, UdtDate } from "../types/UnqualifiedDataTypes";
-import { UdtPercentType } from "../types/UnqualifiedDataTypes/UdtPercentType";
-import { UdtAmount } from "../types/UnqualifiedDataTypes/UdtAmountType";
-import { PeriodType } from "./PeriodTypeGroup";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtIdentifier, UdtText, UdtCode, UdtDate } from '../types/UnqualifiedDataTypes';
+import { UdtPercentType } from '../types/UnqualifiedDataTypes/UdtPercentType';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { PeriodType } from './PeriodTypeGroup';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");;
 
@@ -39,64 +39,91 @@ import { PeriodType } from "./PeriodTypeGroup";
   19  cac:ValidityPeriod [0..1]    The period during which these payment terms are valid.
 */
 
-
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-    id: { order: 1,  attributeName: 'cbc:ID', min: 0, max:1, classRef: UdtIdentifier },
-    paymentMeansIDs: { order: 2,  attributeName: 'cbc:PaymentMeansID', min: 0, max: undefined, classRef: UdtIdentifier },
-    prepaidPaymentReferenceID: { order: 3,  attributeName: 'cbc:PrepaidPaymentReferenceID', min: 0, max: 1, classRef: UdtIdentifier },
-    notes: { order: 4,  attributeName: 'cbc:Note', min: 0, max: undefined, classRef: UdtText },
-    referenceEventCode: { order: 5,  attributeName: 'cbc:ReferenceEventCode', min: 0, max: 1, classRef: UdtCode },
-    settlementDiscountPercent: { order: 6,  attributeName: 'cbc:SettlementDiscountPercent', min: 0, max: 1, classRef: UdtCode },
-    penaltySurchargePercent: { order: 7,  attributeName: 'cbc:PenaltySurchargePercent', min: 0, max: 1, classRef: UdtPercentType },    
-    paymentPercent: { order: 8,  attributeName: 'cbc:PaymentPercent', min: 0, max: 1, classRef: UdtPercentType },
-    amount: { order: 9,  attributeName: 'cbc:Amount', min: 0, max: 1, classRef: UdtAmount },
-    settlementDiscountAmount: { order: 10,  attributeName: 'cbc:SettlementDiscountAmount', min: 0, max: 1, classRef: UdtAmount },
-    penaltyAmount: { order: 11,  attributeName: 'cbc:PenaltyAmount', min: 0, max: 1, classRef: UdtAmount },
-    PaymentTermsDetailsURI: { order: 12,  attributeName: 'cbc:PaymentTermsDetailsURI', min: 0, max: 1, classRef: UdtIdentifier },
-    paymentDueDate: { order: 13,  attributeName: 'cbc:PaymentDueDate', min: 0, max: 1, classRef: UdtDate },
-    installmentDueDate: { order: 14,  attributeName: 'cbc:InstallmentDueDate', min: 0, max: 1, classRef: UdtDate },
-    invoicingPartyReference: { order: 15,  attributeName: 'cbc:InvoicingPartyReference', min: 0, max: 1, classRef: UdtText },
-    settlementPeriod: { order: 16,  attributeName: 'cac:SettlementPeriod', min: 0, max: 1, classRef: PeriodType },
-    penaltyPeriod: { order: 17,  attributeName: 'cac:PenaltyPeriod', min: 0, max: 1, classRef: PeriodType },
+  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  paymentMeansIDs: { order: 2, attributeName: 'cbc:PaymentMeansID', min: 0, max: undefined, classRef: UdtIdentifier },
+  prepaidPaymentReferenceID: {
+    order: 3,
+    attributeName: 'cbc:PrepaidPaymentReferenceID',
+    min: 0,
+    max: 1,
+    classRef: UdtIdentifier,
+  },
+  notes: { order: 4, attributeName: 'cbc:Note', min: 0, max: undefined, classRef: UdtText },
+  referenceEventCode: { order: 5, attributeName: 'cbc:ReferenceEventCode', min: 0, max: 1, classRef: UdtCode },
+  settlementDiscountPercent: {
+    order: 6,
+    attributeName: 'cbc:SettlementDiscountPercent',
+    min: 0,
+    max: 1,
+    classRef: UdtCode,
+  },
+  penaltySurchargePercent: {
+    order: 7,
+    attributeName: 'cbc:PenaltySurchargePercent',
+    min: 0,
+    max: 1,
+    classRef: UdtPercentType,
+  },
+  paymentPercent: { order: 8, attributeName: 'cbc:PaymentPercent', min: 0, max: 1, classRef: UdtPercentType },
+  amount: { order: 9, attributeName: 'cbc:Amount', min: 0, max: 1, classRef: UdtAmount },
+  settlementDiscountAmount: {
+    order: 10,
+    attributeName: 'cbc:SettlementDiscountAmount',
+    min: 0,
+    max: 1,
+    classRef: UdtAmount,
+  },
+  penaltyAmount: { order: 11, attributeName: 'cbc:PenaltyAmount', min: 0, max: 1, classRef: UdtAmount },
+  PaymentTermsDetailsURI: {
+    order: 12,
+    attributeName: 'cbc:PaymentTermsDetailsURI',
+    min: 0,
+    max: 1,
+    classRef: UdtIdentifier,
+  },
+  paymentDueDate: { order: 13, attributeName: 'cbc:PaymentDueDate', min: 0, max: 1, classRef: UdtDate },
+  installmentDueDate: { order: 14, attributeName: 'cbc:InstallmentDueDate', min: 0, max: 1, classRef: UdtDate },
+  invoicingPartyReference: {
+    order: 15,
+    attributeName: 'cbc:InvoicingPartyReference',
+    min: 0,
+    max: 1,
+    classRef: UdtText,
+  },
+  settlementPeriod: { order: 16, attributeName: 'cac:SettlementPeriod', min: 0, max: 1, classRef: PeriodType },
+  penaltyPeriod: { order: 17, attributeName: 'cac:PenaltyPeriod', min: 0, max: 1, classRef: PeriodType },
 
-    
-
-    //##################################  TODO CAC MISSING ################################################
-
-}
-
+  // ##################################  TODO CAC MISSING ################################################
+};
 
 type AllowedParams = {
-    id: string | UdtIdentifier,
-    paymentMeansIDs: string[] | UdtIdentifier[],
-    prepaidPaymentReferenceID: string | UdtIdentifier,
-    notes: string | UdtText,
-    referenceEventCode: string | UdtCode,
-    settlementDiscountPercent: string | UdtCode,
-    penaltySurchargePercent: string | UdtPercentType,
-    paymentPercent: string | UdtPercentType,
-    amount: string | UdtAmount,
-    settlementDiscountAmount: string | UdtAmount,
-    penaltyAmount: string | UdtAmount,
-    PaymentTermsDetailsURI: string | UdtIdentifier,
-    paymentDueDate: string | UdtDate,
-    installmentDueDate: string | UdtDate,
-    // invoicingPartyReference: ,
-    settlementPeriod: string | PeriodType,
-    penaltyPeriod: string | PeriodType,
-}
+  id: string | UdtIdentifier;
+  paymentMeansIDs: string[] | UdtIdentifier[];
+  prepaidPaymentReferenceID: string | UdtIdentifier;
+  notes: string | UdtText;
+  referenceEventCode: string | UdtCode;
+  settlementDiscountPercent: string | UdtCode;
+  penaltySurchargePercent: string | UdtPercentType;
+  paymentPercent: string | UdtPercentType;
+  amount: string | UdtAmount;
+  settlementDiscountAmount: string | UdtAmount;
+  penaltyAmount: string | UdtAmount;
+  PaymentTermsDetailsURI: string | UdtIdentifier;
+  paymentDueDate: string | UdtDate;
+  installmentDueDate: string | UdtDate;
+  // invoicingPartyReference: ,
+  settlementPeriod: string | PeriodType;
+  penaltyPeriod: string | PeriodType;
+};
 
 /**
- * 
+ *
  */
 class PaymentTermsType extends GenericAggregateComponent {
   constructor(content: string) {
-    super(content, ParamsMap, "cac:PaymentTermsType");
+    super(content, ParamsMap, 'cac:PaymentTermsType');
   }
-
 }
 
-export {
-  PaymentTermsType as PaymentTerms,
-  AllowedParams as PaymentTermsTypeParams,   
-}
+export { PaymentTermsType as PaymentTerms, AllowedParams as PaymentTermsTypeParams };

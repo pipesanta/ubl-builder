@@ -1,8 +1,8 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from "./GenericAggregateComponent";
-import { UdtName, UdtIdentifier } from "../types/UnqualifiedDataTypes";
-import { CorporateRegistrationScheme } from "./CorporateRegistrationScheme";
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtName, UdtIdentifier } from '../types/UnqualifiedDataTypes';
+import { CorporateRegistrationScheme } from './CorporateRegistrationScheme';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");
 
@@ -30,45 +30,45 @@ import { CorporateRegistrationScheme } from "./CorporateRegistrationScheme";
   14  cac:ShareholderParty [0..*]    A party owning shares in this legal entity.
 */
 
+// ##################################  TODO CAC MISSING ################################################
 
- //##################################  TODO CAC MISSING ################################################
-
-const ParamsMap : IGenericKeyValue<ParamsMapValues> = {
-    registrationName: { order: 1,  attributeName: 'cbc:RegistrationName', min: 0, max: 1, classRef: UdtName },
-    companyID: { order: 2,  attributeName: 'cbc:CompanyID', min: 0, max: 1, classRef: UdtIdentifier },
-    corporateRegistrationScheme: { order: 12,  attributeName: 'cac:CorporateRegistrationScheme', min: 0, max: 1, classRef: CorporateRegistrationScheme },
-}
-
+const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  registrationName: { order: 1, attributeName: 'cbc:RegistrationName', min: 0, max: 1, classRef: UdtName },
+  companyID: { order: 2, attributeName: 'cbc:CompanyID', min: 0, max: 1, classRef: UdtIdentifier },
+  corporateRegistrationScheme: {
+    order: 12,
+    attributeName: 'cac:CorporateRegistrationScheme',
+    min: 0,
+    max: 1,
+    classRef: CorporateRegistrationScheme,
+  },
+};
 
 type AllowedParams = {
-    registrationName: string | UdtName,
-    companyID: string | UdtIdentifier,
-    corporateRegistrationScheme: CorporateRegistrationScheme
-}
+  registrationName: string | UdtName;
+  companyID: string | UdtIdentifier;
+  corporateRegistrationScheme: CorporateRegistrationScheme;
+};
 
 /**
  * More info: http://www.datypic.com/sc/ubl21/e-cac_PartyLegalEntity.html
  */
 class PartyLegalEntity extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:PartyLegalEntity");
+    super(content, ParamsMap, 'cac:PartyLegalEntity');
   }
 
   /**
-   * 
-   * @param value 
+   *
+   * @param value
    */
-  setCorporateRegistrationScheme(value: CorporateRegistrationScheme){
-    if(value instanceof CorporateRegistrationScheme){
+  setCorporateRegistrationScheme(value: CorporateRegistrationScheme) {
+    if (value instanceof CorporateRegistrationScheme) {
       this.attributes.corporateRegistrationScheme = value;
-    }else{
-      throw "value must to be instance of CorporateRegistrationScheme"
+    } else {
+      throw new Error('value must to be instance of CorporateRegistrationScheme');
     }
   }
-
 }
 
-export {
-  PartyLegalEntity as PartyLegalEntity,
-  AllowedParams as PartyLegalEntityParams,   
-}
+export { PartyLegalEntity, AllowedParams as PartyLegalEntityParams };
