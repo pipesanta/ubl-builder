@@ -44,7 +44,7 @@ class BillingReference extends GenericAggregateComponent {
     if (value instanceof InvoiceDocumentReference) {
       this.attributes.invoiceDocumentReference = value;
     } else {
-      throw new Error("this action is not suported yet");
+      throw new Error('this action is not suported yet');
     }
 
     return this;

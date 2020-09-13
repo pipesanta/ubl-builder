@@ -50,7 +50,7 @@ class TaxScheme extends GenericAggregateComponent {
 
   /**
    *  return Tax's id
-   * @param rawValue 
+   * @param rawValue
    */
   getId(rawValue = true): UdtIdentifier | string {
     return rawValue ? this.attributes.id.content : this.attributes.id;

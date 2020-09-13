@@ -35,7 +35,6 @@ export class CctCodeType extends XsdNormalizedString {
     super(content, attributes);
   }
 
-
   parseToJson() {
     const jsonResult: any = { '#text': this.content };
     Object.keys(this.attributes)

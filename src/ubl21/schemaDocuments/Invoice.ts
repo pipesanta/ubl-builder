@@ -1,4 +1,3 @@
-
 import {
   InvoiceLine,
   InvoiceLineParams,
@@ -291,7 +290,7 @@ export default class Invoice {
     this.setIssueDate(`${year}-${month}-${dayOfMonth}`);
     this.setIssueTime(`${hourOfDay}:${minute}:${second}-05:00`);
     this.setUBLVersionID('UBL 2.1');
-    this.setDocumentCurrencyCode("COP") // Divisa de toda la factura
+    this.setDocumentCurrencyCode('COP'); // Divisa de toda la factura
     this.calculateDianExtension(); // fill Dian extension content
 
     // this.fillEmptyExtensionForSignature();
@@ -1118,7 +1117,7 @@ export default class Invoice {
       'hex',
     );
 
-    const extensionsNode = new UBLExtensions({});
+    const extensionsNode = new UBLExtensions();
 
     extensionsNode.addUBLExtension(
       new UBLExtensionType({

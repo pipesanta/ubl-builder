@@ -66,7 +66,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     min: 0,
     max: 1,
     classRef: null,
-  }, 
+  },
   // ItemIdentificationType
 };
 

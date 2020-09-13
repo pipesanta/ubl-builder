@@ -177,9 +177,7 @@ class InvoiceLine extends GenericAggregateComponent {
   }
 
   setId(value: string | UdtIdentifier) {
-    this.attributes.id = (value instanceof UdtIdentifier) 
-      ? value 
-      : new UdtIdentifier(value);
+    this.attributes.id = value instanceof UdtIdentifier ? value : new UdtIdentifier(value);
   }
 
   /**

@@ -2,8 +2,11 @@ import GenericAggregateComponent, {
   IGenericKeyValue,
   ParamsMapValues,
 } from '../../CommonAggregateComponents/GenericAggregateComponent';
-import { InvoiceControl, InvoiceSource, SoftwareProvider, AuthorizationProvider } from '..';
+import { InvoiceControl } from './InvoiceControl';
 import { UdtIdentifier, UdtText } from '../../types/UnqualifiedDataTypes';
+import { InvoiceSource } from './InvoiceSource';
+import { SoftwareProvider } from './SoftwareProvider';
+import { AuthorizationProvider } from './AuthorizationProvider';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   // ##################################  TODO CAC MISSING ################################################

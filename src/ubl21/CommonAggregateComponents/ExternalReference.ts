@@ -1,5 +1,3 @@
-
-
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtDate, UdtIdentifier, UdtText, UdtTime, UdtCode, UdtName } from '../types/UnqualifiedDataTypes';
 

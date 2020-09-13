@@ -49,18 +49,24 @@ export default class GenericAggregateComponent {
   }
 
   assignContent(content: any) {
-    Object.keys(content)
+    // console.log("CONTENT: ", content);
+    Object.keys(content || {})
       .filter((att) => content[att] != null)
-      .forEach((att) => {
+      .forEach((att: string) => {
         const AbstractClass = this.paramsMap[att].classRef;
+        if (!AbstractClass) {
+          throw new Error('classRef is required');
+        }
+
         if (Array.isArray(content[att])) {
-          this.attributes[att] = content[att].map((subItem: any) =>
-            subItem instanceof AbstractClass ? subItem : new AbstractClass(subItem.content, subItem.attributes),
-          );
+          this.attributes[att] = content[att].map((subItem: any) => {
+            return subItem instanceof AbstractClass ? subItem : new AbstractClass(subItem.content, subItem.attributes);
+          });
         } else {
           const childContent = ['boolean', 'string', 'number'].includes(typeof content[att])
             ? content[att]
             : content[att].content;
+
           const childAttributes = content[att].attributes || {};
           this.attributes[att] =
             content[att] instanceof AbstractClass ? content[att] : new AbstractClass(childContent, childAttributes);
@@ -83,6 +89,6 @@ export default class GenericAggregateComponent {
    * @param {boolean} [deep=false] true for deep print
    */
   getAsJson(deep = false) {
-    return  this.parseToJson();
+    return this.parseToJson();
   }
 }

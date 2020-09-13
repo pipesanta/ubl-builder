@@ -17,7 +17,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
-  identificationCode?: string | UdtCode | any
+  identificationCode?: string | UdtCode | any;
 };
 
 /**
