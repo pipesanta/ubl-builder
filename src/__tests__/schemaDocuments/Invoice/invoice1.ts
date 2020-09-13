@@ -18,10 +18,9 @@ const invoiceOptions = {
   },
 };
 
-const inv = new Invoice('123123123', invoiceOptions);
+const inv = new Invoice('123456789', invoiceOptions);
 
-inv.setCustomizationID('este es el id');
-inv.setIssueDate('12-12-12');
+inv.addProperty('xmlns', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
 
 console.log(inv.getXml());
 
