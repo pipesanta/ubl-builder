@@ -2,8 +2,7 @@
 const gregorian = require('weeknumber');
 
 interface Options {
-  timezone?: string; // America/Bogota, UTC .
-  language?: string; // es-CO,
+  timezone?: string; // America/Bogota, UTC 
 }
 
 /**
@@ -12,12 +11,12 @@ interface Options {
  * @param options
  */
 function decomposeTime(ts: number, options?: Options) {
+  
   options = options || {};
-  options.language = options.language || 'es-CO';
   options.timezone = options.timezone || 'America/Bogota';
 
   // 2018-12-4 17:12:05
-  const date = new Date(new Date(ts).toLocaleString(options.language, { timeZone: options.timezone }));
+  const date = new Date(new Date(ts).toLocaleString("en-US", { timeZone: options.timezone }));
   const { year, week, day } = gregorian.weekNumberYear(date);
   const daysOfWeek = ['MON', 'TUE', 'WED', 'THU', 'FRY', 'SAT', 'SUN'];
   const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];

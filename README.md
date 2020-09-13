@@ -5,12 +5,14 @@
 
 A library to create XML documents with UBL 2.1 (Universal Business Language) standard.
 
+Online demo: <https://ubl-builder-react-demo.stackblitz.io/>
+
 
 **Ubl 2.1 documentation:** <http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html>
 
 Install:
 -------
-> npm install xmldom
+> npm install ubl-builder
 
 ## Samples
 
