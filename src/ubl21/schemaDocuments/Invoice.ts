@@ -271,7 +271,7 @@ export default class Invoice {
     // if(!options.software.providerNit) throw "Software provider is required";
     // if(!options.software.pin) throw "Software Pin is required";
 
-    this.options = options;
+    this.options = options || {};
 
     const { year, month, dayOfMonth, hourOfDay, minute, second } = decomposeTime(options.timestamp);
 
