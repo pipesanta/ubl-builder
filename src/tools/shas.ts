@@ -1,14 +1,14 @@
+import * as crypto from 'crypto';
 
-const crypto = require("crypto");
-
-class SHA256 {
+/* tslint:disable:max-classes-per-file */
+export class SHA256 {
   /**
    * 
    * @param content string to hash
    * @param inputEncoding input encoding "utf8" | "base64" | "binary" | "hex"
    * @param outputEncoding output "utf8" | "base64" | "binary" | "hex"
    */
-  getHash(content: string, inputEncoding = "utf8", outputEncoding="base64") {
+  getHash(content: string, inputEncoding:any = "utf8", outputEncoding: any="base64") {
     const shasum = crypto.createHash("sha256");
     shasum.update(content, inputEncoding);
     const res = shasum.digest(outputEncoding);
@@ -18,14 +18,14 @@ class SHA256 {
   getAlgorithmName(){ return "http://www.w3.org/2001/04/xmlenc#sha256"; };
 }
 
-class SHA384 {
+export class SHA384 {
   /**
    * 
    * @param content string to hash
    * @param inputEncoding input encoding "utf8" | "base64" | "binary" | "hex"
    * @param outputEncoding output encoding "utf8" | "base64" | "binary" | "hex"
    */
-  getHash(content: string, inputEncoding = "utf8", outputEncoding = "hex") {
+  getHash(content: string, inputEncoding:any = "utf8", outputEncoding:any = "hex") {
 
     const shasum = crypto.createHash("SHA384");
     shasum.update(content, inputEncoding);
@@ -36,14 +36,14 @@ class SHA384 {
   getAlgorithmName() { return "http://www.w3.org/2001/04/xmlenc#sha256"; };
 }
 
-class SHA1 {
+export class SHA1 {
   /**
    * 
    * @param content string to hash
    * @param inputEncoding input encoding "utf8" | "base64" | "binary" | "hex"
    * @param outputEncoding output encoding "utf8" | "base64" | "binary" | "hex"
    */
-  getHash(content: string, inputEncoding = "utf8", outputEncoding = "base64" ) {
+  getHash(content: string, inputEncoding:any = "utf8", outputEncoding:any = "base64" ) {
     const shasum = crypto.createHash('sha1');
     shasum.update(content, inputEncoding);
     const res = shasum.digest(outputEncoding);
@@ -53,7 +53,7 @@ class SHA1 {
   getAlgorithmName() { return "http://www.w3.org/2000/09/xmldsig#sha1"; }
 }
 
-class SHA512 {
+export class SHA512 {
 
   /**
    * 
@@ -61,7 +61,7 @@ class SHA512 {
    * @param inputEncoding input encoding "utf8" | "base64" | "binary" | "hex"
    * @param outputEncoding output encoding "utf8" | "base64" | "binary" | "hex"
    */
-  getHash(content: string, inputEncoding = "utf8", outputEncoding = "base64" ) {
+  getHash(content: string, inputEncoding:any = "utf8", outputEncoding:any = "base64" ) {
     const shasum = crypto.createHash('sha512');
     shasum.update(content, inputEncoding);
     const res = shasum.digest(outputEncoding);
@@ -193,10 +193,3 @@ class SHA512 {
 //         return res;
 //     };
 // }
-
-export {
-  SHA256,
-  SHA384,
-  SHA512,
-  SHA1
-};
