@@ -1,6 +1,6 @@
 {
   "name": "ubl-builder",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Tool to create xml documents with UBL 2.0 standard",
   "main": "lib/index.js",
   "files": [
