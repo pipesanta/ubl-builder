@@ -1,7 +1,7 @@
 // 'use strict'
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
 
 /*
   1  cbc:LineExtensionAmount [0..1]    The monetary amount of an extended transaction line, net of tax and settlement discounts, but inclusive of any applicable rounding amount.

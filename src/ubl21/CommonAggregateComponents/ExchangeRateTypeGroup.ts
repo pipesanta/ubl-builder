@@ -2,7 +2,7 @@
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtCode, UdtIdentifier, UdtDate } from '../types/UnqualifiedDataTypes';
-import { UdtRate } from '../types/UnqualifiedDataTypes/UdtRateType';
+import { UdtRate } from '../types/UnqualifiedDataTypes/UdtRate';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");
 

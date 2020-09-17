@@ -1,6 +1,6 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtText, UdtQuantity, UdtIndicator, UdtName, UdtIdentifier } from '../types/UnqualifiedDataTypes';
-import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumericType';
+import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumeric';
 
 /*
     1   cbc:Description [0..*]    Text describing this item.

@@ -4,7 +4,7 @@ export type AllowedAttributes = {
   /** The format of the binary content. */
   format?: string;
   /** The mime type of the binary object */
-  mimeCode?: string;
+  mimeCode: string;
   /** Specifies the decoding algorithm of the binary object */
   encodingCode?: string;
   /** The character set of the binary object if the mime type is text */

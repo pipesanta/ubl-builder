@@ -2,7 +2,7 @@
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtIdentifier, UdtQuantity, UdtText, UdtDate, UdtCode } from '../types/UnqualifiedDataTypes';
-import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
 import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
 import { BillingReference } from './BillingReference';
 import { DocumentReference } from './DocumentReferenceGroup';

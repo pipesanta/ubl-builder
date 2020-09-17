@@ -2,15 +2,15 @@
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtIdentifier, UdtText, UdtCode, UdtDate } from '../types/UnqualifiedDataTypes';
-import { UdtPercentType } from '../types/UnqualifiedDataTypes/UdtPercentType';
-import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { UdtPercent } from '../types/UnqualifiedDataTypes/UdtPercent';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
 import { PeriodType } from './PeriodTypeGroup';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");;
 
 // /* TODO GANERIC CLASSES */
 
-// const { UdtCode, UdtIdentifier, UdtDate, UdtText, UdtTime, UdtName, UdtQuantity, UdtPercentType, UdtAmount } = require("../types/UnqualifiedDataTypes");
+// const { UdtCode, UdtIdentifier, UdtDate, UdtText, UdtTime, UdtName, UdtQuantity, UdtPercent, UdtAmount } = require("../types/UnqualifiedDataTypes");
 
 // /* TODO GANERIC CLASSES */
 // const { PeriodType } = require("./PeriodTypeGroup");
@@ -63,9 +63,9 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cbc:PenaltySurchargePercent',
     min: 0,
     max: 1,
-    classRef: UdtPercentType,
+    classRef: UdtPercent,
   },
-  paymentPercent: { order: 8, attributeName: 'cbc:PaymentPercent', min: 0, max: 1, classRef: UdtPercentType },
+  paymentPercent: { order: 8, attributeName: 'cbc:PaymentPercent', min: 0, max: 1, classRef: UdtPercent },
   amount: { order: 9, attributeName: 'cbc:Amount', min: 0, max: 1, classRef: UdtAmount },
   settlementDiscountAmount: {
     order: 10,
@@ -104,8 +104,8 @@ type AllowedParams = {
   notes: string | UdtText;
   referenceEventCode: string | UdtCode;
   settlementDiscountPercent: string | UdtCode;
-  penaltySurchargePercent: string | UdtPercentType;
-  paymentPercent: string | UdtPercentType;
+  penaltySurchargePercent: string | UdtPercent;
+  paymentPercent: string | UdtPercent;
   amount: string | UdtAmount;
   settlementDiscountAmount: string | UdtAmount;
   penaltyAmount: string | UdtAmount;

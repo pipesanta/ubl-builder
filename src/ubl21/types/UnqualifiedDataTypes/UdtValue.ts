@@ -1,4 +1,4 @@
-import XsdDate from './essentials/xsd/XsdDate';
+import { CctNumericType, AllowedAttributes } from './essentials/cct/CctNumeric';
 
 /**
  * udt:TimeType
@@ -9,8 +9,8 @@ import XsdDate from './essentials/xsd/XsdDate';
  * See more: http://www.datypic.com/sc/ubl21/t-udt_TimeType.html
  * 
  */
-export class UdtTime extends XsdDate {
-  constructor(content: string) {
-    super(content);
+export class UdtValue extends CctNumericType {
+  constructor(content: string, attributes: AllowedAttributes) {
+    super(content, attributes);
   }
 }

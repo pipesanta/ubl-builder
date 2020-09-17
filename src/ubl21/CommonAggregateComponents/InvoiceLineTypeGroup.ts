@@ -2,7 +2,7 @@
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtIdentifier, UdtText, UdtQuantity, UdtDate, UdtCode, UdtIndicator } from '../types/UnqualifiedDataTypes';
-import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
 import { PeriodType } from './PeriodTypeGroup';
 import { OrderLineReference } from './OrderLineReference';
 import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';

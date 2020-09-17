@@ -12,6 +12,12 @@ type AllowedParams = {
   line?: string | UdtText;
 };
 
+/**
+ * cac:AddressLine
+ * Namespace: urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2
+ * Type: cac:AddressLineType
+ * See more: http://www.datypic.com/sc/ubl21/e-cac_AddressLine.html
+ */
 class AddressLine extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
     super(content, ParamsMap, 'cac:AddressLine');

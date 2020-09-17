@@ -1,16 +1,25 @@
+import { UdtAmount, UdtAmountAttributes } from './UdtAmount';
+import { UdtBinaryObject } from './UdtBinaryObject';
 import { UdtCode, UdtCodeAttributes } from './UdtCode';
-import { UdtIdentifier, UdtIdentifierAttributes } from './UdtIdentifier';
+import { UdtDateTime } from './UdtDateTime';
 import { UdtDate } from './UdtDate';
+import { UdtGraphicAttributes, UdtGraphic } from './UdtGraphic';
+import { UdtIdentifier, UdtIdentifierAttributes } from './UdtIdentifier';
+import { UdtIndicator } from './UdtIndicator';
+import { UdtMeasure, UdtMeasureAttributes } from './UdtMeasure';
+import { UdtName } from './UdtName';
+import { UdtNumeric, UdtNumericAttributes } from './UdtNumeric';
+import { UdtPercent, UdtPercentAttributes } from './UdtPercent';
+import { UdtPicture, UdtPictureAttributes } from './UdtPicture';
+import { UdtQuantity } from './UdtQuantity';
+import { UdtRate, UdtRateAttributes } from './UdtRate';
+import { UdtSound, UdtSoundAttributes } from './UdtSound';  
 import { UdtText, UdtTextAttributes } from './UdtText';
 import { UdtTime } from './UdtTime';
-import { UdtName } from './UdtName';
-import { UdtQuantity } from './UdtQuantityType';
-import { UdtIndicator } from './UdtIndicatorType';
-import { UdtBinaryObjectType } from './UdtBinaryObjectType';
-import { UdtMeasure, UdtMeasureAttributes } from './UdtMeasureType';
-import { UdtAmount, UdtAmountAttributes } from './UdtAmountType';
-import { UBLVersionID, UBLVersionIDAttributes } from './UBLVersionIDType';
-import { UdtNumeric, UdtNumericAttributes } from './UdtNumericType';
+import { UdtValue } from './UdtValue';
+import { UdtVideo, UdtVideoAttributes } from './UdtVideo';
+
+import { UBLVersionID, UBLVersionIDAttributes } from './UBLVersionID';
 
 export {
   UdtCode,
@@ -24,7 +33,7 @@ export {
   UdtName,
   UdtQuantity,
   UdtIndicator,
-  UdtBinaryObjectType,
+  UdtBinaryObject,
   UdtMeasure,
   UdtMeasureAttributes,
   UdtAmount,
@@ -33,4 +42,12 @@ export {
   UBLVersionIDAttributes,
   UdtNumeric,
   UdtNumericAttributes,
+  UdtDateTime,
+  UdtGraphic, UdtGraphicAttributes,
+  UdtPercent, UdtPercentAttributes,
+  UdtPicture, UdtPictureAttributes,
+  UdtSound, UdtSoundAttributes,
+  UdtRate, UdtRateAttributes,
+  UdtValue,
+  UdtVideo, UdtVideoAttributes
 };

@@ -87,112 +87,9 @@ import { decomposeTime } from '../../tools/dateFormatter';
 import * as builder from 'xmlbuilder';
 import { SHA384 } from '../../tools/shas';
 import { addition, fixDecimals } from '../../tools/mathTools';
-import { IGenericKeyValue, ParamsMapValues } from '../CommonAggregateComponents/GenericAggregateComponent';
+import { IGenericKeyValue } from '../CommonAggregateComponents/GenericAggregateComponent';
+import { INVOICE_CHILDREN_MAP } from './ChildrenMap';
 
-const InvoiceSequence: IGenericKeyValue<ParamsMapValues> = {
-  UBLExtensions: { order: 1, attributeName: 'ext:UBLExtensions', min: 0, max: 1, classRef: null },
-  UBLVersionID: { order: 2, attributeName: 'cbc:UBLVersionID', min: 0, max: 1, classRef: null },
-  customizationID: { order: 3, attributeName: 'cbc:CustomizationID', min: 0, max: 1, classRef: null },
-  profileID: { order: 4, attributeName: 'cbc:ProfileID', min: 0, max: 1, classRef: null },
-  profileExecutionID: { order: 5, attributeName: 'cbc:ProfileExecutionID', min: 0, max: 1, classRef: null },
-  id: { order: 6, attributeName: 'cbc:ID', min: 1, max: 1, classRef: null },
-  copyIndicator: { order: 7, attributeName: 'cbc:CopyIndicator', min: 0, max: 1, classRef: null },
-  uuid: { order: 8, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: null },
-  issueDate: { order: 9, attributeName: 'cbc:IssueDate', min: 1, max: 1, classRef: null },
-  issueTime: { order: 10, attributeName: 'cbc:IssueTime', min: 0, max: 1, classRef: null },
-  dueDate: { order: 11, attributeName: 'cbc:DueDate', min: 0, max: 1, classRef: null },
-  invoiceTypeCode: { order: 12, attributeName: 'cbc:InvoiceTypeCode', min: 0, max: 1, classRef: null },
-  notes: { order: 13, attributeName: 'cbc:Note', min: 0, max: undefined, classRef: null },
-  taxPointDate: { order: 14, attributeName: 'cbc:TaxPointDate', min: 0, max: 1, classRef: null },
-  documentCurrencyCode: { order: 15, attributeName: 'cbc:DocumentCurrencyCode', min: 0, max: 1, classRef: null },
-  taxCurrencyCode: { order: 16, attributeName: 'cbc:TaxCurrencyCode', min: 0, max: 1, classRef: null },
-  pricingCurrencyCode: { order: 17, attributeName: 'cbc:PricingCurrencyCode', min: 0, max: 1, classRef: null },
-  paymentCurrencyCode: { order: 18, attributeName: 'cbc:PaymentCurrencyCode', min: 0, max: 1, classRef: null },
-  paymentAlternativeCurrencyCode: {
-    order: 19,
-    attributeName: 'cbc:PaymentAlternativeCurrencyCode',
-    min: 0,
-    max: 1,
-    classRef: null,
-  },
-  accountingCostCode: { order: 20, attributeName: 'cbc:AccountingCostCode', min: 0, max: 1, classRef: null },
-  accountingCost: { order: 21, attributeName: 'cbc:AccountingCost', min: 0, max: 1, classRef: null },
-  lineCountNumeric: { order: 22, attributeName: 'cbc:LineCountNumeric', min: 0, max: 1, classRef: null },
-  buyerReference: { order: 23, attributeName: 'cbc:BuyerReference', min: 0, max: 1, classRef: null },
-  invoicePeriods: { order: 24, attributeName: 'cac:InvoicePeriod', min: 0, max: undefined, classRef: null },
-  orderReference: { order: 25, attributeName: 'cac:OrderReference', min: 0, max: 1, classRef: null },
-  billingReferences: { order: 26, attributeName: 'cac:BillingReference', min: 0, max: undefined, classRef: null },
-  despatchDocumentReferences: {
-    order: 27,
-    attributeName: 'cac:DespatchDocumentReference',
-    min: 0,
-    max: undefined,
-    classRef: null,
-  },
-  receiptDocumentReferences: {
-    order: 28,
-    attributeName: 'cac:ReceiptDocumentReference',
-    min: 0,
-    max: undefined,
-    classRef: null,
-  },
-  statementDocumentReferences: {
-    order: 29,
-    attributeName: 'cac:StatementDocumentReference',
-    min: 0,
-    max: undefined,
-    classRef: null,
-  },
-  originatorDocumentReferences: {
-    order: 30,
-    attributeName: 'cac:OriginatorDocumentReference',
-    min: 0,
-    max: undefined,
-    classRef: null,
-  },
-  contractDocumentReferences: {
-    order: 31,
-    attributeName: 'cac:ContractDocumentReference',
-    min: 0,
-    max: undefined,
-    classRef: null,
-  },
-  additionalDocumentReferences: {
-    order: 32,
-    attributeName: 'cac:AdditionalDocumentReference',
-    min: 0,
-    max: undefined,
-    classRef: null,
-  },
-  projectReferences: { order: 33, attributeName: 'cac:ProjectReference', min: 0, max: undefined, classRef: null },
-  signatures: { order: 34, attributeName: 'cac:Signature', min: 0, max: undefined, classRef: null },
-  accountingSupplierParty: { order: 35, attributeName: 'cac:AccountingSupplierParty', min: 1, max: 1, classRef: null },
-  accountingCustomerParty: { order: 36, attributeName: 'cac:AccountingCustomerParty', min: 1, max: 1, classRef: null },
-  payeeParty: { order: 37, attributeName: 'cac:PayeeParty', min: 0, max: 1, classRef: null },
-  buyerCustomerParty: { order: 38, attributeName: 'cac:BuyerCustomerParty', min: 0, max: 1, classRef: null },
-  sellerSupplierParty: { order: 39, attributeName: 'cac:SellerSupplierParty', min: 0, max: 1, classRef: null },
-  taxRepresentativeParty: { order: 40, attributeName: 'cac:TaxRepresentativeParty', min: 0, max: 1, classRef: null },
-  deliveries: { order: 41, attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: null },
-  deliveryTerms: { order: 42, attributeName: 'cac:DeliveryTerms', min: 0, max: 1, classRef: null },
-  paymentMeans: { order: 43, attributeName: 'cac:PaymentMeans', min: 0, max: undefined, classRef: null },
-  paymentTerms: { order: 44, attributeName: 'cac:PaymentTerms', min: 0, max: undefined, classRef: null },
-  prepaidPayments: { order: 45, attributeName: 'cac:PrepaidPayment', min: 0, max: undefined, classRef: null },
-  allowanceCharges: { order: 46, attributeName: 'cac:AllowanceCharge', min: 0, max: undefined, classRef: null },
-  taxExchangeRate: { order: 47, attributeName: 'cac:TaxExchangeRate', min: 0, max: 1, classRef: null },
-  pricingExchangeRate: { order: 48, attributeName: 'cac:PricingExchangeRate', min: 0, max: 1, classRef: null },
-  paymentExchangeRate: { order: 49, attributeName: 'cac:PaymentExchangeRate', min: 0, max: 1, classRef: null },
-  paymentAlternativeExchangeRate: {
-    order: 50,
-    attributeName: 'cac:PaymentAlternativeExchangeRate',
-    min: 0,
-    max: 1,
-    classRef: null,
-  },
-  taxTotals: { order: 51, attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: null },
-  withholdingTaxTotals: { order: 52, attributeName: 'cac:WithholdingTaxTotal', min: 0, max: undefined, classRef: null },
-  legalMonetaryTotal: { order: 53, attributeName: 'cac:LegalMonetaryTotal', min: 1, max: 1, classRef: null },
-  invoiceLines: { order: 54, attributeName: 'cac:InvoiceLine', min: 0, max: 1, classRef: null },
-};
 
 type InvoiceOptions = {
   /** Issue time to create issues field like issuetime, issue date. Current Date by default . */
@@ -235,7 +132,6 @@ export default class Invoice {
   private options: InvoiceOptions;
   private xmlRef: XmlRefType;
   private children: IGenericKeyValue<any> = {};
-  private properties: IGenericKeyValue<string> = {};
 
   /**
    *
@@ -1243,18 +1139,23 @@ export default class Invoice {
    * @param headless result without headers
    */
   getXml(pretty = false, headless = false): string {
-    Object.keys(this.properties);
 
-    Object.keys(InvoiceSequence).forEach((attKey) => {
-      if (this.children[attKey]) {
-        const { attributeName } = InvoiceSequence[attKey];
-        if (Array.isArray(this.children[attKey])) {
-          this.xmlRef.Invoice[attributeName] = this.children[attKey].map((e: any) => e.parseToJson());
-        } else {
-          this.xmlRef.Invoice[attributeName] = this.children[attKey].parseToJson();
+    Object.keys(INVOICE_CHILDREN_MAP)
+      .filter(attKey => this.children[attKey])
+      .forEach((attKey) => {
+        const { childName, max } = INVOICE_CHILDREN_MAP[attKey];
+
+        const isChildAnArray = Array.isArray(this.children[attKey]);
+        // validate array condition
+        if( max && max > 1 && !isChildAnArray ){
+          throw new Error(`${attKey} must to be an Array`)
         }
-      }
-    });
+
+        this.xmlRef.Invoice[childName] = isChildAnArray
+          ? this.children[attKey].map((e: any) => e.parseToJson())
+          : this.children[attKey].parseToJson()
+
+      });
 
     return builder.create(this.xmlRef, { encoding: 'UTF-8', standalone: false, headless }).end({ pretty });
   }

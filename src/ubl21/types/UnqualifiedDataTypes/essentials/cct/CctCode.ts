@@ -20,6 +20,7 @@ export type AllowedAttributes = {
   /**  The Uniform Resource Identifier that identifies where the code list scheme is located */
   listSchemeURI: string;
 };
+
 /**
  * A character string to identify and distinguish uniquely,
  * one instance of an object in an identification scheme from all other objects in
@@ -27,9 +28,9 @@ export type AllowedAttributes = {
  */
 export class CctCodeType extends XsdNormalizedString {
   /**
-   *
-   * @param {string} content
-   * @param {CctCodeTypeAttributes} attributes
+   * 
+   * @param content 
+   * @param attributes 
    */
   constructor(content: string, attributes?: AllowedAttributes) {
     super(content, attributes);

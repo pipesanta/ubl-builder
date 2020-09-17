@@ -1,6 +1,6 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtIdentifier, UdtText, UdtQuantity, UdtDate, UdtCode, UdtIndicator } from '../types/UnqualifiedDataTypes';
-import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
 import { BillingReference } from './BillingReference';
 import { DocumentReference } from './DocumentReferenceGroup';
 import { Party } from './PartyTypeGroup';

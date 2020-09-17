@@ -16,9 +16,9 @@ export interface IGenericKeyValue<T> {
  * Generic class to avoid repeat several code in all CommonAggregateComponent files
  */
 export default class GenericAggregateComponent {
-  classRefName: string;
-  paramsMap: IGenericKeyValue<ParamsMapValues> = {};
-  attributes: IGenericKeyValue<any> = {};
+  // private classRefName: string;
+  private paramsMap: IGenericKeyValue<ParamsMapValues> = {};
+  protected attributes: IGenericKeyValue<any> = {};
   /**
    *
    * @param content component content
@@ -26,7 +26,7 @@ export default class GenericAggregateComponent {
    * @param [name="GenericAggregateComponent"] Class name
    */
   constructor(content: any, paramsMap: IGenericKeyValue<ParamsMapValues>, name = 'GenericAggregateComponent') {
-    this.classRefName = name;
+    // this.classRefName = name;
     this.paramsMap = paramsMap;
     this.assignContent(content);
   }

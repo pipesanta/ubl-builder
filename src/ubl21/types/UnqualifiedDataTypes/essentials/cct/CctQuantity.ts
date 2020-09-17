@@ -1,15 +1,14 @@
 import { XsdDecimal, XsdAnySimpleType } from '../xsd';
-import { UdtAmount } from '../../UdtAmountType';
 
 export type AllowedAttributes = {
   /** The unit of the quantity */
-  unitCode: string;
+  unitCode?: string;
   /** The quantity unit code list. */
-  unitCodeListID: string;
+  unitCodeListID?: string;
   /** The identification of the agency that maintains the quantity unit code list */
-  unitCodeListAgencyID: string;
+  unitCodeListAgencyID?: string;
   /** The name of the agency which maintains the quantity unit code list. */
-  unitCodeListAgencyName: string;
+  unitCodeListAgencyName?: string;
 };
 /**
  *

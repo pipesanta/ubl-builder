@@ -1,7 +1,7 @@
 import GenericAggregateComponent from './GenericAggregateComponent';
-import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
-import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumericType';
-import { UdtPercentType } from '../types/UnqualifiedDataTypes/UdtPercentType';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
+import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumeric';
+import { UdtPercent } from '../types/UnqualifiedDataTypes/UdtPercent';
 import { UdtMeasure, UdtText } from '../types/UnqualifiedDataTypes';
 import { TaxCategory } from './TaxCategoryTypeGroup';
 
@@ -37,11 +37,11 @@ const ParamsMap = {
     max: 1,
     classRef: UdtAmount,
   },
-  percent: { order: 5, attributeName: 'cbc:Percent', min: 0, max: 1, classRef: UdtPercentType },
+  percent: { order: 5, attributeName: 'cbc:Percent', min: 0, max: 1, classRef: UdtPercent },
   baseUnitMeasure: { order: 6, attributeName: 'cbc:BaseUnitMeasure', min: 0, max: 1, classRef: UdtMeasure },
   perUnitAmount: { order: 7, attributeName: 'cbc:PerUnitAmount', min: 0, max: 1, classRef: UdtAmount },
   tierRange: { order: 8, attributeName: 'cbc:TierRange', min: 0, max: 1, classRef: UdtText },
-  tierRatePercent: { order: 9, attributeName: 'cbc:TierRatePercent', min: 0, max: 1, classRef: UdtPercentType },
+  tierRatePercent: { order: 9, attributeName: 'cbc:TierRatePercent', min: 0, max: 1, classRef: UdtPercent },
   taxCategory: { order: 10, attributeName: 'cac:TaxCategory', min: 1, max: 1, classRef: TaxCategory },
 };
 
@@ -50,11 +50,11 @@ type AllowedParams = {
   taxAmount: string | UdtAmount;
   calculationSequenceNumeric: string | UdtNumeric;
   transactionCurrencyTaxAmount: string | UdtAmount;
-  percent: string | UdtPercentType;
+  percent: string | UdtPercent;
   baseUnitMeasure: string | UdtMeasure;
   perUnitAmount: string | UdtAmount;
   tierRange: string | UdtText;
-  tierRatePercent: string | UdtPercentType;
+  tierRatePercent: string | UdtPercent;
   taxCategory: TaxCategory;
 };
 
@@ -109,10 +109,10 @@ class TaxSubtotal extends GenericAggregateComponent {
 
   /**
    *
-   * @param {UdtPercentType | string} value
+   * @param { UdtPercent | string} value
    */
-  setPercent(value: string | UdtPercentType) {
-    this.attributes.percent = value instanceof UdtPercentType ? value : new UdtPercentType(value);
+  setPercent(value: string | UdtPercent) {
+    this.attributes.percent = value instanceof UdtPercent ? value : new UdtPercent(value);
   }
 
   /**

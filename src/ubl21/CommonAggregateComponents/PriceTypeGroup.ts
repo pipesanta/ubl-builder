@@ -1,7 +1,7 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
 import { UdtQuantity, UdtText, UdtCode } from '../types/UnqualifiedDataTypes';
-import { UdtRate } from '../types/UnqualifiedDataTypes/UdtRateType';
+import { UdtRate } from '../types/UnqualifiedDataTypes/UdtRate';
 import { ValidityPeriod } from './ValidityPeriod';
 import { AllowanceCharge } from './AllowanceChargeTypeGroup';
 import { PriceList } from './PriceListTypeGroup';

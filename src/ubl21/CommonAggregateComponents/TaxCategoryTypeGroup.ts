@@ -2,20 +2,9 @@
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtIdentifier, UdtName, UdtCode, UdtText, UdtMeasure } from '../types/UnqualifiedDataTypes';
-import { UdtPercentType } from '../types/UnqualifiedDataTypes/UdtPercentType';
-import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmountType';
+import { UdtPercent } from '../types/UnqualifiedDataTypes/UdtPercent';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
 import { TaxScheme } from './TaxScheme';
-
-// const GenericAggregateComponent = require("./GenericAggregateComponent");
-// /* TODO GANERIC CLASSES */
-
-// const { UdtCode, UdtIdentifier, UdtDate, UdtText, UdtTime,
-//   UdtMeasure, UdtAmount,
-//    UdtPercentType, UdtName, UdtQuantity } = require("../types/UnqualifiedDataTypes");
-
-// const { TaxScheme, TaxSchemeParams } = require("./TaxScheme");
-
-/* TODO GANERIC CLASSES */
 
 /*
 
@@ -35,26 +24,26 @@ import { TaxScheme } from './TaxScheme';
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
   name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
-  percent: { order: 3, attributeName: 'cbc:Percent', min: 0, max: 1, classRef: UdtPercentType },
+  percent: { order: 3, attributeName: 'cbc:Percent', min: 0, max: 1, classRef: UdtPercent },
   baseUnitMeasure: { order: 4, attributeName: 'cbc:BaseUnitMeasure', min: 0, max: 1, classRef: UdtMeasure },
   perUnitAmount: { order: 5, attributeName: 'cbc:PerUnitAmount', min: 0, max: 1, classRef: UdtAmount },
   taxExemptionReasonCode: { order: 6, attributeName: 'cbc:TaxExemptionReasonCode', min: 0, max: 1, classRef: UdtCode },
   taxExemptionReason: { order: 7, attributeName: 'cbc:TaxExemptionReason', min: 0, max: undefined, classRef: UdtText },
   tierRange: { order: 8, attributeName: 'cbc:TierRange', min: 0, max: 1, classRef: UdtText },
-  tierRatePercent: { order: 9, attributeName: 'cbc:TierRatePercent', min: 0, max: 1, classRef: UdtPercentType },
+  tierRatePercent: { order: 9, attributeName: 'cbc:TierRatePercent', min: 0, max: 1, classRef: UdtPercent },
   taxScheme: { order: 10, attributeName: 'cac:TaxScheme', min: 0, max: 1, classRef: TaxScheme },
 };
 
 type AllowedParams = {
   id: string | UdtIdentifier;
   name: string | UdtName;
-  percent: string | UdtPercentType;
+  percent: string | UdtPercent;
   baseUnitMeasure: string | UdtMeasure;
   perUnitAmount: string | UdtAmount;
   taxExemptionReasonCode: string | UdtCode;
   taxExemptionReason: string | UdtText;
   tierRange: string | UdtText;
-  tierRatePercent: string | UdtPercentType;
+  tierRatePercent: string | UdtPercent;
   taxScheme: TaxScheme;
 };
 
@@ -66,12 +55,12 @@ class TaxCategoryType extends GenericAggregateComponent {
     super(content, ParamsMap, 'cac:TaxCategoryType');
   }
 
-  setPercent(value: string | UdtPercentType) {
-    this.attributes.percent = value instanceof UdtPercentType ? value : new UdtPercentType(value);
+  setPercent(value: string | UdtPercent) {
+    this.attributes.percent = value instanceof UdtPercent ? value : new UdtPercent(value);
   }
 
   /**
-   * @returns { string | UdtPercentType }
+   * @returns { string | UdtPercent }
    */
   getPercent(rawValue = true) {
     return rawValue ? this.attributes.percent.content : this.attributes.percent;

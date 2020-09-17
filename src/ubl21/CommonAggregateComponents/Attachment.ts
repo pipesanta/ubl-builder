@@ -1,5 +1,5 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtBinaryObjectType } from '../types/UnqualifiedDataTypes';
+import { UdtBinaryObject } from '../types/UnqualifiedDataTypes';
 import { ExternalReference } from './ExternalReference';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
@@ -8,7 +8,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cbc:EmbeddedDocumentBinaryObject',
     min: 0,
     max: 1,
-    classRef: UdtBinaryObjectType,
+    classRef: UdtBinaryObject,
   },
   externalReference: {
     order: 1,
@@ -21,7 +21,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   /** A binary large object containing an attached document */
-  embeddedDocumentBinaryObject?: UdtBinaryObjectType | string;
+  embeddedDocumentBinaryObject?: UdtBinaryObject | string;
   /** A reference to an attached document that is external to the document(s) being exchanged */
   externalReference?: ExternalReference;
 };
