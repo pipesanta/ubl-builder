@@ -36,7 +36,7 @@
   "dependencies": {
     "weeknumber": "^1.1.2",
     "xmlbuilder": "^15.1.1",
-    "xmldom": "^0.3.0",
+    "xmldom": "^0.5.0",
     "xpath": "0.0.29"
   },
   "devDependencies": {
