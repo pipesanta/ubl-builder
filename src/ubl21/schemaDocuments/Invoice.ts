@@ -90,7 +90,6 @@ import { addition, fixDecimals } from '../../tools/mathTools';
 import { IGenericKeyValue } from '../CommonAggregateComponents/GenericAggregateComponent';
 import { INVOICE_CHILDREN_MAP } from './ChildrenMap';
 
-
 type InvoiceOptions = {
   /** Issue time to create issues field like issuetime, issue date. Current Date by default . */
   timestamp?: number;
@@ -1139,22 +1138,20 @@ export default class Invoice {
    * @param headless result without headers
    */
   getXml(pretty = false, headless = false): string {
-
     Object.keys(INVOICE_CHILDREN_MAP)
-      .filter(attKey => this.children[attKey])
+      .filter((attKey) => this.children[attKey])
       .forEach((attKey) => {
         const { childName, max } = INVOICE_CHILDREN_MAP[attKey];
 
         const isChildAnArray = Array.isArray(this.children[attKey]);
         // validate array condition
-        if( max && max > 1 && !isChildAnArray ){
-          throw new Error(`${attKey} must to be an Array`)
+        if (max && max > 1 && !isChildAnArray) {
+          throw new Error(`${attKey} must to be an Array`);
         }
 
         this.xmlRef.Invoice[childName] = isChildAnArray
           ? this.children[attKey].map((e: any) => e.parseToJson())
-          : this.children[attKey].parseToJson()
-
+          : this.children[attKey].parseToJson();
       });
 
     return builder.create(this.xmlRef, { encoding: 'UTF-8', standalone: false, headless }).end({ pretty });

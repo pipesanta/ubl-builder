@@ -9,7 +9,6 @@ export type UdtBinaryObjectAttributes = AllowedAttributes;
  * Schema document: common/UBL-UnqualifiedDataTypes-2.1.xsd
  * See More: http://www.datypic.com/sc/ubl21/t-udt_BinaryObjectType.html
  * 
-
  */
 export class UdtBinaryObject extends CctBinaryObjectType {
   constructor(content: string, attributes: UdtBinaryObjectAttributes) {

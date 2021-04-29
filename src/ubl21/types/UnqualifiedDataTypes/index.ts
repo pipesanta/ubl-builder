@@ -13,7 +13,7 @@ import { UdtPercent, UdtPercentAttributes } from './UdtPercent';
 import { UdtPicture, UdtPictureAttributes } from './UdtPicture';
 import { UdtQuantity } from './UdtQuantity';
 import { UdtRate, UdtRateAttributes } from './UdtRate';
-import { UdtSound, UdtSoundAttributes } from './UdtSound';  
+import { UdtSound, UdtSoundAttributes } from './UdtSound';
 import { UdtText, UdtTextAttributes } from './UdtText';
 import { UdtTime } from './UdtTime';
 import { UdtValue } from './UdtValue';
@@ -43,11 +43,17 @@ export {
   UdtNumeric,
   UdtNumericAttributes,
   UdtDateTime,
-  UdtGraphic, UdtGraphicAttributes,
-  UdtPercent, UdtPercentAttributes,
-  UdtPicture, UdtPictureAttributes,
-  UdtSound, UdtSoundAttributes,
-  UdtRate, UdtRateAttributes,
+  UdtGraphic,
+  UdtGraphicAttributes,
+  UdtPercent,
+  UdtPercentAttributes,
+  UdtPicture,
+  UdtPictureAttributes,
+  UdtSound,
+  UdtSoundAttributes,
+  UdtRate,
+  UdtRateAttributes,
   UdtValue,
-  UdtVideo, UdtVideoAttributes
+  UdtVideo,
+  UdtVideoAttributes,
 };

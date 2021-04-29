@@ -6,7 +6,7 @@ export type UdtMeasureAttributes = AllowedAttributes;
  * A numeric value determined by measuring an object using a specified unit of measure.
  * Namespace: urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2
  * Schema document: common/UBL-UnqualifiedDataTypes-2.1.xsd
- * 
+ *
  */
 
 export class UdtMeasure extends CctMeasureType {

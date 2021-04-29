@@ -7,14 +7,14 @@ export type UdtPercentAttributes = AllowedAttributes;
  * It does not require a unit of quantity or unit of measure.
  * Namespace: urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2
  * Schema document: common/UBL-UnqualifiedDataTypes-2.1.xsd
- * 
+ *
  */
 
 export class UdtPercent extends CctNumericType {
   /**
-   * 
-   * @param content 
-   * @param attributes 
+   *
+   * @param content
+   * @param attributes
    */
   constructor(content: string, attributes?: UdtPercentAttributes) {
     super(content, attributes);

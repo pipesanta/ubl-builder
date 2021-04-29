@@ -7,15 +7,15 @@ export type UdtGraphicAttributes = AllowedAttributes;
  *  A diagram, graph, mathematical curve, or similar representation.
  * Namespace: urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2
  * Schema document: common/UBL-UnqualifiedDataTypes-2.1.xsd
- * 
+ *
  */
 export class UdtGraphic extends CctBinaryObjectType {
   /**
-   * 
-   * @param content 
-   * @param attributes 
+   *
+   * @param content
+   * @param attributes
    */
-  constructor(content: string, attributes: UdtGraphicAttributes ) {
+  constructor(content: string, attributes: UdtGraphicAttributes) {
     super(content, attributes);
   }
 }

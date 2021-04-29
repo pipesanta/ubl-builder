@@ -7,15 +7,15 @@ export type UdtVideoAttributes = AllowedAttributes;
  * A video representation.
  * Namespace: urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2
  * Schema document: common/UBL-UnqualifiedDataTypes-2.1.xsd
- * 
+ *
  */
 export class UdtVideo extends CctBinaryObjectType {
   /**
-   * 
-   * @param content 
-   * @param attributes 
+   *
+   * @param content
+   * @param attributes
    */
-  constructor(content: string, attributes: UdtVideoAttributes ) {
+  constructor(content: string, attributes: UdtVideoAttributes) {
     super(content, attributes);
   }
 }

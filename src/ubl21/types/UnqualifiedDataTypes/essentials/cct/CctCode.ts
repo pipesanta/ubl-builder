@@ -28,9 +28,9 @@ export type AllowedAttributes = {
  */
 export class CctCodeType extends XsdNormalizedString {
   /**
-   * 
-   * @param content 
-   * @param attributes 
+   *
+   * @param content
+   * @param attributes
    */
   constructor(content: string, attributes?: AllowedAttributes) {
     super(content, attributes);

@@ -38,17 +38,17 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   /** 18  cbc:CityName [0..1]    The name of a city, town, or village. */
   cityName: { order: 18, attributeName: 'cbc:CityName', min: 0, max: 1, classRef: UdtName },
   /** 19  cbc:PostalZone [0..1]    The postal identifier for this address according to the relevant national postal service, such as a ZIP code or Post Code. */
-  /** 20  cbc:CountrySubentity [0..1]    The political or administrative division of a country in which this address is located, such as the name of its county, province, or state, expressed as text. */  
+  /** 20  cbc:CountrySubentity [0..1]    The political or administrative division of a country in which this address is located, such as the name of its county, province, or state, expressed as text. */
   countrySubentity: { order: 20, attributeName: 'cbc:CountrySubentity', min: 0, max: 1, classRef: UdtText },
-  /** 21  cbc:CountrySubentityCode [0..1]    The political or administrative division of a country in which this address is located, such as a county, province, or state, expressed as a code (typically nationally agreed). */   
+  /** 21  cbc:CountrySubentityCode [0..1]    The political or administrative division of a country in which this address is located, such as a county, province, or state, expressed as a code (typically nationally agreed). */
   countrySubentityCode: { order: 21, attributeName: 'cbc:CountrySubentityCode', min: 0, max: 1, classRef: UdtCode },
   /** 22  cbc:Region [0..1]    The recognized geographic or economic region or group of countries in which this address is located. */
   /** 23  cbc:District [0..1]    The district or geographical division of a country or region in which this address is located. */
-  /** 24  cbc:TimezoneOffset [0..1]    The time zone in which this address is located (as an offset from Universal Coordinated Time (UTC)) at the time of exchange. */  
+  /** 24  cbc:TimezoneOffset [0..1]    The time zone in which this address is located (as an offset from Universal Coordinated Time (UTC)) at the time of exchange. */
   /** 25  cac:AddressLine [0..*]    An unstructured address line. */
-  addressLines: { order: 25, attributeName: 'cac:AddressLine', min: 0, max: undefined, classRef: AddressLine },  
+  addressLines: { order: 25, attributeName: 'cac:AddressLine', min: 0, max: undefined, classRef: AddressLine },
   /** 26  cac:Country [0..1]    The country in which this address is situated. */
-  country: { order: 26, attributeName: "cac:Country", min: 0, max: 1, classRef: Country }
+  country: { order: 26, attributeName: 'cac:Country', min: 0, max: 1, classRef: Country },
   /** 27  cac:LocationCoordinate [0..*]    The geographical coordinates of this address. */
 };
 
