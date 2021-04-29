@@ -22,8 +22,6 @@ const inv = new Invoice('123456789', invoiceOptions);
 
 inv.addProperty('xmlns', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
 
-console.log(inv.getXml());
-
-test('[UDT time]', () => {
+test('[CUSTOM PROPERTY] xmlns', () => {
   expect({}).toStrictEqual({});
 });

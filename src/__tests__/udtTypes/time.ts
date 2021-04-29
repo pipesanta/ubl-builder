@@ -1,6 +1,6 @@
 import { UdtTime } from '../..//ubl21/types/UnqualifiedDataTypes';
 
-test('[UDT time]', () => {
+test('[UDT TYPES] TIME', () => {
   const value = new UdtTime('12-12-2020');
   const valueAsJson = value.parseToJson();
   const expected = { '#text': '12-12-2020' };

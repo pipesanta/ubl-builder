@@ -9,6 +9,7 @@ Online demo: <https://ubl-builder-react-demo.stackblitz.io/>
 
 
 **Ubl 2.1 documentation:** <http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html>
+**Ubl 2.1 Schema documents:** <http://www.datypic.com/sc/ubl21/ss.html>
 
 Install:
 -------
