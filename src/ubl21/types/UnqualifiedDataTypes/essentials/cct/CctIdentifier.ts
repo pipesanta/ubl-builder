@@ -73,7 +73,7 @@ export class CctIdentifierType extends XsdNormalizedString {
    * @param {string} value
    */
   setSchemeAgencyName(value: string) {
-    this.attributes.schemeAgencyName = name;
+    this.attributes.schemeAgencyName = value;
   }
 
   /**
