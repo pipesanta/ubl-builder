@@ -1,5 +1,6 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtIdentifier, UdtCode, UdtDate, UdtText } from '../types/UnqualifiedDataTypes';
+import { PayeeFinancialAccount } from './PayeeFinancialAccount';
 
 /*
   1  cbc:ID [0..1]    An identifier for this means of payment.
@@ -25,7 +26,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   instructionID: { order: 5, attributeName: 'cbc:InstructionID', min: 0, max: 1, classRef: UdtIdentifier },
   instructionNotes: { order: 6, attributeName: 'cbc:InstructionNote', min: 0, max: undefined, classRef: UdtText },
   paymentID: { order: 7, attributeName: 'cbc:PaymentID', min: 0, max: undefined, classRef: UdtIdentifier },
-
+  payeeFinancialAccount: {
+    order: 8,
+    attributeName: 'cbc:PayeeFinancialAccount',
+    min: 0,
+    max: undefined,
+    classRef: PayeeFinancialAccount,
+  },
   // ##################################  TODO CAC MISSING ################################################
 };
 
@@ -37,6 +44,7 @@ type AllowedParams = {
   instructionID: string | UdtIdentifier;
   instructionNotes: string[] | UdtText[];
   paymentID: string | UdtIdentifier;
+  payeeFinancialAccount: string | PayeeFinancialAccount;
 };
 
 /**
