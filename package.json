@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/pipesanta/ubl-builder#readme",
   "dependencies": {
-    "@xmldom/xmldom": "^0.7.0",
+    "@xmldom/xmldom": "^0.8.3",
     "weeknumber": "^1.1.2",
     "xmlbuilder": "^15.1.1",
     "xpath": "0.0.29"
