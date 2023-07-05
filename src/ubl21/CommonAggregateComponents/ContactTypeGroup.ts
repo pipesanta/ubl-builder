@@ -26,17 +26,17 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   /** An identifier for this contact */
-  id: string | UdtIdentifier;
+  id?: string | UdtIdentifier;
   /** The name of this contact. It is recommended that this be used for a functional name and not a personal name */
-  name: string | UdtName;
+  name?: string | UdtName;
   /** The primary telephone number of this contact */
   telephone: string | UdtText;
   /** The primary fax number of this contact */
-  telefax: string | UdtText;
+  telefax?: string | UdtText;
   /** The primary email address of this contact */
   electronicMail: string | UdtText;
   /** Free-form text conveying information that is not contained explicitly in other structures; in particular, a textual description of the circumstances under which this contact can be used (e.g., "emergency" or "after hours") */
-  note: string | UdtText;
+  note?: string | UdtText;
 };
 
 /**
