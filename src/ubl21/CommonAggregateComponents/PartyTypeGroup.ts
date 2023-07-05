@@ -7,6 +7,7 @@ import { PhysicalLocation } from './LocationTypeGroup';
 import { PartyTaxScheme, PartyTaxSchemeParams } from './PartyTaxScheme';
 import { PartyLegalEntity } from './PartyLegalEntity';
 import { Contact } from './ContactTypeGroup';
+import { PostalAddress } from './PostalAddressTypeGroup';
 
 /*
     cbc:MarkCareIndicator [0..1]    An indicator that this party is "care of" (c/o) (true) or not (false).
@@ -73,7 +74,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   },
   contact: { order: 14, attributeName: 'cac:Contact', min: 0, max: 1, classRef: Contact },
   // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: 1, classRef: PostalAddress },
-  // postalAddress: { order: 16,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: Person },
+  postalAddress: { order: 16, attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress },
   // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', min: 0, max: 1, classRef: ServiceProviderParty },
   // powerOfAttorney: { order: 18,  attributeName: 'cac:PowerOfAttorney', min: 0, max: 1, classRef: PowerOfAttorney },
   // financialAccount: { order: 19,  attributeName: 'cac:FinancialAccount', min: 0, max: 1, classRef: FinancialAccount },
@@ -108,6 +109,7 @@ type AllowedParams = {
   partyTaxSchemes: PartyTaxScheme[];
   partyLegalEntities: PartyLegalEntity[];
   contact: Contact;
+  postalAddress: PostalAddress;
   // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: 1, classRef: PostalAddress },
   // postalAddress: { order: 16,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: Person },
   // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', min: 0, max: 1, classRef: ServiceProviderParty },

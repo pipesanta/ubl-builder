@@ -75,6 +75,8 @@ import { CorporateRegistrationScheme, CorporateRegistrationSchemeParams } from '
 
 import { Contact, ContactTypeParams, DeliveryContact, AccountingContact, BuyerContact } from './ContactTypeGroup';
 
+import { PostalAddress, PostalAddressTypeParams } from './PostalAddressTypeGroup';
+
 import { AccountingCustomerParty, CustomerPartyParams } from './CustomerPartyTypeGroup';
 
 import { Despatch, DespatchParams } from './Despatch';
@@ -196,6 +198,8 @@ export {
   PartyLegalEntityParams,
   CorporateRegistrationScheme,
   CorporateRegistrationSchemeParams,
+  PostalAddress,
+  PostalAddressTypeParams,
   Contact,
   ContactTypeParams,
   DeliveryContact,
