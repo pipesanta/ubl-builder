@@ -50,8 +50,6 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   country: { order: 7, attributeName: 'cac:Country', min: 0, max: 1, classRef: Country },
 };
 
-//cac:PostalAddress
-
 type AllowedParams = {
   /* Seller address line 1. The main address line in an address. Example value: Main Street 1 */
   streetName: string | UdtText;
