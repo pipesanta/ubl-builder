@@ -44,13 +44,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
-  customerAssignedAccountID: string | UdtIdentifier;
-  SupplierAssignedAccountID: string | UdtIdentifier;
-  additionalAccountIDs: string[] | UdtIdentifier[];
+  customerAssignedAccountID?: string | UdtIdentifier;
+  SupplierAssignedAccountID?: string | UdtIdentifier;
+  additionalAccountIDs?: string[] | UdtIdentifier[];
   party: Party;
-  deliveryContact: DeliveryContact;
-  accountingContact: AccountingContact;
-  buyerContact: BuyerContact;
+  deliveryContact?: DeliveryContact;
+  accountingContact?: AccountingContact;
+  buyerContact?: BuyerContact;
 };
 
 /**

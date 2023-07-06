@@ -48,13 +48,13 @@ const ParamsMap = {
 type AllowedParams = {
   taxableAmount: string | UdtAmount;
   taxAmount: string | UdtAmount;
-  calculationSequenceNumeric: string | UdtNumeric;
-  transactionCurrencyTaxAmount: string | UdtAmount;
-  percent: string | UdtPercent;
-  baseUnitMeasure: string | UdtMeasure;
-  perUnitAmount: string | UdtAmount;
-  tierRange: string | UdtText;
-  tierRatePercent: string | UdtPercent;
+  calculationSequenceNumeric?: string | UdtNumeric;
+  transactionCurrencyTaxAmount?: string | UdtAmount;
+  percent?: string | UdtPercent;
+  baseUnitMeasure?: string | UdtMeasure;
+  perUnitAmount?: string | UdtAmount;
+  tierRange?: string | UdtText;
+  tierRatePercent?: string | UdtPercent;
   taxCategory: TaxCategory;
 };
 

@@ -121,32 +121,32 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
-  id: string | UdtIdentifier;
-  uuid: string | UdtIdentifier;
-  notes: string[] | UdtText[];
-  invoicedQuantity: string | UdtQuantity;
-  lineExtensionAmount: string | UdtAmount;
-  taxPointDate: string | UdtDate;
-  accountingCostCode: string | UdtCode;
-  accountingCost: string | UdtText;
-  paymentPurposeCode: string | UdtCode;
-  freeOfChargeIndicator: string | UdtIndicator;
-  invoicePeriods: PeriodType[];
-  orderLineReferences: OrderLineReference[];
-  despatchLineReference: DespatchLineReference[];
-  receiptLineReference: ReceiptLineReference[];
-  billingReference: BillingReference[];
-  documentReference: DocumentReference[];
+  id: string | UdtIdentifier;               // Mandatory
+  uuid?: string | UdtIdentifier;
+  notes?: string[] | UdtText[];
+  invoicedQuantity: string | UdtQuantity;   // Mandatory
+  lineExtensionAmount: string | UdtAmount;  // Mandatory
+  taxPointDate?: string | UdtDate;
+  accountingCostCode?: string | UdtCode;
+  accountingCost?: string | UdtText;
+  paymentPurposeCode?: string | UdtCode;
+  freeOfChargeIndicator?: string | UdtIndicator;
+  invoicePeriods?: PeriodType[];
+  orderLineReferences?: OrderLineReference[];
+  despatchLineReference?: DespatchLineReference[];
+  receiptLineReference?: ReceiptLineReference[];
+  billingReference?: BillingReference[];
+  documentReference?: DocumentReference[];
   // PricingReference: "",
-  originatorParty: Party;
-  delivery: Delivery;
-  paymentTerms: PaymentTerms;
+  originatorParty?: Party;
+  delivery?: Delivery;
+  paymentTerms?: PaymentTerms;
   // allowanceCharges: "",
-  taxTotals: TaxTotal[];
-  withholdingTaxTotal: WithholdingTaxTotal[];
-  item: Item;
-  price: Price;
-  deliveryTerms: DeliveryTerms;
+  taxTotals?: TaxTotal[];
+  withholdingTaxTotal?: WithholdingTaxTotal[];
+  item: Item;                              // Mandatory
+  price: Price;                           // Mandatory
+  deliveryTerms?: DeliveryTerms;
   // subInvoiceLine: "",
 };
 

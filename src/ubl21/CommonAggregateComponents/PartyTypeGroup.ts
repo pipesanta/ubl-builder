@@ -104,7 +104,7 @@ type AllowedParams = {
   // physicalLocation: "The physical location of this party.",
   partyTaxSchemes: PartyTaxScheme[];
   partyLegalEntities: PartyLegalEntity[];
-  contact: Contact;
+  contact?: Contact;
   postalAddress: PostalAddress;
   // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: 1, classRef: PostalAddress },
   // postalAddress: { order: 16,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: Person },

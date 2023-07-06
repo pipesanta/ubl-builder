@@ -28,7 +28,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   paymentID: { order: 7, attributeName: 'cbc:PaymentID', min: 0, max: undefined, classRef: UdtIdentifier },
   payeeFinancialAccount: {
     order: 8,
-    attributeName: 'cbc:PayeeFinancialAccount',
+    attributeName: 'cac:PayeeFinancialAccount',
     min: 0,
     max: undefined,
     classRef: PayeeFinancialAccount,
@@ -37,13 +37,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
-  id: string | UdtIdentifier;
+  id?: string | UdtIdentifier;
   paymentMeansCode: string | UdtCode;
-  paymentDueDate: string | UdtDate;
-  paymentChannelCode: string | UdtCode;
-  instructionID: string | UdtIdentifier;
-  instructionNotes: string[] | UdtText[];
-  paymentID: string | UdtIdentifier;
+  paymentDueDate?: string | UdtDate;
+  paymentChannelCode?: string | UdtCode;
+  instructionID?: string | UdtIdentifier;
+  instructionNotes?: string[] | UdtText[];
+  paymentID?: string | UdtIdentifier;
   payeeFinancialAccount: string | PayeeFinancialAccount;
 };
 

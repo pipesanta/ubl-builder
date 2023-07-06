@@ -1,6 +1,8 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtText, UdtQuantity, UdtIndicator, UdtName, UdtIdentifier } from '../types/UnqualifiedDataTypes';
 import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumeric';
+import { SellersItemIdentification } from './SellersItemIdentification';
+import { ClassifiedTaxCategory } from './TaxCategoryTypeGroup';
 
 /*
     1   cbc:Description [0..*]    Text describing this item.
@@ -65,25 +67,27 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:SellersItemIdentification',
     min: 0,
     max: 1,
-    classRef: null,
+    classRef: SellersItemIdentification,
   },
+  classifiedTaxCategory: {order : 23, attributeName: 'cac:ClassifiedTaxCategory', min: 0, max: undefined, classRef: ClassifiedTaxCategory},
   // ItemIdentificationType
 };
 
 // ##################################  TODO CAC MISSING ################################################
 type AllowedParams = {
-  descriptions: string[] | UdtText[];
-  packQuantity: string | UdtQuantity;
-  packSizeNumeric: string | UdtNumeric;
-  catalogueIndicator: string | UdtIndicator;
+  descriptions?: string[] | UdtText[];
+  packQuantity?: string | UdtQuantity;
+  packSizeNumeric?: string | UdtNumeric;
+  catalogueIndicator?: string | UdtIndicator;
   name: string | UdtName;
-  hazardousRiskIndicator: string | UdtIndicator;
-  additionalInformations: string[] | UdtText[];
-  keywords: string[] | UdtText[];
+  hazardousRiskIndicator?: string | UdtIndicator;
+  additionalInformations?: string[] | UdtText[];
+  keywords?: string[] | UdtText[];
   /** @type {UdtName} */
-  brandName: string | UdtName;
-  modelName: string | UdtName;
-  // sellersItemIdentification:
+  brandName?: string | UdtName;
+  modelName?: string | UdtName;
+  sellersItemIdentification: SellersItemIdentification,
+  classifiedTaxCategory: ClassifiedTaxCategory,
 };
 
 /**
