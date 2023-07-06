@@ -97,7 +97,7 @@ import { PaymentTerms, PaymentTermsTypeParams } from './PaymentTermsTypeGroup';
 import { PaymentType, PaymentTypeParams, PrepaidPayment } from './PaymentTypeGroup';
 import { ExchangeRate, ExchangeRateParams, PaymentExchangeRate, PricingExchangeRate } from './ExchangeRateTypeGroup';
 import { TaxTotal, TaxTotalTypeParams, WithholdingTaxTotal } from './TaxTotalTypeGroup';
-import { TaxCategory, TaxCategoryTypeParams } from './TaxCategoryTypeGroup';
+import { TaxCategory, TaxCategoryTypeParams,  ClassifiedTaxCategory, ClassifiedTaxCategoryTypeParams} from './TaxCategoryTypeGroup';
 import { TaxSubtotal, TaxSubtotalParams } from './TaxSubtotal';
 import { MonetaryTotal, MonetaryTotalParams, LegalMonetaryTotal } from './MonetaryTotalTypeGroup';
 import { OrderLineReference, OrderLineReferenceParams } from './OrderLineReference';
@@ -235,6 +235,8 @@ export {
   WithholdingTaxTotal,
   TaxCategory,
   TaxCategoryTypeParams,
+  ClassifiedTaxCategory, 
+  ClassifiedTaxCategoryTypeParams,
   TaxSubtotal,
   TaxSubtotalParams,
   MonetaryTotal,

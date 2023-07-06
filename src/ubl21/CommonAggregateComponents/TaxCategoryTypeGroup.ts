@@ -36,15 +36,15 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   id: string | UdtIdentifier;
-  name: string | UdtName;
+  name?: string | UdtName;
   percent: string | UdtPercent;
-  baseUnitMeasure: string | UdtMeasure;
-  perUnitAmount: string | UdtAmount;
-  taxExemptionReasonCode: string | UdtCode;
-  taxExemptionReason: string | UdtText;
-  tierRange: string | UdtText;
-  tierRatePercent: string | UdtPercent;
-  taxScheme: TaxScheme;
+  baseUnitMeasure?: string | UdtMeasure;
+  perUnitAmount?: string | UdtAmount;
+  taxExemptionReasonCode?: string | UdtCode;
+  taxExemptionReason?: string | UdtText;
+  tierRange?: string | UdtText;
+  tierRatePercent?: string | UdtPercent;
+  taxScheme?: TaxScheme;
 };
 
 /**
@@ -71,4 +71,31 @@ class TaxCategoryType extends GenericAggregateComponent {
   }
 }
 
-export { TaxCategoryType as TaxCategory, AllowedParams as TaxCategoryTypeParams };
+class ClassifiedTaxCategoryType extends GenericAggregateComponent {
+  constructor(content: AllowedParams) {
+    super(content, ParamsMap, 'cac:ClassifiedTaxCategory');
+  }
+
+
+  setPercent(value: string | UdtPercent) {
+    this.attributes.percent = value instanceof UdtPercent ? value : new UdtPercent(value);
+  }
+
+  /**
+   * @returns { string | UdtPercent }
+   */
+  getPercent(rawValue = true) {
+    return rawValue ? this.attributes.percent.content : this.attributes.percent;
+  }
+
+  getTaxScheme(): TaxScheme {
+    return this.attributes.taxScheme;
+  }
+}
+
+
+export { 
+  TaxCategoryType as TaxCategory, AllowedParams as TaxCategoryTypeParams,
+  ClassifiedTaxCategoryType as ClassifiedTaxCategory, AllowedParams as ClassifiedTaxCategoryTypeParams
+
+};
