@@ -1,18 +1,13 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { FinancialInstitution } from './FinancialInstitution';
+import { UdtIdentifier } from '../types/UnqualifiedDataTypes';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  financialInstitution: {
-    order: 1,
-    attributeName: 'cbc:FinancialInstitution',
-    min: 0,
-    max: 1,
-    classRef: FinancialInstitution,
-  },
+  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
 };
 
 type AllowedParams = {
-  financialInstitution?: FinancialInstitution;
+  id: string | UdtIdentifier;
 };
 
 /**
