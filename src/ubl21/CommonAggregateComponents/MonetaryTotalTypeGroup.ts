@@ -37,12 +37,12 @@ type AllowedParams = {
   lineExtensionAmount: string | UdtAmount;
   taxExclusiveAmount: string | UdtAmount;
   taxInclusiveAmount: string | UdtAmount;
-  allowanceTotalAmount: string | UdtAmount;
-  chargeTotalAmount: string | UdtAmount;
-  prepaidAmount: string | UdtAmount;
-  payableRoundingAmount: string | UdtAmount;
+  allowanceTotalAmount?: string | UdtAmount;
+  chargeTotalAmount?: string | UdtAmount;
+  prepaidAmount?: string | UdtAmount;
+  payableRoundingAmount?: string | UdtAmount;
   payableAmount: string | UdtAmount;
-  payableAlternativeAmount: string | UdtAmount;
+  payableAlternativeAmount?: string | UdtAmount;
 };
 
 /**

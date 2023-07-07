@@ -26,10 +26,10 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   id: string | UdtIdentifier;
-  name: string | UdtName;
-  taxTypeCode: string | UdtCode;
-  currencyCode: string | UdtCode;
-  jurisdictionRegionAddress: string | JurisdictionRegionAddress;
+  name?: string | UdtName;
+  taxTypeCode?: string | UdtCode;
+  currencyCode?: string | UdtCode;
+  jurisdictionRegionAddress?: string | JurisdictionRegionAddress;
 };
 
 /**

@@ -94,7 +94,7 @@ type InvoiceOptions = {
   /** Issue time to create issues field like issuetime, issue date. Current Date by default . */
   timestamp?: number;
   /** DIAN enviroment.  "1" for production: "2" for testing */
-  enviroment: string;
+  enviroment?: string;
   /** object with configuration of Invoice issuer */
   issuer: {
     /** resolution number */
@@ -171,13 +171,13 @@ export default class Invoice {
     const { year, month, dayOfMonth, hourOfDay, minute, second } = decomposeTime(options.timestamp);
 
     // DEFAULT VALUES
-    this.setID(id);
+    // this.setID(id);
     // this.setProfileID('DIAN 2.1'); // mandatory
     // this.setProfileExecutionID(this.options.enviroment); // DIAN enviroment
 
-    this.setIssueDate(`${year}-${month}-${dayOfMonth}`);
-    this.setIssueTime(`${hourOfDay}:${minute}:${second}-05:00`);
-    this.setUBLVersionID('UBL 2.1');
+    //this.setIssueDate(`${year}-${month}-${dayOfMonth}`);
+    //this.setIssueTime(`${hourOfDay}:${minute}:${second}-05:00`);
+    //this.setUBLVersionID('UBL 2.1');
     // this.setDocumentCurrencyCode('COP'); // Divisa de toda la factura
     // this.calculateDianExtension(); // fill Dian extension content
     // DEFAULT VALUES
@@ -683,10 +683,7 @@ export default class Invoice {
    * @param { SupplierPartyTypeParams } input
    * @returns {Invoice}
    */
-  setAccountingSupplierParty(value: AccountingSupplierParty | SupplierPartyTypeParams): Invoice {
-    // if (input === null) {
-    //   this.accountingSupplierParty = null;
-    // }
+  setAccountingSupplierParty(value: AccountingSupplierParty ): Invoice {
     this.children.accountingSupplierParty =
       value instanceof AccountingSupplierParty ? value : new AccountingSupplierParty(value);
     return this;
@@ -694,16 +691,16 @@ export default class Invoice {
 
   /**
    *
-   * @param {  } input
+   * @param { AccountingCustomerParty } input
    * @returns {Invoice}
    */
   /**
    * 36. [required] The accounting customer party.
    * @param input
    */
-  setAccountingCustomerParty(value: AccountingCustomerParty | SupplierPartyTypeParams): Invoice {
+  setAccountingCustomerParty(value: AccountingCustomerParty ): Invoice {
     this.children.accountingCustomerParty =
-      value instanceof AccountingCustomerParty ? value : new AccountingSupplierParty(value);
+      value instanceof AccountingCustomerParty ? value : new AccountingCustomerParty(value);
     return this;
   }
 

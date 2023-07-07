@@ -43,12 +43,12 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
-  registrationName: string | UdtName;
+  registrationName?: string | UdtName;
   companyID: string | UdtIdentifier;
-  taxLevelCode: string | UdtCode;
-  exemptionReasonCode: string | UdtCode;
-  exemptionReason: string;
-  registrationAddress: RegistrationAddress;
+  taxLevelCode?: string | UdtCode;
+  exemptionReasonCode?: string | UdtCode;
+  exemptionReason?: string;
+  registrationAddress?: RegistrationAddress;
   taxScheme: TaxScheme;
 };
 

@@ -75,6 +75,8 @@ import { CorporateRegistrationScheme, CorporateRegistrationSchemeParams } from '
 
 import { Contact, ContactTypeParams, DeliveryContact, AccountingContact, BuyerContact } from './ContactTypeGroup';
 
+import { PostalAddress, PostalAddressTypeParams } from './PostalAddressTypeGroup';
+
 import { AccountingCustomerParty, CustomerPartyParams } from './CustomerPartyTypeGroup';
 
 import { Despatch, DespatchParams } from './Despatch';
@@ -95,7 +97,7 @@ import { PaymentTerms, PaymentTermsTypeParams } from './PaymentTermsTypeGroup';
 import { PaymentType, PaymentTypeParams, PrepaidPayment } from './PaymentTypeGroup';
 import { ExchangeRate, ExchangeRateParams, PaymentExchangeRate, PricingExchangeRate } from './ExchangeRateTypeGroup';
 import { TaxTotal, TaxTotalTypeParams, WithholdingTaxTotal } from './TaxTotalTypeGroup';
-import { TaxCategory, TaxCategoryTypeParams } from './TaxCategoryTypeGroup';
+import { TaxCategory, TaxCategoryTypeParams,  ClassifiedTaxCategory, ClassifiedTaxCategoryTypeParams} from './TaxCategoryTypeGroup';
 import { TaxSubtotal, TaxSubtotalParams } from './TaxSubtotal';
 import { MonetaryTotal, MonetaryTotalParams, LegalMonetaryTotal } from './MonetaryTotalTypeGroup';
 import { OrderLineReference, OrderLineReferenceParams } from './OrderLineReference';
@@ -196,6 +198,8 @@ export {
   PartyLegalEntityParams,
   CorporateRegistrationScheme,
   CorporateRegistrationSchemeParams,
+  PostalAddress,
+  PostalAddressTypeParams,
   Contact,
   ContactTypeParams,
   DeliveryContact,
@@ -231,6 +235,8 @@ export {
   WithholdingTaxTotal,
   TaxCategory,
   TaxCategoryTypeParams,
+  ClassifiedTaxCategory, 
+  ClassifiedTaxCategoryTypeParams,
   TaxSubtotal,
   TaxSubtotalParams,
   MonetaryTotal,

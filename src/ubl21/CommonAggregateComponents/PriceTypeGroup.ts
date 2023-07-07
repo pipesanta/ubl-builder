@@ -60,23 +60,23 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
-  priceAmount: string | UdtAmount;
-  baseQuantity: string | UdtQuantity;
-  priceChangeReasons: string | UdtText;
-  priceTypeCode: string | UdtCode;
-  priceType: string | UdtText;
-  orderableUnitFactorRate: string | UdtRate;
-  validityPeriods: ValidityPeriod;
-  priceList: PriceList;
-  allowanceCharges: AllowanceCharge;
-  pricingExchangeRate: PricingExchangeRate;
+  priceAmount: string | UdtAmount;     // The amount of the price. MANADATORY
+  baseQuantity?: string | UdtQuantity;
+  priceChangeReasons?: string | UdtText;
+  priceTypeCode?: string | UdtCode;
+  priceType?: string | UdtText;
+  orderableUnitFactorRate?: string | UdtRate;
+  validityPeriods?: ValidityPeriod;
+  priceList?: PriceList;
+  allowanceCharges?: AllowanceCharge;
+  pricingExchangeRate?: PricingExchangeRate;
 };
 
 /**
  *
  */
 class Price extends GenericAggregateComponent {
-  constructor(content: AllowanceCharge) {
+  constructor(content: AllowedParams) {
     super(content, ParamsMap, 'cac:Price');
   }
 

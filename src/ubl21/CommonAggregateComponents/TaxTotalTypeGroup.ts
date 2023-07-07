@@ -23,8 +23,8 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   taxAmount: string | UdtAmount;
-  roundingAmount: string | UdtAmount;
-  taxEvidenceIndicator: string | UdtIndicator;
+  roundingAmount?: string | UdtAmount;
+  taxEvidenceIndicator?: string | UdtIndicator;
   taxSubtotals: TaxSubtotal[];
 };
 

@@ -7,6 +7,7 @@ import { PhysicalLocation } from './LocationTypeGroup';
 import { PartyTaxScheme, PartyTaxSchemeParams } from './PartyTaxScheme';
 import { PartyLegalEntity } from './PartyLegalEntity';
 import { Contact } from './ContactTypeGroup';
+import { PostalAddress } from './PostalAddressTypeGroup';
 
 /*
     cbc:MarkCareIndicator [0..1]    An indicator that this party is "care of" (c/o) (true) or not (false).
@@ -58,10 +59,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   },
   partyNames: { order: 8, attributeName: 'cac:PartyName', min: 0, max: undefined, classRef: PartyName },
   language: { order: 9, attributeName: 'cac:Language', min: 0, max: 1, classRef: Language },
-
-  // ##################################  TODO CAC MISSING ################################################
-
-  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }, //
+  postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }, //
   physicalLocation: { order: 11, attributeName: 'cac:PhysicalLocation', min: 0, max: 1, classRef: PhysicalLocation },
   partyTaxSchemes: { order: 12, attributeName: 'cac:PartyTaxScheme', min: 0, max: undefined, classRef: PartyTaxScheme },
   partyLegalEntities: {
@@ -73,7 +71,6 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   },
   contact: { order: 14, attributeName: 'cac:Contact', min: 0, max: 1, classRef: Contact },
   // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: 1, classRef: PostalAddress },
-  // postalAddress: { order: 16,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: Person },
   // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', min: 0, max: 1, classRef: ServiceProviderParty },
   // powerOfAttorney: { order: 18,  attributeName: 'cac:PowerOfAttorney', min: 0, max: 1, classRef: PowerOfAttorney },
   // financialAccount: { order: 19,  attributeName: 'cac:FinancialAccount', min: 0, max: 1, classRef: FinancialAccount },
@@ -83,23 +80,23 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   /**  An indicator that this party is "care of" (c/o) (true) or not (false) */
-  markCareIndicator: UdtIndicator | string;
+  markCareIndicator?: UdtIndicator | string;
   /** An indicator that this party is "for the attention of" (FAO) (true) or not (false) */
-  markAttentionIndicator: UdtIndicator | string;
+  markAttentionIndicator?: UdtIndicator | string;
   /** The Uniform Resource Identifier (URI) that identifies this party's web site; i.e., the web site's Uniform Resource Locator (URL) */
-  websiteURI: UdtIdentifier | string;
+  websiteURI?: UdtIdentifier | string;
   /** An identifier for this party's logo */
-  logoReferenceID: UdtIdentifier | string;
+  logoReferenceID?: UdtIdentifier | string;
   /** An identifier for the end point of the routing service (e.g., EAN Location Number, GLN) */
   EndpointID: UdtIdentifier | string;
   /** This party's Industry Classification Code */
-  industryClassificationCode: UdtCode | string;
+  industryClassificationCode?: UdtCode | string;
   /**  An identifier for this party */
-  partyIdentifications: PartyIdentification[];
+  partyIdentifications?: PartyIdentification[];
   /**  A name for this party */
-  partyNames: PartyName[];
+  partyNames?: PartyName[];
   /** The language associated with this party */
-  language: Language[];
+  language?: Language[];
 
   // ##################################  TODO CAC MISSING ################################################
 
@@ -107,7 +104,8 @@ type AllowedParams = {
   // physicalLocation: "The physical location of this party.",
   partyTaxSchemes: PartyTaxScheme[];
   partyLegalEntities: PartyLegalEntity[];
-  contact: Contact;
+  contact?: Contact;
+  postalAddress: PostalAddress;
   // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: 1, classRef: PostalAddress },
   // postalAddress: { order: 16,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: Person },
   // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', min: 0, max: 1, classRef: ServiceProviderParty },

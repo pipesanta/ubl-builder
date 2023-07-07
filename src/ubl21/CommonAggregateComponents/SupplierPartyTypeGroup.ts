@@ -41,11 +41,11 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   /** An identifier for this supplier party, assigned by the custom */
-  customerAssignedAccountID: string | UdtIdentifier;
+  customerAssignedAccountID?: string | UdtIdentifier;
   /** An additional identifier for this supplier party. */
-  additionalAccountIDs: string | UdtIdentifier;
+  additionalAccountIDs?: string | UdtIdentifier;
   /** Text describing the supplier's ability to send invoice data via a purchase card provider (e.g., VISA, MasterCard, American Express). */
-  dataSendingCapability: string | UdtText;
+  dataSendingCapability?: string | UdtText;
   /** The supplier party itself. */
   party: Party;
 };
