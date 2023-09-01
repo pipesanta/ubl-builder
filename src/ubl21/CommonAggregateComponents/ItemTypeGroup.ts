@@ -69,7 +69,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: 1,
     classRef: SellersItemIdentification,
   },
-  classifiedTaxCategory: {order : 23, attributeName: 'cac:ClassifiedTaxCategory', min: 0, max: undefined, classRef: ClassifiedTaxCategory},
+  classifiedTaxCategory: {
+    order: 23,
+    attributeName: 'cac:ClassifiedTaxCategory',
+    min: 0,
+    max: undefined,
+    classRef: ClassifiedTaxCategory,
+  },
   // ItemIdentificationType
 };
 
@@ -86,8 +92,8 @@ type AllowedParams = {
   /** @type {UdtName} */
   brandName?: string | UdtName;
   modelName?: string | UdtName;
-  sellersItemIdentification: SellersItemIdentification,
-  classifiedTaxCategory: ClassifiedTaxCategory,
+  sellersItemIdentification: SellersItemIdentification;
+  classifiedTaxCategory: ClassifiedTaxCategory;
 };
 
 /**

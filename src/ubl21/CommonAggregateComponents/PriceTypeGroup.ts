@@ -60,7 +60,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
-  priceAmount: string | UdtAmount;     // The amount of the price. MANADATORY
+  priceAmount: string | UdtAmount; // The amount of the price. MANADATORY
   baseQuantity?: string | UdtQuantity;
   priceChangeReasons?: string | UdtText;
   priceTypeCode?: string | UdtCode;

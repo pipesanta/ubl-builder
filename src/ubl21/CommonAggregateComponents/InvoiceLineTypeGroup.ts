@@ -121,11 +121,11 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
-  id: string | UdtIdentifier;               // Mandatory
+  id: string | UdtIdentifier; // Mandatory
   uuid?: string | UdtIdentifier;
   notes?: string[] | UdtText[];
-  invoicedQuantity: string | UdtQuantity;   // Mandatory
-  lineExtensionAmount: string | UdtAmount;  // Mandatory
+  invoicedQuantity: string | UdtQuantity; // Mandatory
+  lineExtensionAmount: string | UdtAmount; // Mandatory
   taxPointDate?: string | UdtDate;
   accountingCostCode?: string | UdtCode;
   accountingCost?: string | UdtText;
@@ -144,8 +144,8 @@ type AllowedParams = {
   // allowanceCharges: "",
   taxTotals?: TaxTotal[];
   withholdingTaxTotal?: WithholdingTaxTotal[];
-  item: Item;                              // Mandatory
-  price: Price;                           // Mandatory
+  item: Item; // Mandatory
+  price: Price; // Mandatory
   deliveryTerms?: DeliveryTerms;
   // subInvoiceLine: "",
 };

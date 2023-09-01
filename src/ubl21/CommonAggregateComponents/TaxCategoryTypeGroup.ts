@@ -76,7 +76,6 @@ class ClassifiedTaxCategoryType extends GenericAggregateComponent {
     super(content, ParamsMap, 'cac:ClassifiedTaxCategory');
   }
 
-
   setPercent(value: string | UdtPercent) {
     this.attributes.percent = value instanceof UdtPercent ? value : new UdtPercent(value);
   }
@@ -93,9 +92,9 @@ class ClassifiedTaxCategoryType extends GenericAggregateComponent {
   }
 }
 
-
-export { 
-  TaxCategoryType as TaxCategory, AllowedParams as TaxCategoryTypeParams,
-  ClassifiedTaxCategoryType as ClassifiedTaxCategory, AllowedParams as ClassifiedTaxCategoryTypeParams
-
+export {
+  TaxCategoryType as TaxCategory,
+  AllowedParams as TaxCategoryTypeParams,
+  ClassifiedTaxCategoryType as ClassifiedTaxCategory,
+  AllowedParams as ClassifiedTaxCategoryTypeParams,
 };

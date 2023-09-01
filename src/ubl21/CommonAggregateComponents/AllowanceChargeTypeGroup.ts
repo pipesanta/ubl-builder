@@ -8,7 +8,9 @@ import {
   UdtName,
   UdtQuantity,
   UdtIndicator,
+  UdtAmount,
 } from '../types/UnqualifiedDataTypes/';
+import { TaxCategory } from './TaxCategoryTypeGroup';
 
 /* TODO GANERIC CLASSES */
 /*
@@ -32,25 +34,38 @@ import {
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
   chargeIndicator: { order: 2, attributeName: 'cbc:ChargeIndicator', min: 1, max: 1, classRef: UdtIndicator },
-  AllowanceChargeReasonCode: {
+  allowanceChargeReasonCode: {
     order: 3,
     attributeName: 'cbc:AllowanceChargeReasonCode',
     min: 1,
     max: 1,
     classRef: UdtCode,
   },
-  AllowanceChargeReason: { order: 4, attributeName: 'cbc:AllowanceChargeReason', min: 1, max: 1, classRef: UdtText },
+  allowanceChargeReason: { order: 4, attributeName: 'cbc:AllowanceChargeReason', min: 1, max: 1, classRef: UdtText },
+
+  amount: { order: 8, attributeName: 'cbc:Amount', min: 1, max: 1, classRef: UdtAmount },
+
+  baseAmount: { order: 9, attributeName: 'cbc:BaseAmount', min: 0, max: 1, classRef: UdtAmount },
+
+  taxCategory: { order: 13, attributeName: 'cac:TaxCategory', min: 0, max: 1, classRef: TaxCategory },
 };
 
 type AllowedParams = {
   /**  An identifier for this allowance or charge */
-  id: string | UdtIdentifier;
+  id?: string | UdtIdentifier;
   /** An indicator that this AllowanceCharge describes a charge (true) or a discount (false) */
   chargeIndicator: boolean | UdtIndicator;
   /** A mutually agreed code signifying the reason for this allowance or charge */
-  AllowanceChargeReasonCode: string | UdtCode;
+  allowanceChargeReasonCode: string | UdtCode;
   /** The reason for this allowance or charge */
-  AllowanceChargeReason: string | UdtText;
+  allowanceChargeReason: string | UdtText;
+
+  /*  */
+  amount: string | UdtAmount;
+  /*  */
+  baseAmount?: string | UdtAmount;
+
+  taxCategory: TaxCategory;
 };
 
 /**
