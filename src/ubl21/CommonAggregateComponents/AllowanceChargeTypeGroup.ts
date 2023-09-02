@@ -1,15 +1,5 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import {
-  UdtCode,
-  UdtIdentifier,
-  UdtDate,
-  UdtText,
-  UdtTime,
-  UdtName,
-  UdtQuantity,
-  UdtIndicator,
-  UdtAmount,
-} from '../types/UnqualifiedDataTypes/';
+import { UdtCode, UdtIdentifier, UdtText, UdtIndicator, UdtAmount } from '../types/UnqualifiedDataTypes/';
 import { TaxCategory } from './TaxCategoryTypeGroup';
 
 /* TODO GANERIC CLASSES */
