@@ -5,6 +5,7 @@ import { UdtIdentifier, UdtName, UdtCode, UdtText, UdtMeasure } from '../types/U
 import { UdtPercent } from '../types/UnqualifiedDataTypes/UdtPercent';
 import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
 import { TaxScheme } from './TaxScheme';
+import { TaxCategoryType } from './TaxCategoryType';
 
 /*
 
@@ -50,33 +51,12 @@ type AllowedParams = {
 /**
  *
  */
-class TaxCategoryType extends GenericAggregateComponent {
-  constructor(content: AllowedParams) {
-    super(content, ParamsMap, 'cac:TaxCategoryType');
-  }
-
-  setPercent(value: string | UdtPercent) {
-    this.attributes.percent = value instanceof UdtPercent ? value : new UdtPercent(value);
-  }
-
-  /**
-   * @returns { string | UdtPercent }
-   */
-  getPercent(rawValue = true) {
-    return rawValue ? this.attributes.percent.content : this.attributes.percent;
-  }
-
-  getTaxScheme(): TaxScheme {
-    return this.attributes.taxScheme;
-  }
-}
 
 class ClassifiedTaxCategoryType extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
     super(content, ParamsMap, 'cac:ClassifiedTaxCategory');
   }
 
-
   setPercent(value: string | UdtPercent) {
     this.attributes.percent = value instanceof UdtPercent ? value : new UdtPercent(value);
   }
@@ -93,9 +73,10 @@ class ClassifiedTaxCategoryType extends GenericAggregateComponent {
   }
 }
 
-
-export { 
-  TaxCategoryType as TaxCategory, AllowedParams as TaxCategoryTypeParams,
-  ClassifiedTaxCategoryType as ClassifiedTaxCategory, AllowedParams as ClassifiedTaxCategoryTypeParams
-
+export {
+  TaxCategoryType as TaxCategory,
+  AllowedParams as TaxCategoryTypeParams,
+  ClassifiedTaxCategoryType as ClassifiedTaxCategory,
+  AllowedParams as ClassifiedTaxCategoryTypeParams,
+  ParamsMap as TaxCategoryTypeParamsMap,
 };

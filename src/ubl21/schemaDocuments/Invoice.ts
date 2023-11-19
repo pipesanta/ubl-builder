@@ -48,6 +48,7 @@ import {
   TaxSubtotal,
   TaxCategory,
   TaxScheme,
+  AllowanceCharge,
 } from '../CommonAggregateComponents';
 
 import {
@@ -175,9 +176,9 @@ export default class Invoice {
     // this.setProfileID('DIAN 2.1'); // mandatory
     // this.setProfileExecutionID(this.options.enviroment); // DIAN enviroment
 
-    //this.setIssueDate(`${year}-${month}-${dayOfMonth}`);
-    //this.setIssueTime(`${hourOfDay}:${minute}:${second}-05:00`);
-    //this.setUBLVersionID('UBL 2.1');
+    //  this.setIssueDate(`${year}-${month}-${dayOfMonth}`);
+    // this.setIssueTime(`${hourOfDay}:${minute}:${second}-05:00`);
+    // this.setUBLVersionID('UBL 2.1');
     // this.setDocumentCurrencyCode('COP'); // Divisa de toda la factura
     // this.calculateDianExtension(); // fill Dian extension content
     // DEFAULT VALUES
@@ -683,7 +684,7 @@ export default class Invoice {
    * @param { SupplierPartyTypeParams } input
    * @returns {Invoice}
    */
-  setAccountingSupplierParty(value: AccountingSupplierParty ): Invoice {
+  setAccountingSupplierParty(value: AccountingSupplierParty): Invoice {
     this.children.accountingSupplierParty =
       value instanceof AccountingSupplierParty ? value : new AccountingSupplierParty(value);
     return this;
@@ -698,7 +699,7 @@ export default class Invoice {
    * 36. [required] The accounting customer party.
    * @param input
    */
-  setAccountingCustomerParty(value: AccountingCustomerParty ): Invoice {
+  setAccountingCustomerParty(value: AccountingCustomerParty): Invoice {
     this.children.accountingCustomerParty =
       value instanceof AccountingCustomerParty ? value : new AccountingCustomerParty(value);
     return this;
@@ -802,8 +803,13 @@ export default class Invoice {
    * 46 A discount or charge that applies to a price component..
    * @param value
    */
-  addAllowanceCharge(value: any) {
-    throw new Error('not implemented');
+  addAllowanceCharge(value: AllowanceCharge): Invoice {
+    if (!this.children.allowanceCharges) {
+      this.children.allowanceCharges = [];
+    }
+    const itemToPush = value instanceof AllowanceCharge ? value : new AllowanceCharge(value);
+    this.children.allowanceCharges.push(itemToPush);
+    return this;
   }
 
   /**
