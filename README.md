@@ -15,6 +15,33 @@ Install:
 -------
 > npm install ubl-builder
 
+## Testing
+
+Run all tests:
+
+```bash
+npm test
+```
+
+Run tests serially (useful while debugging):
+
+```bash
+npm test -- --runInBand
+```
+
+Current test suites cover:
+
+- UDT serialization samples
+- Invoice document basic flows (constructor validation, XML fields, DIAN extension generation)
+- Utility tools (`dateFormatter`, `mathTools`, `shas`)
+- Core CommonAggregateComponents (`PartyTypeGroup`, `TaxTotalTypeGroup`, `InvoiceLineTypeGroup`)
+
+Recommended flow to keep improving coverage:
+
+1. Add tests for one component/group at a time in `src/__tests__`.
+2. Prefer behavior assertions (JSON/XML output and validations) over implementation details.
+3. Run `npm test -- --runInBand` before publishing.
+
 ## Samples
 
 ##### How to create a Basic Document
