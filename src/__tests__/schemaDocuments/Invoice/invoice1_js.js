@@ -5,5 +5,6 @@ const invoice = new Invoice('123456789', {});
 invoice.addProperty('xmlns', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
 
 test('[JS] [CUSTOM PROPERTY] xmlns', () => {
-  expect({}).toStrictEqual({});
+  const xml = invoice.getXml();
+  expect(xml).toContain('xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"');
 });

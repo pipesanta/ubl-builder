@@ -1,6 +1,5 @@
 import GenericAggregateComponent, { ParamsMapValues, IGenericKeyValue } from './GenericAggregateComponent';
 
-/* TODO GANERIC CLASSES */
 import { UdtText } from '../types/UnqualifiedDataTypes';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
@@ -9,7 +8,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   /** An address line expressed as unstructured text */
-  line?: string | UdtText;
+  line: string | UdtText;
 };
 
 /**
@@ -21,6 +20,9 @@ type AllowedParams = {
 class AddressLine extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
     super(content, ParamsMap, 'cac:AddressLine');
+    if (!this.attributes.line) {
+      throw new Error('line is required');
+    }
   }
 
   /**
@@ -28,6 +30,7 @@ class AddressLine extends GenericAggregateComponent {
    * @param {boolean} raw as raw
    */
   getLine(raw = false) {
+    if (!this.attributes.line) return null;
     return raw ? this.attributes.line.content : this.attributes.line;
   }
 
@@ -36,7 +39,9 @@ class AddressLine extends GenericAggregateComponent {
    * @param {string | UdtText} value
    */
   setLine(value: string | UdtText) {
+    if (value === undefined || value === null) throw new Error('line is required');
     this.attributes.line = value instanceof UdtText ? value : new UdtText(value);
+    return this;
   }
 }
 
