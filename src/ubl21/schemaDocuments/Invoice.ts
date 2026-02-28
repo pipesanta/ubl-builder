@@ -523,12 +523,15 @@ export default class Invoice {
    * 24. A period to which the Invoice applies.
    * @param value
    */
-  addInvoicePeriod(value: PeriodType | PeriodTypeParams): Invoice {
+  addInvoicePeriod(): PeriodType;
+  addInvoicePeriod(value: PeriodType | PeriodTypeParams): Invoice;
+  addInvoicePeriod(value?: PeriodType | PeriodTypeParams): Invoice | PeriodType {
     if (!this.children.invoicePeriods) this.children.invoicePeriods = [];
-    const itemToPush = value instanceof PeriodType ? value : new PeriodType(value);
+    const itemToPush =
+      value === undefined ? new PeriodType({}) : value instanceof PeriodType ? value : new PeriodType(value);
     this.children.invoicePeriods.push(itemToPush);
 
-    return this;
+    return value === undefined ? itemToPush : this;
   }
 
   clearInvoicePeriods() {

@@ -62,4 +62,29 @@ describe('Invoice (TypeScript usage)', () => {
     expect(inv.getID()).toBe('ABC-001');
     expect((inv.getID(false) as any).content).toBe('ABC-001');
   });
+
+  test('adds invoice period using object payload', () => {
+    const inv = new Invoice('123456789', { ...invoiceOptions });
+    inv.addInvoicePeriod({
+      startDate: '2024-12-19',
+      endDate: '2025-01-19',
+    });
+
+    const xml = inv.getXml(false, false);
+    expect(xml).toContain('<cac:InvoicePeriod>');
+    expect(xml).toContain('<cbc:StartDate>2024-12-19</cbc:StartDate>');
+    expect(xml).toContain('<cbc:EndDate>2025-01-19</cbc:EndDate>');
+  });
+
+  test('adds invoice period using nested fluent setters', () => {
+    const inv = new Invoice('123456789', { ...invoiceOptions });
+    const period = inv.addInvoicePeriod();
+
+    period.addStartDate('2024-12-19').addEndDate('2025-01-19');
+
+    const xml = inv.getXml(false, false);
+    expect(xml).toContain('<cac:InvoicePeriod>');
+    expect(xml).toContain('<cbc:StartDate>2024-12-19</cbc:StartDate>');
+    expect(xml).toContain('<cbc:EndDate>2025-01-19</cbc:EndDate>');
+  });
 });
