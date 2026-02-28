@@ -1,0 +1,21 @@
+*
+
+!lib/**
+!README.md
+!LICENSE
+!package.json
+
+# Never publish development or generated debug artifacts
+lib/**/__tests__/**
+lib/**/_playground/**
+lib/**/*.map
+lib/**/*.tsbuildinfo
+
+# Never publish source/docs/config for consumers
+src/**
+docs/**
+*.log
+.github/**
+.vscode/**
+coverage/**
+node_modules/**
