@@ -14,23 +14,41 @@ function decomposeTime(ts: number, options?: Options) {
   options = options || {};
   options.timezone = options.timezone || 'America/Bogota';
 
-  // 2018-12-4 17:12:05
-  const date = new Date(new Date(ts).toLocaleString('en-US', { timeZone: options.timezone }));
-  const { year, week, day } = gregorian.weekNumberYear(date);
+  const formatter = new Intl.DateTimeFormat('en-CA', {
+    timeZone: options.timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  });
+
+  const dateParts = formatter.formatToParts(new Date(ts));
+  const year = parseInt(dateParts.find((part) => part.type === 'year')?.value || '0', 10);
+  const month = dateParts.find((part) => part.type === 'month')?.value || '00';
+  const dayOfMonth = dateParts.find((part) => part.type === 'day')?.value || '00';
+  const hourOfDay = dateParts.find((part) => part.type === 'hour')?.value || '00';
+  const minute = dateParts.find((part) => part.type === 'minute')?.value || '00';
+  const second = dateParts.find((part) => part.type === 'second')?.value || '00';
+
+  const safeDate = new Date(`${year}-${month}-${dayOfMonth}T${hourOfDay}:${minute}:${second}`);
+  const { week, day } = gregorian.weekNumberYear(safeDate);
   const daysOfWeek = ['MON', 'TUE', 'WED', 'THU', 'FRY', 'SAT', 'SUN'];
   const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
   return {
     year,
-    monthStr: months[date.getMonth()].padStart(2, '0'),
-    month: (date.getMonth() + 1).toString().padStart(2, '0'),
+    monthStr: months[parseInt(month, 10) - 1],
+    month,
     week,
     dayOfWeek: day,
     dayOfWeekStr: daysOfWeek[day - 1],
-    dayOfYear: gregorian.dayOfYear(date),
-    dayOfMonth: date.getDate().toString().padStart(2, '0'),
-    hourOfDay: date.getHours().toString().padStart(2, '0'),
-    minute: date.getMinutes().toString().padStart(2, '0'),
-    second: date.getSeconds().toString().padStart(2, '0'),
+    dayOfYear: gregorian.dayOfYear(safeDate),
+    dayOfMonth,
+    hourOfDay,
+    minute,
+    second,
     milliseconds: ts.toString().slice(10),
   };
 }
