@@ -34,13 +34,13 @@ export default class GenericAggregateComponent {
   parseToJson() {
     const jsonResponse: any = {};
     Object.keys(this.paramsMap)
-      .filter((attkey) => this.attributes[attkey])
+      .filter((attkey) => this.attributes[attkey] !== undefined && this.attributes[attkey] !== null)
+      .sort((a, b) => this.paramsMap[a].order - this.paramsMap[b].order)
       .forEach((attKey) => {
         const { attributeName, max } = this.paramsMap[attKey];
         if (Array.isArray(this.attributes[attKey]) && max !== undefined) {
           throw new Error('array given and max is defined validate structure');
         }
-        const attType = typeof this.attributes[attKey];
         jsonResponse[attributeName] = Array.isArray(this.attributes[attKey])
           ? this.attributes[attKey].map((e: any) => e.parseToJson())
           : this.attributes[attKey].parseToJson();
@@ -53,25 +53,44 @@ export default class GenericAggregateComponent {
     Object.keys(content || {})
       .filter((att) => content[att] != null)
       .forEach((att: string) => {
-        const AbstractClass = this.paramsMap[att].classRef;
+        const mapValue = this.paramsMap[att];
+        if (!mapValue) {
+          throw new Error(`attribute ${att} is not allowed`);
+        }
+
+        const { classRef: AbstractClass, max } = mapValue;
         if (!AbstractClass) {
           throw new Error('classRef is required');
         }
 
         if (Array.isArray(content[att])) {
+          if (max !== undefined && content[att].length > max) {
+            throw new Error(`${att} max occurrences is ${max}`);
+          }
+
           this.attributes[att] = content[att].map((subItem: any) => {
-            return subItem instanceof AbstractClass ? subItem : new AbstractClass(subItem.content, subItem.attributes);
+            return this.buildClassInstance(AbstractClass, subItem);
           });
         } else {
-          const childContent = ['boolean', 'string', 'number'].includes(typeof content[att])
-            ? content[att]
-            : content[att].content;
-
-          const childAttributes = content[att].attributes || {};
-          this.attributes[att] =
-            content[att] instanceof AbstractClass ? content[att] : new AbstractClass(childContent, childAttributes);
+          this.attributes[att] = this.buildClassInstance(AbstractClass, content[att]);
         }
       });
+  }
+
+  private buildClassInstance(AbstractClass: any, rawValue: any) {
+    if (rawValue instanceof AbstractClass) {
+      return rawValue;
+    }
+
+    const isRawPrimitive = ['boolean', 'string', 'number'].includes(typeof rawValue);
+    if (isRawPrimitive) {
+      return new AbstractClass(rawValue);
+    }
+
+    const childContent = rawValue?.content;
+    const childAttributes = rawValue?.attributes || {};
+
+    return new AbstractClass(childContent, childAttributes);
   }
 
   /**
