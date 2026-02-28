@@ -33,8 +33,13 @@ Current test suites cover:
 
 - UDT serialization samples
 - Invoice document basic flows (constructor validation, XML fields, DIAN extension generation)
+- Invoice `cac:InvoicePeriod` nested tags (`cbc:StartDate` and `cbc:EndDate`)
 - Utility tools (`dateFormatter`, `mathTools`, `shas`)
 - Core CommonAggregateComponents (`PartyTypeGroup`, `TaxTotalTypeGroup`, `InvoiceLineTypeGroup`)
+
+## Docs flows
+
+- InvoicePeriod nested tags showcase: [docs/flows/invoice-period-nested-tags.md](docs/flows/invoice-period-nested-tags.md)
 
 Recommended flow to keep improving coverage:
 
