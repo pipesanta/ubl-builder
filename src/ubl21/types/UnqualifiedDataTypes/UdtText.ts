@@ -18,4 +18,14 @@ export class UdtText extends CctTextType {
   constructor(content: string, attributes?: UdtTextAttributes) {
     super(content, attributes);
   }
+
+  setLanguageID(value: string) {
+    super.setLanguageID(value);
+    return this;
+  }
+
+  setLanguageLocaleID(value: string) {
+    super.setLanguageLocaleID(value);
+    return this;
+  }
 }
